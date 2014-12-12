@@ -8,10 +8,6 @@
  * Controller of the gitcheeseApp
  */
 angular.module('gitcheeseApp')
-  .controller('DashboardCtrl', function ($scope) {
-    $scope.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
+  .controller('DashboardCtrl', function ($scope, ProjectService) {
+    $scope.projects = ProjectService.get();
   });

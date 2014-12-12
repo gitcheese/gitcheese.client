@@ -1,0 +1,35 @@
+<h1>{{project.name}}</h1>
+<div>
+	<div class="form-group">
+		<label for="badgePreview">Already Pledged</label>
+		<p class="form-control-static">{{project.pledged}}</p>
+	</div>
+	<div class="form-group">
+		<label for="badgeUrl">Your Badge Url</label>
+		<div class="input-group">
+			<input type="text" class="form-control" id="badgeUrl" ng-model="project.badgeUrl" readonly>
+			<span class="input-group-btn">
+				<button class="btn btn-default" type="button">Copy</button>
+			</span>
+		</div>
+	</div>
+	<div class="form-group">
+		<label for="badgePreview">Preview</label>
+		<img src="images/badgePreview.png" alt="preview" class="img-thumbnail">
+	</div>
+</div>
+<div class="row">
+	<table class="col-lg-12 table table-hover">
+		<caption>Project Doners</caption>
+		<thead>
+			<th><a href="" ng-click="donerOrder = 'name'; reverse=!reverse">Name</a></th>
+			<th><a href="" ng-click="donerOrder = 'amount'; reverse=!reverse">Amount</a></th>
+		</thead>
+		<tbody>
+			<tr ng-repeat="doner in project.doners | orderBy:donerOrder:reverse">
+				<td>{{doner.name}}</td>
+				<td>{{doner.amount}}</td>
+			</tr>
+		</tbody>
+	</table>
+</div>

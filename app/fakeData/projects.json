@@ -1,7 +1,10 @@
 [{
-	"name": "my proj1"
+	"name": "my proj1",
+	"isConfigured": true
 }, {
-	"name": "my second project"
+	"name": "my second project",
+	"isConfigured": true
 }, {
-	"name": "my my my"
+	"name": "my my my",
+	"isConfigured": false
 }]

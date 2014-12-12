@@ -31,6 +31,10 @@ angular
         templateUrl: 'views/dashboard.html',
         controller: 'DashboardCtrl'
       })
+      .when('/pledge', {
+        templateUrl: 'views/pledge.html',
+        controller: 'PledgeCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });

@@ -15,9 +15,10 @@ angular
     'ngResource',
     'ngRoute',
     'ngSanitize',
-    'ngTouch'
+    'ngTouch',
+    'hello'
   ])
-  .config(function ($routeProvider) {
+  .config(function($routeProvider) {
     $routeProvider
       .when('/', {
         templateUrl: 'views/start.html',
@@ -50,4 +51,16 @@ angular
       .otherwise({
         redirectTo: '/'
       });
+  })
+  .run(function($hello) {
+    $hello.on('auth.login', function(auth) {
+      $hello(auth.network).api('/me').then(function() {});
+    });
+
+    $hello.init({
+      facebook: '551034988332783',
+      github: 'ea5846887213a8dbb64a'
+    }, {
+      redirect_uri: '#/dashboard'
+    });
   });

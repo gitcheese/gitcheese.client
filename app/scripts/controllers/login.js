@@ -8,10 +8,9 @@
  * Controller of the gitcheeseApp
  */
 angular.module('gitcheeseApp')
-  .controller('LoginCtrl', function ($scope) {
-    $scope.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
-  });
+	.controller('LoginCtrl', function($scope, $hello) {
+		$scope.login = function(provider) {
+			$hello.logout(provider);
+			$hello(provider).login();
+		};
+	});

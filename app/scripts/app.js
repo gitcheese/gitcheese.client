@@ -16,17 +16,23 @@ angular
     'ngRoute',
     'ngSanitize',
     'ngTouch',
-    'hello'
+    'hello',
+    'restangular'
   ])
-  .config(function($routeProvider) {
+  .config(function($routeProvider, $httpProvider, RestangularProvider) {
     $routeProvider
       .when('/', {
+        redirectTo: '/start'
+      })
+      .when('/start', {
         templateUrl: 'views/start.html',
-        controller: 'StartCtrl'
+        controller: 'StartCtrl',
+        allowAnonymous: true
       })
       .when('/about', {
         templateUrl: 'views/about.html',
-        controller: 'AboutCtrl'
+        controller: 'AboutCtrl',
+        allowAnonymous: true
       })
       .when('/dashboard', {
         templateUrl: 'views/dashboard.html',
@@ -46,21 +52,41 @@ angular
       })
       .when('/login', {
         templateUrl: 'views/login.html',
-        controller: 'LoginCtrl'
+        controller: 'LoginCtrl',
+        allowAnonymous: true
+      })
+      .when('/accountCreated', {
+        templateUrl: 'views/accountcreated.html',
+        controller: 'AccountcreatedCtrl',
+        allowAnonymous: true
       })
       .otherwise({
         redirectTo: '/'
       });
+
+    $httpProvider.interceptors.push('AuthTokenInterceptor');
+
+    RestangularProvider.setBaseUrl('http://localhost:8090');
   })
-  .run(function($hello) {
-    $hello.on('auth.login', function(auth) {
-      $hello(auth.network).api('/me').then(function() {});
+  .run(function($rootScope, $location, $hello, Security) {
+
+    $rootScope.$on('$routeChangeStart', function(event, next) {
+      if (!!next.$$route.redirectTo || next.allowAnonymous === true) {
+        return;
+      }
+
+      if (Security.hasAccessToken()) {
+        return;
+      } else {
+        $location.path('/login');
+      }
     });
 
     $hello.init({
       facebook: '551034988332783',
-      github: 'ea5846887213a8dbb64a'
+      github: 'ea5846887213a8dbb64a',
+      windows: '0000000044136916'
     }, {
-      redirect_uri: '#/dashboard'
+      scope: 'email'
     });
   });

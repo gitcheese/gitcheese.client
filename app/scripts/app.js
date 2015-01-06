@@ -68,7 +68,7 @@ angular
 
     RestangularProvider.setBaseUrl('http://localhost:8090');
   })
-  .run(function($rootScope, $location, $hello, Security) {
+  .run(function($rootScope, $location, $hello, $window, Security, OauthClientIds) {
 
     $rootScope.$on('$routeChangeStart', function(event, next) {
       if (!!next.$$route.redirectTo || next.allowAnonymous === true) {
@@ -83,10 +83,11 @@ angular
     });
 
     $hello.init({
-      facebook: '551034988332783',
-      github: 'ea5846887213a8dbb64a',
-      windows: '0000000044136916'
+      facebook: OauthClientIds.facebook[$window.location.hostname],
+      github: OauthClientIds.github[$window.location.hostname],
+      windows: OauthClientIds.windows[$window.location.hostname]
     }, {
-      scope: 'email'
+      scope: 'email',
+      redirect_uri: 'oauth.html',
     });
   });

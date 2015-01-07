@@ -17,6 +17,7 @@ angular
     'ngSanitize',
     'ngTouch',
     'hello',
+    'gitcheeseApp.config',
     'restangular'
   ])
   .config(function($routeProvider, $httpProvider, RestangularProvider, ApiConfig) {
@@ -85,7 +86,11 @@ angular
     $hello.init({
       facebook: OauthClientIds.facebook[$window.location.hostname],
       github: OauthClientIds.github[$window.location.hostname],
-      windows: OauthClientIds.windows[$window.location.hostname]
+      windows: OauthClientIds.windows[$window.location.hostname],
+      twitter: OauthClientIds.twitter[$window.location.hostname],
+      google: OauthClientIds.google[$window.location.hostname],
+      dropbox: OauthClientIds.dropbox[$window.location.hostname],
+      linkedin: OauthClientIds.linkedin[$window.location.hostname]
     }, {
       scope: 'email',
       redirect_uri: 'oauth.html',

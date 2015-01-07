@@ -7,7 +7,7 @@
  * # ApiConfig
  * Constant in the gitcheeseApp.
  */
-angular.module('gitcheeseApp')
+angular.module('gitcheeseApp.config', [])
 	.constant('ApiConfig', {
 		address: {
 			'localhost': 'http://localhost:8090',

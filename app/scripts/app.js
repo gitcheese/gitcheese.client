@@ -19,7 +19,7 @@ angular
     'hello',
     'restangular'
   ])
-  .config(function($routeProvider, $httpProvider, RestangularProvider) {
+  .config(function($routeProvider, $httpProvider, RestangularProvider, ApiConfig) {
     $routeProvider
       .when('/', {
         redirectTo: '/start'
@@ -66,7 +66,7 @@ angular
 
     $httpProvider.interceptors.push('AuthTokenInterceptor');
 
-    RestangularProvider.setBaseUrl('http://localhost:8090');
+    RestangularProvider.setBaseUrl(ApiConfig.address[window.location.hostname]);
   })
   .run(function($rootScope, $location, $hello, $window, Security, OauthClientIds) {
 

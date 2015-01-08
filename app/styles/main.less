@@ -2,12 +2,24 @@
 @import "variables.less";
 @import "bootswatch.less";
 
+@footer-height:		150px;
+
+html{
+ 	position: relative;
+	min-height: 100%;
+}
+
 body {
 	padding-top: 70px;
+	margin-bottom: @footer-height;
 	overflow-x: hidden;
 }
 
 footer {
+	width: 100%;
+	height: @footer-height;
+	position: absolute;
+  	bottom: 0;
 	background-color: @navbar-default-bg;
 	color: @btn-default-color;
 }

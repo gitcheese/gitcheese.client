@@ -29,7 +29,7 @@ angular.module('gitcheeseApp')
 				provider: provider,
 				token: token
 			};
-		}
+		};
 
 		this.getRegistrationExternalToken = function() {
 			return this.externalToken;

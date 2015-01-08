@@ -9,28 +9,28 @@
  */
 angular.module('gitcheeseApp')
 	.controller('AccountcreatedCtrl', function($scope, $location, $timeout, Security, Restangular) {
-		$scope.creating = true;
+		$scope.basicCreated = Security.getRegistrationExternalToken() === undefined;
+		$scope.creatingOauth = Security.getRegistrationExternalToken() !== undefined;
 
-		$scope.login = function() {
+		$scope.loginOauth = function() {
 			var tokenData = Security.getRegistrationExternalToken();
 			var loginData = $.param({
 				grant_type: 'client_token',
 				provider: tokenData.provider,
 				token: tokenData.token
 			});
-
 			Restangular.service('auth/tokens').post(loginData).then(function(success) {
 				Security.storeAccessToken(success);
 				$scope.getProfile();
 			}, function() {
-				$timeout($scope.login, 250);
+				$timeout($scope.loginOauth, 250);
 			});
 		};
 
 		$scope.getProfile = function() {
 			Restangular.one('user').get().then(function(data) {
 				if (data) {
-					$scope.creating = false;
+					$scope.creatingOauth = false;
 				} else {
 					$timeout($scope.getProfile, 250);
 				}
@@ -39,5 +39,7 @@ angular.module('gitcheeseApp')
 			});
 		};
 
-		$scope.login();
+		if ($scope.creatingOauth) {
+			$scope.loginOauth();
+		}
 	});

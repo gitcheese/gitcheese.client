@@ -83,6 +83,10 @@ angular
       }
     });
 
+    $rootScope.$on('access_token_removed', function() {
+      $location.path('/');
+    });
+
     $hello.init({
       facebook: OauthClientIds.facebook[$window.location.hostname],
       github: OauthClientIds.github[$window.location.hostname],

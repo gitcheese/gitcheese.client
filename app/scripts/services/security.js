@@ -13,11 +13,16 @@ angular.module('gitcheeseApp')
 
 		this.storeAccessToken = function(tokenData) {
 			$cookieStore.put(tokenDataKey, tokenData);
-			$rootScope.$broadcast('access_token_changed', tokenData.access_token);
+			$rootScope.$broadcast('access_token_stored');
 		};
 
 		this.getAccessToken = function() {
 			return $cookieStore.get(tokenDataKey);
+		};
+
+		this.removeAccessToken = function() {
+			$cookieStore.remove(tokenDataKey);
+			$rootScope.$broadcast('access_token_removed');
 		};
 
 		this.hasAccessToken = function() {

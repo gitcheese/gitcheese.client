@@ -11,6 +11,7 @@ angular.module('gitcheeseApp')
 	.controller('LoginCtrl', function($scope, $hello, $location, Restangular, Security) {
 
 		$scope.oauthLogin = function(provider) {
+
 			$hello(provider).login().then(function(response) {
 				var data = {
 					grant_type: 'client_token',
@@ -18,10 +19,15 @@ angular.module('gitcheeseApp')
 					token: response.authResponse.access_token
 				};
 
+				$scope.logging = true;
+
 				Restangular.service('auth/tokens').post($.param(data)).then(function(success) {
 					Security.storeAccessToken(success);
 					$location.path('/dashboard');
 				}, function() {
+					$scope.logging = false;
+					$scope.registering = true;
+
 					Security.storeRegistrationExternalToken(data.provider, data.token);
 					register(data.provider, data.token);
 				});
@@ -35,6 +41,8 @@ angular.module('gitcheeseApp')
 				password: $scope.basicLoginData.password
 			};
 
+			$scope.logging = true;
+
 			Restangular.service('auth/tokens').post($.param(data)).then(function(success) {
 				Security.storeAccessToken(success);
 				$location.path('/dashboard');
@@ -42,6 +50,8 @@ angular.module('gitcheeseApp')
 		};
 
 		$scope.basicRegistration = function() {
+			$scope.registering = true;
+
 			Restangular.service('accounts/basic').post($scope.basic).then(function() {
 				$location.path('/accountCreated');
 			});

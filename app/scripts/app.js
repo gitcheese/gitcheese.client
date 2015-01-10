@@ -18,7 +18,9 @@ angular
     'ngTouch',
     'hello',
     'gitcheeseApp.config',
-    'restangular'
+    'restangular',
+    'cgNotify',
+    'validation.match'
   ])
   .config(function($routeProvider, $httpProvider, RestangularProvider, ApiConfig) {
     $routeProvider

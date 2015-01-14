@@ -37,7 +37,7 @@ angular.module('gitcheeseApp')
 		$scope.basicLogin = function() {
 			var data = {
 				grant_type: 'password',
-				username: $scope.login.username,
+				username: $scope.login.email,
 				password: $scope.login.password
 			};
 
@@ -49,7 +49,7 @@ angular.module('gitcheeseApp')
 			}, function() {
 				$scope.logging = false;
 				notify({
-					message: 'Invalid username or password.',
+					message: 'Invalid email or password.',
 					classes: 'alert-danger'
 				});
 			});
@@ -63,7 +63,7 @@ angular.module('gitcheeseApp')
 			}, function() {
 				$scope.registering = false;
 				notify({
-					message: 'Username allready in use',
+					message: 'Email is allready in use',
 					classes: 'alert-danger'
 				});
 			});

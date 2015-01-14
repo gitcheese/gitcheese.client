@@ -82,16 +82,19 @@
 				<div class="row">
 					<form name="loginForm" class="form-inline" novalidate ng-submit="loginForm.$valid && basicLogin()">
 						<div class="form-group">
-							<label class="sr-only" for="username">Username</label>
-							<input class="form-control" type="text" id="username" name="username" placeholder="Username" ng-model="login.username" required>
+							<label class="sr-only" for="email">Email</label>
+							<input class="form-control" type="email" id="email" name="email" placeholder="Email" ng-model="login.email" required>
 						</div>
 						<div class="form-group">
 							<label class="sr-only" for="password">Password</label>
 							<input class="form-control" type="password" id="password" name="password" placeholder="Password" ng-model="login.password" required>
 						</div>
 						<button type="submit" class="btn btn-default">Sign in</button>
-						<div ng-if="loginForm.username.$touched || loginForm.$submitted">
-							<div class="text-danger" ng-show="loginForm.username.$error.required">Username is required.</div>
+						<div ng-if="loginForm.email.$touched || loginForm.$submitted">
+							<div class="text-danger" ng-show="loginForm.email.$error.email">Email is invalid.</div>
+						</div>
+						<div ng-if="loginForm.email.$touched || loginForm.$submitted">
+							<div class="text-danger" ng-show="loginForm.email.$error.required">Email is required.</div>
 						</div>
 						<div ng-if="loginForm.password.$touched || loginForm.$submitted">
 							<div class="text-danger" ng-show="loginForm.password.$error.required">Password is required.</div>
@@ -105,8 +108,8 @@
 			<div class="panel-body">
 				<form name="registerForm" class="form-inline" novalidate ng-submit="registerForm.$valid && basicRegistration()">
 					<div class="form-group">
-						<label class="sr-only" for="username">Username</label>
-						<input class="form-control" type="text" name="username" id="username" placeholder="Username" ng-model="register.username" required>
+						<label class="sr-only" for="email">Email</label>
+						<input class="form-control" type="email" name="email" id="email" placeholder="Email" ng-model="register.email" required>
 					</div>
 					<div class="form-group">
 						<label class="sr-only" for="password">Password</label>
@@ -120,8 +123,11 @@
 					<div ng-if="registerForm.confirmPassword.$touched || registerForm.$submitted">
 						<div class="text-danger" ng-show="registerForm.confirmPassword.$error.match">Passwords do not match.</div>
 					</div>
-					<div ng-if="registerForm.username.$touched || registerForm.$submitted">
-						<div class="text-danger" ng-show="registerForm.username.$error.required">Username is required.</div>
+					<div ng-if="registerForm.email.$touched || registerForm.$submitted">
+						<div class="text-danger" ng-show="registerForm.email.$error.email">Email is invalid.</div>
+					</div>
+					<div ng-if="registerForm.email.$touched || registerForm.$submitted">
+						<div class="text-danger" ng-show="registerForm.email.$error.required">Email is required.</div>
 					</div>
 					<div ng-if="registerForm.password.$touched || registerForm.$submitted">
 						<div class="text-danger" ng-show="registerForm.password.$error.required">Password is required.</div>

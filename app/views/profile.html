@@ -1,17 +1,27 @@
 <div class="page-header">
 	<h1>Your Profile</h1>
 </div>
-<div ng-form="profileForm">
+<form name="profileForm" novalidate ng-submit="profileForm.$valid && save()">
 	<div class="form-group">
-		<label for="name">Name</label> 
-		<p id="name" class="form-control-static">{{profile.name}}</p>
+		<label for="nickname">How we should call You</label> 
+		<input class="form-control" id="nickname" name="nickname" type="text" ng-model="profile.nickname"/>
 	</div>
 	<div class="form-group">
-		<label for="email">Email</label> 
-		<input id="email" class="form-control" type="email"/>
+		<label for="contactEmail">Contact e-mail</label> 
+		<input id="contactEmail" name="contactEmail" class="form-control" type="email" ng-model="profile.contactEmail"/>
+		<div ng-if="profileForm.contactEmail.$touched || profileForm.$submitted">
+			<div class="text-danger" ng-show="profileForm.contactEmail.$error.email">Email is invalid.</div>
+		</div>
+	</div>
+	<div class="form-group">
+		<label for="billingEmail">Paypal e-mail</label> 
+		<input id="billingEmail" name="billingEmail" class="form-control" type="email" ng-model="profile.billingEmail"/>
+		<div ng-if="profileForm.billingEmail.$touched || profileForm.$submitted">
+			<div class="text-danger" ng-show="profileForm.billingEmail.$error.email">Email is invalid.</div>
+		</div>
 		<p class="callout callout-warning">This email address is crucial for Your cheese - we will use it as Paypal email to transfer <i class="fa fa-dollar"></i><i class="fa fa-dollar"></i> to You.</p>
 	</div>
 	<div class="form-group">
-		<button class="btn btn-primary" ng-click="save()">Save</button>
+		<button type="submit" class="btn btn-primary">Save</button>
 	</div>
 </div>

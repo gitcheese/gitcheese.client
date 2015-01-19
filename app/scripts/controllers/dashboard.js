@@ -10,7 +10,7 @@
 angular.module('gitcheeseApp')
 	.controller('DashboardCtrl', function($scope, Restangular) {
 		Restangular.all('projects').getList({
-			$orderby: 'FullName'
+			$orderby: 'Name'
 		}).then(function(projects) {
 			$scope.projects = projects;
 		})

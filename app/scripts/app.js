@@ -41,15 +41,16 @@ angular
         templateUrl: 'views/dashboard.html',
         controller: 'DashboardCtrl'
       })
-      .when('/pledge', {
+      .when('/projects/:id/pledge', {
         templateUrl: 'views/pledge.html',
-        controller: 'PledgeCtrl'
+        controller: 'PledgeCtrl',
+        allowAnonymous: true
       })
       .when('/profile', {
         templateUrl: 'views/profile.html',
         controller: 'ProfileCtrl'
       })
-      .when('/projectDetails', {
+      .when('/projects/:id', {
         templateUrl: 'views/projectdetails.html',
         controller: 'ProjectdetailsCtrl'
       })
@@ -62,6 +63,10 @@ angular
         templateUrl: 'views/accountcreated.html',
         controller: 'AccountcreatedCtrl',
         allowAnonymous: true
+      })
+      .when('/pledge', {
+        templateUrl: 'views/pledge.html',
+        controller: 'PledgeCtrl'
       })
       .otherwise({
         redirectTo: '/'

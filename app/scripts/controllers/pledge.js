@@ -8,8 +8,18 @@
  * Controller of the gitcheeseApp
  */
 angular.module('gitcheeseApp')
-  .controller('PledgeCtrl', function ($scope) {
-    $scope.paypal = function(){
-	alert('Donation accepted!')
-	}
-  });
+	.controller('PledgeCtrl', function($scope, $routeParams, Restangular) {
+		$scope.predefinedAmounts = [1, 2, 5, 10, 20];
+		$scope.customAmount = 50;
+
+		Restangular.one('projects', $routeParams.id).get().then(function(project) {
+			$scope.project = project;
+		});
+
+		$scope.pledge = function(amount) {
+			var request = {
+				amount: amount
+			};
+			Restangular.one('projects', $routeParams.id).post('pledge', request);
+		};
+	});

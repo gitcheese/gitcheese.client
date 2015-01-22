@@ -38,7 +38,11 @@
             </button>
             <a class="navbar-brand" href="#/start">GitCheese</a>
           </div>
-          <div id="navbar-menu" class="collapse navbar-collapse" ng-include="'views/navbarmenu.html'">
+          <div id="navbar-menu" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+              <li user-show><a href="#/dashboard">Dashboard</a></li>
+            </ul>
+            <div ng-include="'views/navbarmenu.html'"></div>
           </div>
         </div>
       </nav>

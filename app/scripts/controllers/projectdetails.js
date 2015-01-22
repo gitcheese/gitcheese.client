@@ -8,6 +8,8 @@
  * Controller of the gitcheeseApp
  */
 angular.module('gitcheeseApp')
-  .controller('ProjectdetailsCtrl', function ($scope, ProjectDetails) {
-    $scope.project = ProjectDetails.get();
-  });
+	.controller('ProjectdetailsCtrl', function($scope, $routeParams, Restangular) {
+		Restangular.one('projects', $routeParams.id).get().then(function(project) {
+			$scope.project = project;
+		});
+	});

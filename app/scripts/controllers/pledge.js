@@ -8,7 +8,7 @@
  * Controller of the gitcheeseApp
  */
 angular.module('gitcheeseApp')
-	.controller('PledgeCtrl', function($scope, $routeParams, Restangular) {
+	.controller('PledgeCtrl', function($scope, $routeParams, Restangular, $http) {
 		$scope.predefinedAmounts = [1, 2, 5, 10, 20];
 		$scope.customAmount = 50;
 

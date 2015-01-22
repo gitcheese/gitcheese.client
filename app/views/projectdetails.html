@@ -23,12 +23,13 @@
 <div class="col-lg-6">
 	<div class="form-group">
 		<label for="badgeUrl">Your Badge Url</label>
-		<div class="input-group">
-			<input type="text" class="form-control" id="badgeUrl" ng-model="project.badgeUrl" readonly>
-			<span class="input-group-btn">
-				<button class="btn btn-default" type="button">Copy</button>
-			</span>
-		</div>
+		<p class="form-control-static">
+			<code>
+				&lt;a href="http://www.gitcheese.com/#/projects/{{project.id}}/pledge" target="_blank"&gt;
+				&lt;img src=""/&gt;
+				&lt;/a&gt;
+			</code>
+		</p>
 	</div>
 	<div class="form-group">
 		<img src="images/badgePreview.png" alt="preview" class="img-thumbnail">

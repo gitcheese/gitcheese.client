@@ -32,11 +32,6 @@ angular
         controller: 'StartCtrl',
         allowAnonymous: true
       })
-      .when('/about', {
-        templateUrl: 'views/about.html',
-        controller: 'AboutCtrl',
-        allowAnonymous: true
-      })
       .when('/dashboard', {
         templateUrl: 'views/dashboard.html',
         controller: 'DashboardCtrl'
@@ -67,6 +62,11 @@ angular
       .when('/pledge', {
         templateUrl: 'views/pledge.html',
         controller: 'PledgeCtrl'
+      })
+      .when('/aboutus', {
+        templateUrl: 'views/aboutus.html',
+        controller: 'AboutusCtrl',
+        allowAnonymous: true
       })
       .otherwise({
         redirectTo: '/'

@@ -59,9 +59,10 @@ angular
         controller: 'AccountcreatedCtrl',
         allowAnonymous: true
       })
-      .when('/pledge', {
+      .when('/pledge/:id', {
         templateUrl: 'views/pledge.html',
-        controller: 'PledgeCtrl'
+        controller: 'PledgeCtrl',
+        allowAnonymous: true
       })
       .when('/aboutus', {
         templateUrl: 'views/aboutus.html',

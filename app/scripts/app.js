@@ -41,6 +41,16 @@ angular
         controller: 'PledgeCtrl',
         allowAnonymous: true
       })
+      .when('/projects/:projectId/pledges/:id/thanks', {
+        templateUrl: 'views/thanks.html',
+        controller: 'ThanksCtrl',
+        allowAnonymous: true
+      })
+      .when('/projects/:projectId/pledges/:id/canceled', {
+        templateUrl: 'views/canceled.html',
+        controller: 'CanceledCtrl',
+        allowAnonymous: true
+      })
       .when('/profile', {
         templateUrl: 'views/profile.html',
         controller: 'ProfileCtrl'

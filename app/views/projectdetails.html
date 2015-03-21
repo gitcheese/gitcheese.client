@@ -4,10 +4,10 @@
 <div class="col-lg-6">
 	<div class="form-group">
 		<label for="badgePreview">Already Pledged</label>
-		<p class="form-control-static">{{project.pledged}}</p>
+		<p class="form-control-static">{{pledgeSummary.totalAmount | currency}}</p>
 	</div>
 	<table class="col-lg-12 table table-hover">
-		<caption>Project Pledges</caption>
+		<caption>Pledges</caption>
 		<thead>
 			<th>Date</th>
 			<th>Pledger</th>

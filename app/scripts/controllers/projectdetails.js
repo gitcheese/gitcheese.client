@@ -14,6 +14,10 @@ angular.module('gitcheeseApp')
 
 			project.getList('pledges').then(function(pledges) {
 				$scope.pledges = pledges;
+
+				pledges.customGET('summary').then(function(summary) {
+					$scope.pledgeSummary = summary;
+				});
 			});
 		});
 	});

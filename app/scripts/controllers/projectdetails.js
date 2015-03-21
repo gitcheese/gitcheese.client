@@ -11,5 +11,9 @@ angular.module('gitcheeseApp')
 	.controller('ProjectdetailsCtrl', function($scope, $routeParams, Restangular) {
 		Restangular.one('projects', $routeParams.id).get().then(function(project) {
 			$scope.project = project;
+
+			project.getList('pledges').then(function(pledges) {
+				$scope.pledges = pledges;
+			});
 		});
 	});

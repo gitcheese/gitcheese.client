@@ -12,7 +12,9 @@ angular.module('gitcheeseApp')
 		Restangular.one('projects', $routeParams.id).get().then(function(project) {
 			$scope.project = project;
 
-			project.getList('pledges').then(function(pledges) {
+			project.getList('pledges', {
+				$orderby: 'ConfirmationDate desc'
+			}).then(function(pledges) {
 				$scope.pledges = pledges;
 
 				pledges.customGET('summary').then(function(summary) {

@@ -1,33 +1,18 @@
-// Generated on 2014-12-12 using generator-angular 0.10.0
 'use strict';
 
-// # Globbing
-// for performance reasons we're only matching one level down:
-// 'test/spec/{,*/}*.js'
-// use this if you want to recursively match all subfolders:
-// 'test/spec/**/*.js'
-
-module.exports = function(grunt) {
-
-    // Load grunt tasks automatically
+module.exports = function (grunt) {
     require('load-grunt-tasks')(grunt);
-
-    // Time how long tasks take. Can help when optimizing build times
     require('time-grunt')(grunt);
 
-    // Configurable paths for the application
     var appConfig = {
-        app: require('./bower.json').appPath || 'app',
+        app: require('./bower.json').appPath || 'App',
         dist: 'dist'
     };
 
-    // Define the configuration for all the tasks
     grunt.initConfig({
-
-        // Project settings
         yeoman: appConfig,
 
-        // Watches files for changes and runs tasks based on the changed files
+        //#region watch
         watch: {
             bower: {
                 files: ['bower.json'],
@@ -35,10 +20,7 @@ module.exports = function(grunt) {
             },
             js: {
                 files: ['<%= yeoman.app %>/scripts/{,*/}*.js'],
-                tasks: ['newer:jshint:all'],
-                options: {
-                    livereload: '<%= connect.options.livereload %>'
-                }
+                tasks: ['newer:jshint:all']
             },
             jsTest: {
                 files: ['test/spec/{,*/}*.js'],
@@ -47,70 +29,11 @@ module.exports = function(grunt) {
             styles: {
                 files: ['<%= yeoman.app %>/styles/{,*/}*.less'],
                 tasks: ['less:dev', 'copy:styles', 'autoprefixer']
-            },
-            gruntfile: {
-                files: ['Gruntfile.js']
-            },
-            livereload: {
-                options: {
-                    livereload: '<%= connect.options.livereload %>'
-                },
-                files: [
-                    '<%= yeoman.app %>/{,*/}*.html',
-                    '.tmp/styles/{,*/}*.css',
-                    '<%= yeoman.app %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
-                ]
             }
         },
+        //#endregion
 
-        // The actual grunt server settings
-        connect: {
-            options: {
-                port: 9000,
-                // Change this to '0.0.0.0' to access the server from outside.
-                hostname: 'localhost',
-                livereload: 35729
-            },
-            livereload: {
-                options: {
-                    open: true,
-                    middleware: function(connect) {
-                        return [
-                            connect.static('.tmp'),
-                            connect().use(
-                                '/bower_components',
-                                connect.static('./bower_components')
-                            ),
-                            connect.static(appConfig.app)
-                        ];
-                    }
-                }
-            },
-            test: {
-                options: {
-                    port: 9001,
-                    middleware: function(connect) {
-                        return [
-                            connect.static('.tmp'),
-                            connect.static('test'),
-                            connect().use(
-                                '/bower_components',
-                                connect.static('./bower_components')
-                            ),
-                            connect.static(appConfig.app)
-                        ];
-                    }
-                }
-            },
-            dist: {
-                options: {
-                    open: true,
-                    base: '<%= yeoman.dist %>'
-                }
-            }
-        },
-
-        // Make sure code styles are up to par and there are no obvious mistakes
+        //#region jshint - Make sure code styles are up to par and there are no obvious mistakes
         jshint: {
             options: {
                 jshintrc: '.jshintrc',
@@ -129,8 +52,9 @@ module.exports = function(grunt) {
                 src: ['test/spec/{,*/}*.js']
             }
         },
+        //#endregion
 
-        // Empties folders to start fresh
+        //#region clean - Empties folders to start fresh
         clean: {
             dist: {
                 files: [{
@@ -142,10 +66,11 @@ module.exports = function(grunt) {
                     ]
                 }]
             },
-            server: '.tmp'
+            dev: '.tmp'
         },
+        //#endregion
 
-        // Add vendor prefixed styles
+        //#region autoprefixer - Add vendor prefixed styles
         autoprefixer: {
             options: {
                 browsers: ['last 1 version']
@@ -159,16 +84,18 @@ module.exports = function(grunt) {
                 }]
             }
         },
+        //#endregion
 
-        // Automatically inject Bower components into the app
+        //#region wiredep - Automatically inject Bower components into the app
         wiredep: {
             app: {
                 src: ['<%= yeoman.app %>/index.html'],
                 ignorePath: /\.\.\//
             }
         },
+        //#endregion
 
-        // Renames files for browser caching purposes
+        //#region filerev - Renames files for browser caching purposes
         filerev: {
             dist: {
                 src: [
@@ -179,7 +106,9 @@ module.exports = function(grunt) {
                 ]
             }
         },
+        //#endregion
 
+        //#region minification
         // Reads HTML for usemin blocks to enable smart builds that automatically
         // concat, minify and revision files. Creates configurations in memory so
         // additional tasks can operate on them
@@ -207,32 +136,6 @@ module.exports = function(grunt) {
                 assetsDirs: ['<%= yeoman.dist %>', '<%= yeoman.dist %>/images']
             }
         },
-
-        // The following *-min tasks will produce minified files in the dist folder
-        // By default, your `index.html`'s <!-- Usemin block --> will take care of
-        // minification. These next options are pre-configured if you do not wish
-        // to use the Usemin blocks.
-        // cssmin: {
-        //   dist: {
-        //     files: {
-        //       '<%= yeoman.dist %>/styles/main.css': [
-        //         '.tmp/styles/{,*/}*.css'
-        //       ]
-        //     }
-        //   }
-        // },
-        // uglify: {
-        //   dist: {
-        //     files: {
-        //       '<%= yeoman.dist %>/scripts/scripts.js': [
-        //         '<%= yeoman.dist %>/scripts/scripts.js'
-        //       ]
-        //     }
-        //   }
-        // },
-        // concat: {
-        //   dist: {}
-        // },
 
         imagemin: {
             dist: {
@@ -268,12 +171,14 @@ module.exports = function(grunt) {
                 files: [{
                     expand: true,
                     cwd: '<%= yeoman.dist %>',
-                    src: ['*.html', 'views/{,*/}*.html'],
+                    src: ['*.html', 'modules/{,*/}*.html'],
                     dest: '<%= yeoman.dist %>'
                 }]
             }
         },
+        //#endregion
 
+        //#region less
         less: {
             dev: {
                 options: {},
@@ -288,7 +193,9 @@ module.exports = function(grunt) {
                 }
             },
         },
+        //#endregion
 
+        //#region ngAnnotate
         // ng-annotate tries to make the code safe for minification automatically
         // by using the Angular long form for dependency injection.
         ngAnnotate: {
@@ -301,15 +208,17 @@ module.exports = function(grunt) {
                 }]
             }
         },
+        //#endregion
 
-        // Replace Google CDN references
+        //#region cdnify - Replace Google CDN references
         cdnify: {
             dist: {
                 html: ['<%= yeoman.dist %>/*.html']
             }
         },
+        //#endregion
 
-        // Copies remaining files to places other tasks can use
+        //#region copy - Copies remaining files to places other tasks can use
         copy: {
             dist: {
                 files: [{
@@ -321,7 +230,7 @@ module.exports = function(grunt) {
                         '*.{ico,png,txt}',
                         '.htaccess',
                         '*.html',
-                        'views/{,*/}*.html',
+                        'modules/{,*/}*.html',
                         'images/{,*/}*.{webp}',
                         'fonts/{,*/}*.*',
                         '*.config'
@@ -355,10 +264,11 @@ module.exports = function(grunt) {
                 src: '{,*/}*.css'
             }
         },
+        //#endregion
 
-        // Run some tasks in parallel to speed up the build process
+        //#region concurrent - Run some tasks in parallel to speed up the build process
         concurrent: {
-            server: [
+            dev: [
                 'copy:styles'
             ],
             test: [
@@ -370,44 +280,38 @@ module.exports = function(grunt) {
                 'svgmin'
             ]
         },
+        //#endregion
 
-        // Test settings
+        //#region karma - watch Your karma :D
         karma: {
-            unit: {
-                configFile: 'test/karma.conf.js',
+            single: {
+                configFile: 'karma.conf.js',
+                singleRun: true
+            },
+            continous: {
+                configFile: 'karma.conf.js',
+                singleRun: false
+            },
+            teamcity:{
+                configFile: 'karma.conf.js',
+                reporters: ['teamcity', 'coverage'],
                 singleRun: true
             }
         }
+        //#endregion
     });
 
+    grunt.registerTask('test', ['karma:single']);
 
-    grunt.registerTask('serve', 'Compile then start a connect web server', function(target) {
-        if (target === 'dist') {
-            return grunt.task.run(['build', 'connect:dist:keepalive']);
-        }
+    grunt.registerTask('tdd', ['karma:continous']);
 
-        grunt.task.run([
-            'clean:server',
+    grunt.registerTask('dev', [
+            'clean:dev',
             'wiredep',
             'less:dev',
-            'concurrent:server',
+            'concurrent:dev',
             'autoprefixer',
-            'connect:livereload',
             'watch'
-        ]);
-    });
-
-    grunt.registerTask('server', 'DEPRECATED TASK. Use the "serve" task instead', function(target) {
-        grunt.log.warn('The `server` task has been deprecated. Use `grunt serve` to start a server.');
-        grunt.task.run(['serve:' + target]);
-    });
-
-    grunt.registerTask('test', [
-        'clean:server',
-        'concurrent:test',
-        'autoprefixer',
-        'connect:test',
-        'karma'
     ]);
 
     grunt.registerTask('build', [
@@ -426,11 +330,5 @@ module.exports = function(grunt) {
         'filerev',
         'usemin',
         'htmlmin'
-    ]);
-
-    grunt.registerTask('default', [
-        'newer:jshint',
-        'test',
-        'build'
     ]);
 };

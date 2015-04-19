@@ -10,7 +10,7 @@
 angular.module('gitcheeseApp.config', [])
 	.constant('ApiConfig', {
 		address: {
-			'localhost': 'http://localhost:80',
+			'localhost': 'http://localhost:9000/api',
 			'www.gitcheese.com': 'http://gitcheese.cloudapp.net'
 		}
 	});

@@ -5,7 +5,7 @@ module.exports = function (grunt) {
     require('time-grunt')(grunt);
 
     var appConfig = {
-        app: require('./bower.json').appPath || 'App',
+        app: require('./bower.json').appPath || 'app',
         dist: 'dist'
     };
 
@@ -171,7 +171,7 @@ module.exports = function (grunt) {
                 files: [{
                     expand: true,
                     cwd: '<%= yeoman.dist %>',
-                    src: ['*.html', 'modules/{,*/}*.html'],
+                    src: ['*.html', 'views/{,*/}*.html'],
                     dest: '<%= yeoman.dist %>'
                 }]
             }
@@ -230,7 +230,7 @@ module.exports = function (grunt) {
                         '*.{ico,png,txt}',
                         '.htaccess',
                         '*.html',
-                        'modules/{,*/}*.html',
+                        'views/{,*/}*.html',
                         'images/{,*/}*.{webp}',
                         'fonts/{,*/}*.*',
                         '*.config'

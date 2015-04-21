@@ -40,7 +40,7 @@ angular.module('gitcheeseApp')
 	    };
 
 	    var updateAvatar = function (profile) {
-	        profile.one('avatar').customPUT().then(function () {
+	        profile.one('avatars').customPUT().then(function () {
 	            waitForAvatar();
 	        });
 	    };

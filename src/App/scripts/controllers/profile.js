@@ -12,7 +12,7 @@ angular.module('gitcheeseApp')
 
 	    Restangular.one('users', 'me').get().then(function (profile) {
 	        $scope.profile = profile;
-	        $scope.avatarUrl = ApiConfig.address[$window.location.hostname] + '/users/' + profile.id + '/avatar';
+	        $scope.avatarUrl = ApiConfig.address[$window.location.hostname] + '/users/' + profile.id + '/avatars';
 	    });
 
 	    $scope.save = function () {
@@ -22,13 +22,13 @@ angular.module('gitcheeseApp')
 	    };
 
 	    $scope.saveAvatarUrl = function () {
-	        $scope.profile.one('avatar').customPUT({ url: $scope.avatarNewUrl }).then(function () {
+	        $scope.profile.one('avatars').customPUT({ url: $scope.avatarNewUrl }).then(function () {
 	            $scope.avatarUrl = $scope.avatarNewUrl;
 	        });
 	    };
 
 	    $scope.generateAvatar = function () {
-	        $scope.profile.one('avatar').customPUT({}).then(function () {
+	        $scope.profile.one('avatars').customPUT({}).then(function () {
 	            notify({
 	                message: 'Your new avatar is beeing gnerated. It will update preety soon.',
 	                classes: 'alert-success'

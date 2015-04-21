@@ -132,9 +132,12 @@
     <Content Include="App\og.png" />
     <Content Include="App\scripts\app.js" />
     <Content Include="App\scripts\controllers\aboutus.js" />
-    <Content Include="App\scripts\controllers\accountcreated.js" />
+    <Content Include="App\scripts\controllers\oauthaccountcreated.js" />
+    <Content Include="App\scripts\controllers\basicaccountcreated.js" />
     <Content Include="App\scripts\controllers\canceled.js" />
     <Content Include="App\scripts\controllers\dashboard.js" />
+    <Content Include="App\scripts\controllers\registerbasic.js" />
+    <Content Include="App\scripts\controllers\registeroauth.js" />
     <Content Include="App\scripts\controllers\login.js" />
     <Content Include="App\scripts\controllers\main.js" />
     <Content Include="App\scripts\controllers\navbarmenu.js" />
@@ -152,7 +155,8 @@
     <Content Include="App\scripts\services\oauthclientids.js" />
     <Content Include="App\scripts\services\security.js" />
     <Content Include="App\views\aboutus.html" />
-    <Content Include="App\views\accountcreated.html" />
+    <Content Include="App\views\oauthaccountcreated.html" />
+    <Content Include="App\views\basicaccountcreated.html" />
     <Content Include="App\views\canceled.html" />
     <Content Include="App\views\dashboard.html" />
     <Content Include="App\views\login.html" />
@@ -160,6 +164,8 @@
     <Content Include="App\views\pledge.html" />
     <Content Include="App\views\profile.html" />
     <Content Include="App\views\projectdetails.html" />
+    <Content Include="App\views\registerbasic.html" />
+    <Content Include="App\views\registeroauth.html" />
     <Content Include="App\views\sharebar.html" />
     <Content Include="App\views\start.html" />
     <Content Include="App\views\thanks.html" />

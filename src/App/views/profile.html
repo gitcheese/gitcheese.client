@@ -1,27 +1,49 @@
 <div class="page-header">
-	<h1>Your Profile</h1>
+    <h1>Your Profile</h1>
 </div>
-<form name="profileForm" novalidate ng-submit="profileForm.$valid && save()">
-	<div class="form-group">
-		<label for="nickname">How we should call You</label> 
-		<input class="form-control" id="nickname" name="nickname" type="text" ng-model="profile.nickname"/>
-	</div>
-	<div class="form-group">
-		<label for="contactEmail">Contact e-mail</label> 
-		<input id="contactEmail" name="contactEmail" class="form-control" type="email" ng-model="profile.contactEmail"/>
-		<div ng-if="profileForm.contactEmail.$touched || profileForm.$submitted">
-			<div class="text-danger" ng-show="profileForm.contactEmail.$error.email">Email is invalid.</div>
-		</div>
-	</div>
-	<div class="form-group">
-		<label for="billingEmail">Paypal e-mail</label> 
-		<input id="billingEmail" name="billingEmail" class="form-control" type="email" ng-model="profile.billingEmail"/>
-		<div ng-if="profileForm.billingEmail.$touched || profileForm.$submitted">
-			<div class="text-danger" ng-show="profileForm.billingEmail.$error.email">Email is invalid.</div>
-		</div>
-		<p class="callout callout-warning">This email address is crucial for Your cheese - we will use it as Paypal email to transfer <i class="fa fa-dollar"></i><i class="fa fa-dollar"></i> to You.</p>
-	</div>
-	<div class="form-group">
-		<button type="submit" class="btn btn-primary">Save</button>
-	</div>
-</div>
+<form class="col-md-8" name="profileForm" novalidate ng-submit="profileForm.$valid && save()">
+    <div class="form-group">
+        <label for="nickname">How we should call You</label>
+        <input class="form-control" id="nickname" name="nickname" type="text" ng-model="profile.nickname" required />
+        <div ng-if="profileForm.nickname.$touched || profileForm.$submitted">
+            <div class="text-danger" ng-show="profileForm.nickname.$error.required">We need to know how to call You.</div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="contactEmail">Contact e-mail</label>
+        <input id="contactEmail" name="contactEmail" class="form-control" type="email" ng-model="profile.contactEmail" />
+        <div ng-if="profileForm.contactEmail.$touched || profileForm.$submitted">
+            <div class="text-danger" ng-show="profileForm.contactEmail.$error.email">Email is invalid.</div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="billingEmail">Paypal e-mail</label>
+        <input id="billingEmail" name="billingEmail" class="form-control" type="email" ng-model="profile.billingEmail" />
+        <div ng-if="profileForm.billingEmail.$touched || profileForm.$submitted">
+            <div class="text-danger" ng-show="profileForm.billingEmail.$error.email">Email is invalid.</div>
+        </div>
+        <p class="callout callout-warning">This email address is crucial for Your cheese - we will use it as Paypal email to transfer <i class="fa fa-dollar"></i><i class="fa fa-dollar"></i> to You.</p>
+    </div>
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Save</button>
+    </div>
+</form>
+<form class="col-md-4" name="avatarForm" novalidate ng-submit="avatarForm.$valid && saveAvatarUrl()">
+    <label>Your Avatar</label>
+    <div class="thumbnail">
+        <img ng-src="{{avatarUrl}}" alt="Avatar" class="img-circle" />
+        <div class="caption text-center">
+            <div class="input-group">
+                <input type="text" id="avatarNewUrl" name="avatarNewUrl" class="form-control" placeholder="New Avatar Url" ng-model="avatarNewUrl" required>
+                <span class="input-group-btn">
+                    <button class="btn btn-default" type="submit">Save</button>
+                </span>
+            </div>
+            <div ng-if="avatarForm.avatarNewUrl.$touched || avatarForm.$submitted">
+                <div class="text-danger" ng-show="avatarForm.avatarNewUrl.$error.required">Url is required.</div>
+            </div>
+            Or
+            <button type="button" class="btn btn-block btn-default" ng-click="generateAvatar()">Generate Standard Avatar</button>
+        </div>
+    </div>
+</form>

@@ -1,80 +1,58 @@
 'use strict';
 
-/**
- * @ngdoc function
- * @name gitcheeseApp.controller:LoginCtrl
- * @description
- * # LoginCtrl
- * Controller of the gitcheeseApp
- */
 angular.module('gitcheeseApp')
-	.controller('LoginCtrl', function($scope, $hello, $location, notify, Restangular, Security) {
+	.controller('LoginCtrl', function ($scope, $hello, $location, notify, Restangular, Security) {
 
-		$scope.oauthLogin = function(provider) {
+	    $scope.oauthLogin = function (provider) {
+	        $hello(provider).login().then(function (response) {
+	            $scope.logging = true;
+	            var data = {
+	                grant_type: 'client_token',
+	                provider: response.authResponse.network,
+	                token: response.authResponse.access_token
+	            };
+	            Security.storeOauthRegistrationData(data.provider, data.token);
 
-			$hello(provider).login().then(function(response) {
-				var data = {
-					grant_type: 'client_token',
-					provider: response.authResponse.network,
-					token: response.authResponse.access_token
-				};
+	            Restangular.service('auth/tokens').post($.param(data)).then(function (success) {
+	                Security.storeAccessToken(success);
+	                $location.path('/dashboard');
+	            }, function () {
+	                $location.path('/registeroauth');
+	            });
+	        });
+	    };
 
-				$scope.logging = true;
+	    $scope.basicLogin = function () {
+	        $scope.logging = true;
+	        var data = {
+	            grant_type: 'password',
+	            username: $scope.login.email,
+	            password: $scope.login.password
+	        };
 
-				Restangular.service('auth/tokens').post($.param(data)).then(function(success) {
-					Security.storeAccessToken(success);
-					$location.path('/dashboard');
-				}, function() {
-					$scope.logging = false;
-					$scope.registering = true;
+	        Restangular.service('auth/tokens').post($.param(data)).then(function (success) {
+	            Security.storeAccessToken(success);
+	            $location.path('/dashboard');
+	        }, function () {
+	            $scope.logging = false;
+	            notify({
+	                message: 'Invalid email or password.',
+	                classes: 'alert-danger'
+	            });
+	        });
+	    };
 
-					Security.storeRegistrationExternalToken(data.provider, data.token);
-					register(data.provider, data.token);
-				});
-			});
-		};
-
-		$scope.basicLogin = function() {
-			var data = {
-				grant_type: 'password',
-				username: $scope.login.email,
-				password: $scope.login.password
-			};
-
-			$scope.logging = true;
-
-			Restangular.service('auth/tokens').post($.param(data)).then(function(success) {
-				Security.storeAccessToken(success);
-				$location.path('/dashboard');
-			}, function() {
-				$scope.logging = false;
-				notify({
-					message: 'Invalid email or password.',
-					classes: 'alert-danger'
-				});
-			});
-		};
-
-		$scope.basicRegistration = function() {
-			$scope.registering = true;
-
-			Restangular.service('accounts/basic').post($scope.register).then(function() {
-				$location.path('/accountCreated');
-			}, function() {
-				$scope.registering = false;
-				notify({
-					message: 'Email is allready in use',
-					classes: 'alert-danger'
-				});
-			});
-		};
-
-		var register = function(provider, accessToken) {
-			Restangular.several('accounts/oauth', provider)
-				.post({
-					token: accessToken
-				}).then(function() {
-					$location.path('/accountCreated');
-				});
-		};
+	    $scope.basicRegistration = function () {
+	        Restangular.one('accounts', $scope.register.email).customGET('exists').then(function (result) {
+	            if (result === true) {
+	                notify({
+	                    message: 'Email is allready in use.',
+	                    classes: 'alert-danger'
+	                });
+	            } else {
+	                Security.storeBasicRegistrationData($scope.register.email, $scope.register.password);
+	                $location.path('/registerbasic');
+	            }
+	        });
+	    };
 	});

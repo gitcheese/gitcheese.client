@@ -8,14 +8,31 @@
  * Controller of the gitcheeseApp
  */
 angular.module('gitcheeseApp')
-	.controller('ProfileCtrl', function($scope, $location, Restangular) {
-		Restangular.one('user').get().then(function(profile) {
-			$scope.profile = profile;
-		});
+	.controller('ProfileCtrl', function ($scope, $location, $hello, $window, Restangular, ApiConfig, notify) {
 
-		$scope.save = function() {
-			$scope.profile.put().then(function(){
-				$location.path("/dashboard")
-			});
-		};
+	    Restangular.one('users', 'me').get().then(function (profile) {
+	        $scope.profile = profile;
+	        $scope.avatarUrl = ApiConfig.address[$window.location.hostname] + '/users/' + profile.id + '/avatar';
+	    });
+
+	    $scope.save = function () {
+	        $scope.profile.put().then(function () {
+	            $location.path('/dashboard');
+	        });
+	    };
+
+	    $scope.saveAvatarUrl = function () {
+	        $scope.profile.one('avatar').customPUT({ url: $scope.avatarNewUrl }).then(function () {
+	            $scope.avatarUrl = $scope.avatarNewUrl;
+	        });
+	    };
+
+	    $scope.generateAvatar = function () {
+	        $scope.profile.one('avatar').customPUT({}).then(function () {
+	            notify({
+	                message: 'Your new avatar is beeing gnerated. It will update preety soon.',
+	                classes: 'alert-success'
+	            });
+	        });
+	    }
 	});

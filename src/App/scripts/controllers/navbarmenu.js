@@ -1,15 +1,14 @@
 'use strict';
 
-/**
- * @ngdoc function
- * @name gitcheeseApp.controller:NavbarmenuCtrl
- * @description
- * # NavbarmenuCtrl
- * Controller of the gitcheeseApp
- */
 angular.module('gitcheeseApp')
-	.controller('NavbarmenuCtrl', function($scope, $location, Security) {
-		$scope.logout = function() {
-			Security.removeAccessToken();
-		};
+	.controller('NavbarmenuCtrl', function ($scope, $location, Restangular, Security, ApiConfig, $window) {
+
+	    Restangular.one('users', 'me').get().then(function (profile) {
+	        $scope.profile = profile;
+	        $scope.avatarUrl = ApiConfig.address[$window.location.hostname] + '/users/' + profile.id + '/avatar';
+	    });
+
+	    $scope.logout = function () {
+	        Security.removeAccessToken();
+	    };
 	});

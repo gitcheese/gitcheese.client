@@ -41,7 +41,17 @@ angular.module('gitcheeseApp')
 
 	    var updateAvatar = function (profile) {
 	        profile.one('avatar').customPUT().then(function () {
-	            $location.path('basicaccountcreated')
+	            waitForAvatar();
 	        });
 	    };
+
+	    var waitForAvatar = function () {
+	        Restangular.one('users', 'me').get().then(function (profile) {
+	            if (profile.avatarId) {
+	                $location.path('basicaccountcreated')
+	            } else {
+	                $timeout(waitForAvatar, 500);
+	            }
+	        });
+	    }
 	});

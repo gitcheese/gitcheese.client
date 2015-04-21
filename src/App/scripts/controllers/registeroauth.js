@@ -45,8 +45,18 @@ angular.module('gitcheeseApp')
 	    var updateAvatar = function (profile) {
 	        $hello(oauthRegistrationData.provider).api('/me').then(function (me) {
 	            profile.one('avatar').customPUT({ url: me.thumbnail }).then(function () {
-	                $location.path('oauthaccountcreated')
+	                waitForAvatar();
 	            });
 	        });
 	    };
+
+	    var waitForAvatar = function () {
+	        Restangular.one('users', 'me').get().then(function (profile) {
+	            if (profile.avatarId) {
+	                $location.path('oauthaccountcreated')
+	            } else {
+	                $timeout(waitForAvatar, 500);
+	            }
+	        });
+	    }
 	});

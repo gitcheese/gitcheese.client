@@ -16,7 +16,7 @@
 		<tbody>
 			<tr ng-repeat="pledge in pledges">
 				<td>{{pledge.confirmationDate | date : 'short'}}</td>				
-				<td>{{pledge.userNickname}}</td>
+				<td>{{pledge.userNickname || "Anonymous"}}</td>
 				<td>{{pledge.amount | currency}}</td>
 			</tr>
 		</tbody>

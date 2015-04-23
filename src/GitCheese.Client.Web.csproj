@@ -147,6 +147,7 @@
     <Content Include="App\scripts\controllers\sharebar.js" />
     <Content Include="App\scripts\controllers\start.js" />
     <Content Include="App\scripts\controllers\thanks.js" />
+    <Content Include="App\scripts\filters\useravatarurl.js" />
     <Content Include="App\scripts\directives\userhide.js" />
     <Content Include="App\scripts\directives\usershow.js" />
     <Content Include="App\scripts\services\apiconfig.js" />

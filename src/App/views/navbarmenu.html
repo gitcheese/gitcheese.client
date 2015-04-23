@@ -2,7 +2,7 @@
     <li user-hide><a href="#/login">Login</a></li>
     <li user-show class="dropdown">
         <a ng-click="" class="dropdown-toggle profile-image" data-toggle="dropdown">
-            <img ng-src="{{avatarUrl}}" class="profile-image img-circle"> {{profile.nickname}} <b class="caret"></b>
+            <img ng-src="{{profile.id | userAvatarUrl}}" class="profile-image img-circle"> {{profile.nickname}} <b class="caret"></b>
         </a>
         <ul class="dropdown-menu">
             <li><a href="#/profile">Profile</a></li>

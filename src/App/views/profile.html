@@ -31,7 +31,7 @@
 <form class="col-md-4" name="avatarForm" novalidate ng-submit="avatarForm.$valid && saveAvatarUrl()">
     <label>Your Avatar</label>
     <div class="thumbnail">
-        <img ng-src="{{avatarUrl}}" alt="Avatar" class="img-circle" />
+        <img ng-src="{{profile.id | userAvatarUrl}}" alt="Avatar" class="img-circle" />
         <div class="caption text-center">
             <div class="input-group">
                 <input type="text" id="avatarNewUrl" name="avatarNewUrl" class="form-control" placeholder="New Avatar Url" ng-model="avatarNewUrl" required>

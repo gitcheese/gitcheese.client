@@ -12,7 +12,6 @@ angular.module('gitcheeseApp')
 
 	    Restangular.one('users', 'me').get().then(function (profile) {
 	        $scope.profile = profile;
-	        $scope.avatarUrl = ApiConfig.address[$window.location.hostname] + '/users/' + profile.id + '/avatars';
 	    });
 
 	    $scope.save = function () {
@@ -23,7 +22,10 @@ angular.module('gitcheeseApp')
 
 	    $scope.saveAvatarUrl = function () {
 	        $scope.profile.one('avatars').customPUT({ url: $scope.avatarNewUrl }).then(function () {
-	            $scope.avatarUrl = $scope.avatarNewUrl;
+	            notify({
+	                message: 'Your new avatar is beeing saved. It will update preety soon.',
+	                classes: 'alert-success'
+	            });
 	        });
 	    };
 

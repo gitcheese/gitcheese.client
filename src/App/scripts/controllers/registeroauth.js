@@ -44,7 +44,7 @@ angular.module('gitcheeseApp')
 
 	    var updateAvatar = function (profile) {
 	        $hello(oauthRegistrationData.provider).api('/me').then(function (me) {
-	            profile.one('avatars').customPUT({ url: me.thumbnail }).then(function () {
+	            profile.one('avatars').customPOST({ url: me.thumbnail }).then(function () {
 	                waitForAvatar();
 	            });
 	        });

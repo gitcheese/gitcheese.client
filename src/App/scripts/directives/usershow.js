@@ -1,29 +1,24 @@
 'use strict';
 
-/**
- * @ngdoc directive
- * @name gitcheeseApp.directive:userShow
- * @description
- * # userShow
- */
 angular.module('gitcheeseApp')
-	.directive('userShow', function(Security) {
-		return {
-			restrict: 'A',
-			link: function postLink(scope, element, attrs) {
-				if (Security.hasAccessToken()) {
-					element.show();
-				} else {
-					element.hide();
-				}
+	.directive('userShow', function (Context) {
+	    return {
+	        restrict: 'A',
+	        link: function postLink(scope, element, attrs) {
+	            scope.context = Context;
+	            if (scope.context.user) {
+	                element.show();
+	            } else {
+	                element.hide();
+	            }
 
-				scope.$on('access_token_removed', function() {
-					element.hide();
-				});
-
-				scope.$on('access_token_stored', function() {
-					element.show();
-				});
-			}
-		};
+	            scope.$watch('context.user', function (newUser) {
+	                if (newUser) {
+	                    element.show();
+	                } else {
+	                    element.hide();
+	                };
+	            });
+	        }
+	    };
 	});

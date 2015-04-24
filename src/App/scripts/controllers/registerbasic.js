@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('gitcheeseApp')
-	.controller('RegisterBasicCtrl', function ($scope, $location, $timeout, Restangular, Security) {
+	.controller('RegisterBasicCtrl', function ($scope, $location, $timeout, Restangular, Security, Context) {
 	    var basicRegistrationData = Security.getBasicRegistrationData();
 	    if (basicRegistrationData == 'undefined') {
 	        $location.path('/login');
@@ -48,6 +48,7 @@ angular.module('gitcheeseApp')
 	    var waitForAvatar = function () {
 	        Restangular.one('users', 'me').get().then(function (profile) {
 	            if (profile.avatarId) {
+	                Context.refreshCurrentUser(profile);
 	                $location.path('basicaccountcreated')
 	            } else {
 	                $timeout(waitForAvatar, 500);

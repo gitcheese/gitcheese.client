@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('gitcheeseApp')
-	.controller('RegisterOauthCtrl', function ($scope, $location, $hello, $timeout, Restangular, Security) {
+	.controller('RegisterOauthCtrl', function ($scope, $location, $hello, $timeout, Restangular, Security, Context) {
 	    var oauthRegistrationData = Security.getOauthRegistrationData();
 	    if (oauthRegistrationData == 'undefined') {
 	        $location.path('/login');
@@ -53,6 +53,7 @@ angular.module('gitcheeseApp')
 	    var waitForAvatar = function () {
 	        Restangular.one('users', 'me').get().then(function (profile) {
 	            if (profile.avatarId) {
+	                Context.refreshCurrentUser();
 	                $location.path('oauthaccountcreated')
 	            } else {
 	                $timeout(waitForAvatar, 500);

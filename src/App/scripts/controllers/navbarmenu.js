@@ -1,11 +1,9 @@
 'use strict';
 
 angular.module('gitcheeseApp')
-	.controller('NavbarmenuCtrl', function ($scope, $location, Restangular, Security, ApiConfig, $window) {
+	.controller('NavbarmenuCtrl', function ($scope, Restangular, Security, Context) {
 
-	    Restangular.one('users', 'me').get().then(function (profile) {
-	        $scope.profile = profile;
-	    });
+	    $scope.context = Context;
 
 	    $scope.logout = function () {
 	        Security.removeAccessToken();

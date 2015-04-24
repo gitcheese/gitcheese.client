@@ -7,23 +7,24 @@
  * # userHide
  */
 angular.module('gitcheeseApp')
-	.directive('userHide', function(Security) {
-		return {
-			restrict: 'A',
-			link: function postLink(scope, element, attrs) {
-				if (Security.hasAccessToken()) {
-					element.hide();
-				} else {
-					element.show();
-				}
+	.directive('userHide', function (Context) {
+	    return {
+	        restrict: 'A',
+	        link: function postLink(scope, element, attrs) {
+	            scope.context = Context;
+	            if (scope.context.user) {
+	                element.hide();
+	            } else {
+	                element.show();
+	            }
 
-				scope.$on('access_token_removed', function() {
-					element.show();
-				});
-
-				scope.$on('access_token_stored', function() {
-					element.hide();
-				});
-			}
-		};
+	            scope.$watch('context.user', function (newUser) {
+	                if (newUser) {
+	                    element.hide();
+	                } else {
+	                    element.show();
+	                };
+	            });
+	        }
+	    };
 	});

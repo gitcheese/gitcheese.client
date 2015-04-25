@@ -1,25 +1,34 @@
 'use strict';
 
 angular.module('gitcheeseApp')
-	.service('Security', function ($rootScope, $cookieStore) {
-	    var tokenDataKey = 'tokenData';
+	.service('Security', function ($rootScope, localStorageService, Context) {
+	    var accessTokenStorageKey = 'accessToken';
 
-	    this.storeAccessToken = function (tokenData) {
-	        $cookieStore.put(tokenDataKey, tokenData);
-	        $rootScope.$broadcast('access_token_stored');
+	    var initializeContext = function () {
+	        var accessToken = localStorageService.get(accessTokenStorageKey);
+	        if (accessToken && accessToken !== '') {
+	            Context.refreshCurrentUser();
+	        }
+	    }
+
+	    initializeContext();
+
+	    this.storeAccessToken = function (accessToken) {
+	        localStorageService.set(accessTokenStorageKey, accessToken);
+	        Context.refreshCurrentUser();
 	    };
 
 	    this.getAccessToken = function () {
-	        return $cookieStore.get(tokenDataKey);
+	        return localStorageService.get(accessTokenStorageKey);
 	    };
 
 	    this.removeAccessToken = function () {
-	        $cookieStore.remove(tokenDataKey);
-	        $rootScope.$broadcast('access_token_removed');
+	        localStorageService.remove(accessTokenStorageKey);
+	        Context.removeCurrentUser();
 	    };
 
 	    this.hasAccessToken = function () {
-	        return !!$cookieStore.get(tokenDataKey);
+	        return !!localStorageService.get(accessTokenStorageKey);
 	    };
 
 	    this.storeOauthRegistrationData = function (provider, token) {

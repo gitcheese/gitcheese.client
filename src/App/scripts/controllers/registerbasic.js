@@ -22,7 +22,7 @@ angular.module('gitcheeseApp')
 	    var login = function () {
 	        $scope.completing = true;
 	        Restangular.service('auth/tokens').post(loginData).then(function (success) {
-	            Security.storeAccessToken(success);
+	            Security.storeAccessToken(success.access_token);
 	            getProfile();
 	        }, function () {
 	            $timeout(login, 500);

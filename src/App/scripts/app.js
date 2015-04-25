@@ -12,9 +12,10 @@ angular
     'gitcheeseApp.config',
     'restangular',
     'cgNotify',
-    'validation.match'
+    'validation.match',
+    'LocalStorageModule'
   ])
-  .config(function ($routeProvider, $httpProvider, RestangularProvider, ApiConfig) {
+  .config(function ($routeProvider, $httpProvider, RestangularProvider, ApiConfig, localStorageServiceProvider) {
       $routeProvider
         .when('/', {
             redirectTo: '/start'
@@ -84,7 +85,8 @@ angular
         .otherwise({
             redirectTo: '/'
         });
-
+      localStorageServiceProvider.setPrefix('gitcheese');
+      localStorageServiceProvider.setStorageCookie();
       $httpProvider.interceptors.push('AuthTokenInterceptor');
 
       RestangularProvider.setBaseUrl(ApiConfig.address[window.location.hostname]);

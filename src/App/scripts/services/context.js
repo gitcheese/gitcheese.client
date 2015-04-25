@@ -14,12 +14,4 @@ angular.module('gitcheeseApp')
 	    this.removeCurrentUser = function () {
 	        delete that.user;
 	    };
-
-	    $rootScope.$on('access_token_removed', function () {
-	        that.removeCurrentUser();
-	    });
-
-	    $rootScope.$on('access_token_stored', function () {
-	        that.refreshCurrentUser();
-	    });
 	});

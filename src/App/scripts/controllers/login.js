@@ -14,7 +14,7 @@ angular.module('gitcheeseApp')
 	            Security.storeOauthRegistrationData(data.provider, data.token);
 
 	            Restangular.service('auth/tokens').post($.param(data)).then(function (success) {
-	                Security.storeAccessToken(success);
+	                Security.storeAccessToken(success.access_token);
 	                $location.path('/dashboard');
 	            }, function () {
 	                $location.path('/registeroauth');
@@ -31,7 +31,7 @@ angular.module('gitcheeseApp')
 	        };
 
 	        Restangular.service('auth/tokens').post($.param(data)).then(function (success) {
-	            Security.storeAccessToken(success);
+	            Security.storeAccessToken(success.access_token);
 	            $location.path('/dashboard');
 	        }, function () {
 	            $scope.logging = false;

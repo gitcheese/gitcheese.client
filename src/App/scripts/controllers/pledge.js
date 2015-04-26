@@ -16,8 +16,7 @@ angular.module('gitcheeseApp')
 	        $scope.project = project;
 
 	        project.getList('pledgers', {
-	            $orderby: 'TotalyPledged desc',
-	            excludeAnonymous: true
+	            $orderby: 'TotalAmount desc'
 	        }).then(function (pledgers) {
 	            $scope.pledgers = pledgers;
 	        });

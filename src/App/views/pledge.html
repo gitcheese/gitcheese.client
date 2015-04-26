@@ -27,9 +27,9 @@
 </h2>
 <div class="col-md-2" ng-repeat="pledger in pledgers">
     <div class="thumbnail">
-        <user-avatar size="l" user-id="pledger.userId"></user-avatar>
+        <user-avatar size="l" user-id="pledger.pledgerId"></user-avatar>
         <div class="caption text-center">
-            <p class="lead">{{pledger.userNickname || "Anonymous"}}</p>
+            <p class="lead">{{pledger.userNickname}}</p>
         </div>
     </div>
 </div>

@@ -13,9 +13,10 @@ angular
     'restangular',
     'cgNotify',
     'validation.match',
-    'LocalStorageModule'
+    'LocalStorageModule',
+    'angular-loading-bar'
   ])
-  .config(function ($routeProvider, $httpProvider, RestangularProvider, ApiConfig, localStorageServiceProvider) {
+  .config(function ($routeProvider, $httpProvider, RestangularProvider, ApiConfig, localStorageServiceProvider, cfpLoadingBarProvider) {
       $routeProvider
         .when('/', {
             redirectTo: '/start'
@@ -87,6 +88,7 @@ angular
         });
       localStorageServiceProvider.setPrefix('gitcheese');
       localStorageServiceProvider.setStorageCookie();
+      cfpLoadingBarProvider.includeSpinner = false;
       $httpProvider.interceptors.push('AuthTokenInterceptor');
 
       RestangularProvider.setBaseUrl(ApiConfig.address[window.location.hostname]);

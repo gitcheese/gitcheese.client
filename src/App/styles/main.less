@@ -10,7 +10,7 @@ html {
 }
 
 body {
-    padding-top: 70px;
+    padding-top: @navbar-height + 10px;
     margin-bottom: @footer-height;
     overflow-x: hidden;
 }
@@ -181,4 +181,10 @@ footer.page-footer {
 .avatar-l {
     height: 200px;
     width: 200px;
+}
+
+#loading-bar .bar {
+    top: @navbar-height;
+    background: @brand-success;
+    height: 4px;
 }

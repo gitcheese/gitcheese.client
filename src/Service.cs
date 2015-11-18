@@ -5,42 +5,28 @@ using Serilog;
 using System;
 using System.Collections.Generic;
 using System.Configuration.Abstractions;
+using Autofac;
+using GitCheese.Client.Web.Configs;
 
 namespace GitCheese.Client.Web
 {
     public class Service
     {
-        public Service(IEnumerable<FileServerOptions> options, IAppSettings appSettings)
-        {
-            this.options = options;
-            this.appSettings = appSettings;
-        }
-
-        private IDisposable app;
-        private IEnumerable<FileServerOptions> options;
-        private IAppSettings appSettings;
+        private IDisposable _app;
 
         public void Start()
         {
-            Log.Information("Starting WebApp");
-            var url = appSettings.AppSetting("gitcheese.client.web.url", () => "http://+:9000/app");
+            var url = ConfigurationManager.Instance.AppSettings.AppSetting("gitcheese.client.web.url", () => "http://+:9000/app");
 
-            app = WebApp.Start(url, appBuilder =>
-            {
-                appBuilder.Use<ServiceRequestInterceptor>(Log.Logger);
-                foreach (var option in this.options)
-                {
-                    appBuilder.UseFileServer(option);
-                }
-            });
+            ContainerConfig.Config();
 
-            Log.Information("WebApp Started");
+            Action<IAppBuilder> startup = WebAppConfig.Config(url);
+            _app = WebApp.Start(url, startup);
         }
 
         public void Stop()
         {
-            app.Dispose();
-            Log.Information("WebApp Stoped");
+            _app.Dispose();
         }
     }
 }

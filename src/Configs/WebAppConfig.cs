@@ -1,18 +1,37 @@
-﻿using Autofac;
+﻿using System;
+using System.Collections.Generic;
+using Autofac;
 using Microsoft.Owin;
 using Microsoft.Owin.FileSystems;
 using Microsoft.Owin.StaticFiles;
 using System.Configuration.Abstractions;
 using System.IO;
+using Owin;
+using Serilog;
 
 namespace GitCheese.Client.Web.Configs
 {
-    public static class FileServerOptionsConfig
+    public class WebAppConfig
     {
-        public static void Config(IContainer container)
+        public static Action<IAppBuilder> Config(string url)
         {
-            var containerUpdater = new ContainerBuilder();
-            var rootDirectory = ConfigurationManager.Instance.AppSettings.AppSetting("gitcheese.client.web.root-directory", () => @".\App");
+            return Configure;
+        }
+
+        private static void Configure(IAppBuilder appBuilder)
+        {
+            appBuilder.Use<ServiceRequestInterceptor>(Log.Logger);
+            foreach (var option in GetFileServerOptions())
+            {
+                appBuilder.UseFileServer(option);
+            }
+        }
+
+        private static FileServerOptions[] GetFileServerOptions()
+        {
+            var result = new List<FileServerOptions>();
+
+            var rootDirectory = ConfigurationManager.Instance.AppSettings.AppSetting("gitcheese.client.web.root-directory", () => ".\app");
             var defaultDocument = ConfigurationManager.Instance.AppSettings.AppSetting("gitcheese.client.web.default-document", () => "index.html");
 
             var rootOptions = new FileServerOptions
@@ -22,7 +41,7 @@ namespace GitCheese.Client.Web.Configs
             };
             rootOptions.StaticFileOptions.ServeUnknownFileTypes = true;
             rootOptions.DefaultFilesOptions.DefaultFileNames = new[] { defaultDocument };
-            containerUpdater.RegisterInstance(rootOptions).As<FileServerOptions>();
+            result.Add(rootOptions);
 
             if (Directory.Exists(@".\..\..\bower_components"))
             {
@@ -32,10 +51,9 @@ namespace GitCheese.Client.Web.Configs
                     RequestPath = new PathString("/bower_components")
                 };
                 bowerOptions.StaticFileOptions.ServeUnknownFileTypes = true;
-                containerUpdater.RegisterInstance(bowerOptions).As<FileServerOptions>();
+                result.Add(bowerOptions);
             }
-
-            containerUpdater.Update(container);
+            return result.ToArray();
         }
     }
 }

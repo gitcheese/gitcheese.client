@@ -1,7 +1,6 @@
 ﻿using Autofac;
-using System;
 using System.Configuration.Abstractions;
-using System.Linq;
+using Serilog;
 
 namespace GitCheese.Client.Web.Configs
 {
@@ -9,20 +8,13 @@ namespace GitCheese.Client.Web.Configs
     {
         public static IContainer Config()
         {
-            var appAssemblies = AppDomain.CurrentDomain.GetAssemblies()
-                   .Where(a => a.GetName().Name.StartsWith("gitcheese", StringComparison.InvariantCultureIgnoreCase))
-                   .ToArray();
-
             var builder = new ContainerBuilder();
-
-            builder.RegisterAssemblyTypes(appAssemblies).AsImplementedInterfaces();
-
+            builder.Register(c => ConfigurationManager.Instance.AppSettings).As<IAppSettings>();
             builder.RegisterType<Service>().AsSelf();
-            builder.Register(ctx => ConfigurationManager.Instance.ConnectionStrings);
-            builder.Register(ctx => ConfigurationManager.Instance.AppSettings);
 
-            var container = builder.Build();
-            return container;
+            builder.Register(_ => Log.Logger).As<ILogger>();
+
+            return builder.Build();
         }
     }
 }

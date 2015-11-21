@@ -1,12 +1,12 @@
 'use strict';
 
 angular.module('gitcheese.app.security')
-	.controller('registerBasicController', function ($location, $timeout, Restangular, security, context) {
+	.controller('registerBasicController', function ($location, $timeout, Restangular, securityService, contextService) {
 	    var vm = this;
 	    var loginData;
 
 	    vm.init = function () {
-	        var basicRegistrationData = security.getBasicRegistrationData();
+	        var basicRegistrationData = securityService.getBasicRegistrationData();
 	        if (typeof basicRegistrationData == 'undefined') {
 	            $location.path('/login');
 	            return;
@@ -28,7 +28,7 @@ angular.module('gitcheese.app.security')
 	    var login = function () {
 	        vm.completing = true;
 	        Restangular.service('auth/tokens').post(loginData).then(function (token) {
-	            security.storeToken(token);
+	            securityService.storeToken(token);
 	            getProfile();
 	        }, function () {
 	            $timeout(login, 400);
@@ -36,7 +36,7 @@ angular.module('gitcheese.app.security')
 	    };
 
 	    var getProfile = function () {
-	        Restangular.one('profiles', security.getToken().membershipId).get()
+	        Restangular.one('profiles', securityService.getToken().membershipId).get()
                 .then(function () {
                     updateAvatar();
                 }, function () {
@@ -45,26 +45,21 @@ angular.module('gitcheese.app.security')
 	    };
 
 	    var updateAvatar = function () {
-	        Restangular.one('profiles', security.getToken().membershipId).one('avatars').customPOST()
+	        Restangular.one('profiles', securityService.getToken().membershipId).one('avatars').customPOST()
                 .then(function () {
                     waitForAvatar();
                 });
 	    };
 
 	    var waitForAvatar = function () {
-	        Restangular.one('profiles', security.getToken().membershipId).get()
+	        Restangular.one('profiles', securityService.getToken().membershipId).get()
                 .then(function (profile) {
                     if (profile.avatarId) {
-                        context.refreshProfile(security.getToken().membershipId);
+                        contextService.refreshProfile(securityService.getToken().membershipId);
                         $location.path('basicaccountcreated');
                     } else {
                         $timeout(waitForAvatar, 400);
                     }
                 });
-	    }
-
-	    /* istanbul ignore next */
-	    if (typeof jasmine === 'undefined') {
-	        vm.init();
 	    }
 	});

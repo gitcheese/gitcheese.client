@@ -14,7 +14,7 @@ angular.module('gitcheese.app.security')
 	});
 
 angular.module('gitcheese.app.security')
-	.controller('gcBasicLoginController', function (security, $location, notify, Restangular) {
+	.controller('gcBasicLoginController', function (securityService, $location, notify, Restangular) {
 	    var vm = this;
 	    vm.login = function () {
 	        var data = {
@@ -24,7 +24,7 @@ angular.module('gitcheese.app.security')
 	        };
 
 	        return Restangular.service('auth/tokens').post($.param(data)).then(function (token) {
-	            security.storeToken(token);
+	            securityService.storeToken(token);
 	            $location.path('/home');
 	        }, function () {
 	            notify({

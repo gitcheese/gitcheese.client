@@ -6,7 +6,8 @@ angular.module('gitcheese.app.layout')
 	        templateUrl: 'modules/layout/navigation-bar.directive.html',
 	        controller: 'gcNavigationBarController',
 	        bindToController: true,
-	        controllerAs: 'vm'
+	        controllerAs: 'vm',
+	        scope: true
 	    };
 
 	    return directive;
@@ -17,6 +18,6 @@ angular.module('gitcheese.app.layout')
 	    var vm = this;
 
 	    vm.logout = function () {
-	        securityService.removeAccessToken();
+	        securityService.removeToken();
 	    };
 	});

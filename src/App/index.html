@@ -23,59 +23,14 @@
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
 </head>
-<body ng-app="gitcheeseApp" ng-cloak>
+<body ng-app="gitcheese.app" ng-cloak>
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
       <![endif]-->
-
-    <nav class="navbar navbar-default navbar-fixed-top text-uppercase">
-        <div class="container">
-            <div class="navbar-header page-scroll">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-menu">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="#/start">GitCheese</a>
-            </div>
-            <div id="navbar-menu" class="collapse navbar-collapse">
-                <ul class="nav navbar-nav">
-                    <li user-show><a href="#/dashboard">Dashboard</a></li>
-                </ul>
-                <div ng-include="'views/navbarmenu.html'"></div>
-            </div>
-        </div>
-    </nav>
+    <gc-navigation-bar></gc-navigation-bar>
     <section class="content container" ng-view=""></section>
-    <footer class="page-footer accent-dark text-center">
-        <div class="row">
-            <div class="col-md-4 col-md-offset-4" ng-include="'views/sharebar.html'">
-            </div>
-        </div>
-        <div class="row text-center">
-            <ul class="list-inline">
-                <li>Copyright &copy; GitCheese 2015</li>
-                <li>·</li>
-                <li><a href="#/aboutus">about us</a></li>
-                <li>·</li>
-                <li>v0.0.1</li>
-            </ul>
-        </div>
-    </footer>
+    <gc-footer></gc-footer>
 
-    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
-    <script>
-        (function (i, s, o, g, r, a, m) {
-            i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
-                (i[r].q = i[r].q || []).push(arguments)
-            }, i[r].l = 1 * new Date(); a = s.createElement(o),
-            m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
-        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
-
-        ga('create', 'UA-XXXXX-X');
-        ga('send', 'pageview');
-    </script>
     <script>
         (function (d, s, id) {
             var js, fjs = d.getElementsByTagName(s)[0];
@@ -103,42 +58,50 @@
     <script src="bower_components/angular-route/angular-route.js"></script>
     <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
     <script src="bower_components/angular-touch/angular-touch.js"></script>
-    <script src="bower_components/lodash/dist/lodash.compat.js"></script>
+    <script src="bower_components/lodash/lodash.js"></script>
     <script src="bower_components/restangular/dist/restangular.js"></script>
     <script src="bower_components/hello/dist/hello.all.min.js"></script>
+    <script src="bower_components/hello/dist/hello.all.min.js"></script>
+    <script src="bower_components/ng-hello/dist/ng-hello.min.js"></script>
     <script src="bower_components/angular-notify/dist/angular-notify.js"></script>
-    <script src="bower_components/angular-validation-match/dist/angular-input-match.min.js"></script>
+    <script src="bower_components/angular-validation-match/dist/angular-validation-match.js"></script>
     <script src="bower_components/angular-local-storage/dist/angular-local-storage.js"></script>
     <script src="bower_components/angular-loading-bar/build/loading-bar.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:js({.tmp,app}) scripts/scripts.js -->
-    <script src="scripts/app.js"></script>
-    <script src="scripts/services/context.js"></script>
-    <script src="scripts/services/security.js"></script>
-    <script src="scripts/services/hello.js"></script>
-    <script src="scripts/services/authtokeninterceptor.js"></script>
-    <script src="scripts/services/oauthclientids.js"></script>
-    <script src="scripts/services/apiconfig.js"></script>
-    <script src="scripts/directives/userhide.js"></script>
-    <script src="scripts/directives/usershow.js"></script>
-    <script src="scripts/directives/currentuseravatar.js"></script>
-    <script src="scripts/directives/useravatar.js"></script>
-    <script src="scripts/controllers/start.js"></script>
-    <script src="scripts/controllers/dashboard.js"></script>
-    <script src="scripts/controllers/pledge.js"></script>
-    <script src="scripts/controllers/profile.js"></script>
-    <script src="scripts/controllers/projectdetails.js"></script>
-    <script src="scripts/controllers/login.js"></script>
-    <script src="scripts/controllers/navbarmenu.js"></script>
-    <script src="scripts/controllers/sharebar.js"></script>
-    <script src="scripts/controllers/aboutus.js"></script>
-    <script src="scripts/controllers/oauthaccountcreated.js"></script>
-    <script src="scripts/controllers/basicaccountcreated.js"></script>
-    <script src="scripts/controllers/thanks.js"></script>
-    <script src="scripts/controllers/canceled.js"></script>
-    <script src="scripts/controllers/registerbasic.js"></script>
-    <script src="scripts/controllers/registeroauth.js"></script>
+    <script src="app.module.js"></script>
+    <script src="app.config.js"></script>
+    <script src="app.route.js"></script>
+    <script src="app.constant.js"></script>
+    <script src="app.context.js"></script>
+    <script src="modules/common/common.module.js"></script>
+    <script src="modules/common/common.config.js"></script>
+    <script src="modules/common/common.route.js"></script>
+    <script src="modules/common/common.constant.js"></script>
+    <script src="modules/layout/layout.module.js"></script>
+    <script src="modules/layout/layout.config.js"></script>
+    <script src="modules/layout/layout.route.js"></script>
+    <script src="modules/layout/layout.constant.js"></script>
+    <script src="modules/security/security.module.js"></script>
+    <script src="modules/security/security.config.js"></script>
+    <script src="modules/security/security.route.js"></script>
+    <script src="modules/security/security.constant.js"></script>
+    <script src="modules/administration/administration.module.js"></script>
+    <script src="modules/administration/administration.config.js"></script>
+    <script src="modules/administration/administration.route.js"></script>
+    <script src="modules/administration/administration.constant.js"></script>
+    <script src="modules/administration/administration.context.js"></script>
+    <script src="modules/pledge/pledge.module.js"></script>
+    <script src="modules/pledge/pledge.config.js"></script>
+    <script src="modules/pledge/pledge.route.js"></script>
+    <script src="modules/pledge/pledge.constant.js"></script>
+    <script src="modules/security/security.service.js"></script>
+    <script src="modules/security/oauth-login-button.directive.js"></script>
+    <script src="modules/layout/footer.directive.js"></script>
+    <script src="modules/layout/navigation-bar.directive.js"></script>
+    <script src="modules/administration/profile-hide.directive.js"></script>
+    <script src="modules/administration/profile-show.directive.js"></script>
     <!-- endbuild -->
 </body>
 </html>

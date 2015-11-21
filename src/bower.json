@@ -19,7 +19,8 @@
     "fontawesome": "4.4.0",
     "hello": "1.9.8",
     "json3": "^3.3.2",
-    "restangular": "1.5.1"
+    "restangular": "1.5.1",
+    "ng-hello": "*"
   },
   "devDependencies": {
     "angular-mocks": "~1.4.7",

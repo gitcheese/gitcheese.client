@@ -12,6 +12,7 @@ angular.module('gitcheese.app', [
         'validation.match',
         'LocalStorageModule',
         'angular-loading-bar',
+        'angularPromiseButtons',
         'gitcheese.app.layout',
         'gitcheese.app.common',
         'gitcheese.app.security',

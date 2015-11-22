@@ -23,7 +23,7 @@ angular.module('gitcheese.app.security')
 	            password: vm.password
 	        };
 
-	        return Restangular.service('auth/tokens').post($.param(data)).then(function (token) {
+	        vm.submitPromise = Restangular.service('auth/tokens').post($.param(data)).then(function (token) {
 	            securityService.storeToken(token);
 	            $location.path('/home');
 	        }, function () {

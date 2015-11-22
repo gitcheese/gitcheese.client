@@ -167,10 +167,6 @@
     <Content Include="App\modules\security\oauth-account-created.html" />
     <Content Include="App\modules\security\oauth-login-button.directive.html" />
     <Content Include="App\modules\security\oauth-login-button.directive.js" />
-    <Content Include="App\modules\security\register-basic.controller.js" />
-    <Content Include="App\modules\security\register-basic.html" />
-    <Content Include="App\modules\security\register-oauth.controller.js" />
-    <Content Include="App\modules\security\register-oauth.html" />
     <Content Include="App\modules\security\route-change-start.handler.js" />
     <Content Include="App\modules\security\security.constant.js" />
     <Content Include="App\modules\security\security.module.js" />

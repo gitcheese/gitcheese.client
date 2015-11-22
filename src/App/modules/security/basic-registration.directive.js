@@ -14,67 +14,87 @@ angular.module('gitcheese.app.security')
 	});
 
 angular.module('gitcheese.app.security')
-	.controller('gcBasicRegistrationController', function (securityService, $location, notify, Restangular, $timeout) {
+	.controller('gcBasicRegistrationController', function (securityService, $location, notify, Restangular, $timeout, $q) {
 	    var vm = this;
 
 	    var waitForAvatar = function () {
-	        Restangular.one('profiles', securityService.getToken().membershipId).get()
-                .then(function (profile) {
-                    if (profile.avatarId) {
-                        securityService.refreshToken();
-                        $location.path('basicaccountcreated');
-                    } else {
-                        $timeout(waitForAvatar, 400);
-                    }
-                });
+	        var deffered = $q.defer();
+	        var tryToGetAvatar = function () {
+	            Restangular.one('profiles', securityService.getToken().membershipId).get()
+	                .then(function (profile) {
+	                    if (profile.avatarId) {
+	                        securityService.refreshToken();
+	                        deffered.resolve();
+	                    } else {
+	                        $timeout(tryToGetAvatar, 400);
+	                    }
+	                });
+	        }
+
+	        tryToGetAvatar();
+	        return deffered.promise;
 	    }
 	    var updateAvatar = function () {
-	        Restangular.one('profiles', securityService.getToken().membershipId).one('avatars').customPOST()
-                .then(function () {
-                    waitForAvatar();
-                });
+	        return Restangular.one('profiles', securityService.getToken().membershipId).one('avatars').customPOST();
 	    };
 	    var getProfile = function () {
-	        Restangular.one('profiles', securityService.getToken().membershipId).get()
-                .then(function () {
-                    updateAvatar();
-                }, function () {
-                    $timeout(getProfile, 400);
-                });
+	        var deffered = $q.defer();
+	        var tryToGetProfile = function () {
+	            Restangular.one('profiles', securityService.getToken().membershipId).get()
+	                .then(function (profile) {
+	                    if (profile)
+	                        deffered.resolve();
+	                    else
+	                        $timeout(tryToGetProfile, 400);
+	                });
+	        };
+	        tryToGetProfile();
+
+	        return deffered.promise;
 	    };
-	    var login = function (username, password) {
+	    var login = function () {
 	        var loginData = $.param({
 	            grant_type: 'password',
-	            username: username,
-	            password: password
+	            username: vm.username,
+	            password: vm.password
 	        });
+	        var deffered = $q.defer();
+	        var tryToLogin = function () {
+	            Restangular.service('auth/tokens').post(loginData)
+                    .then(function (token) {
+                        securityService.storeToken(token);
+                        deffered.resolve();
+                    }, function () {
+                        $timeout(tryToLogin, 400);
+                    });
+	        }
+	        tryToLogin();
 
-	        vm.completing = true;
-	        Restangular.service('auth/tokens').post(loginData).then(function (token) {
-	            securityService.storeToken(token);
-	            getProfile();
-	        }, function () {
-	            $timeout(login, 400);
-	        });
+	        return deffered.promise;
 	    };
-	    var startRegistration = function (username, password) {
-	        vm.registering = true;
-	        Restangular.service('memberships').post({ email: username, password: password }).then(function () {
-	            vm.registering = false;
-	            login(username, password);
-	        });
+	    var startRegistration = function () {
+	        return Restangular.service('memberships').post({ email: vm.username, password: vm.password });
 	    }
 
 	    vm.register = function () {
-	        return Restangular.one('memberships', vm.username).customGET('exists').then(function (result) {
-	            if (result === true) {
-	                notify({
-	                    message: 'E-mail jest już zajęty.',
-	                    classes: 'alert alert-danger'
-	                });
-	            } else {
-	                startRegistration(vm.username, vm.password);
-	            }
-	        });
+	        vm.submitPromise = Restangular.one('memberships', vm.username).customGET('exists')
+	            .then(function (result) {
+	                if (result === true) {
+	                    notify({
+	                        message: 'E-mail jest już zajęty.',
+	                        classes: 'alert alert-danger'
+	                    });
+	                } else {
+	                    return;
+	                }
+	            })
+	            .then(startRegistration)
+	            .then(login)
+	            .then(getProfile)
+	            .then(updateAvatar)
+	            .then(waitForAvatar)
+	            .then(function () {
+	                $location.path('basicaccountcreated');
+	            });
 	    };
 	});

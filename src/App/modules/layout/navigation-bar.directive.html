@@ -18,7 +18,7 @@
                     <li gc-profile-hide><a href="#/login">Login</a></li>
                     <li gc-profile-show class="dropdown">
                         <a ng-click="" class="dropdown-toggle profile-avatar" data-toggle="dropdown">
-                            <current-user-avatar size="s"></current-user-avatar> {{context.user.nickname}} <b class="caret"></b>
+                            {{context.profile.nickname}} <gc-profile-avatar size="s" profile-id="{{context.profile.id}}"></gc-profile-avatar> <b class="caret"></b>
                         </a>
                         <ul class="dropdown-menu">
                             <li><a href="#/profile">Profile</a></li>
@@ -26,7 +26,6 @@
                         </ul>
                     </li>
                 </ul>
-
             </div>
         </div>
     </div>

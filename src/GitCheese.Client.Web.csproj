@@ -139,6 +139,8 @@
     <Content Include="App\modules\administration\administration.config.js" />
     <Content Include="App\modules\administration\administration.constant.js" />
     <Content Include="App\modules\administration\administration.route.js" />
+    <Content Include="App\modules\administration\profile-avatar.directive.html" />
+    <Content Include="App\modules\administration\profile-avatar.directive.js" />
     <Content Include="App\modules\administration\profile-hide.directive.js" />
     <Content Include="App\modules\administration\profile-show.directive.js" />
     <Content Include="App\modules\common\common.module.js" />

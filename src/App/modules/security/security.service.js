@@ -15,7 +15,6 @@ angular.module('gitcheese.app.security')
             localStorageService.set(tokenStorageKey, token);
             $http.defaults.headers.common['Authorization'] = 'Bearer ' + token.access_token;
             $rootScope.$broadcast('security.token_updated', { membershipId: token.membershipId });
-
         };
 
         this.getToken = function () {

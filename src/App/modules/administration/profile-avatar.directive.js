@@ -26,4 +26,8 @@ angular.module('gitcheese.app.administration')
 	        if (vm.profileId)
 	            vm.avatarUrl = apiConstants.address[$window.location.hostname] + '/profiles/' + vm.profileId + '/avatars';
 	    });
+
+	    $scope.$on('administration.profile_updated', function () {
+	        vm.avatarUrl = apiConstants.address[$window.location.hostname] + '/profiles/' + vm.profileId + '/avatars?' + new Date().toTimeString();
+	    });
 	});

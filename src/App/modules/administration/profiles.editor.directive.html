@@ -1,0 +1,27 @@
+<form class="col-md-8" name="profileForm" novalidate ng-submit="profileForm.$valid && vm.save()">
+    <div class="form-group">
+        <label for="nickname">How we should call You</label>
+        <input class="form-control" id="nickname" name="nickname" type="text" ng-model="vm.profile.nickname" required />
+        <div ng-if="profileForm.nickname.$touched || profileForm.$submitted">
+            <div class="text-danger" ng-show="profileForm.nickname.$error.required">We need to know how to call You.</div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="email">Contact e-mail</label>
+        <input id="email" name="email" class="form-control" type="email" ng-model="vm.profile.email" />
+        <div ng-if="profileForm.email.$touched || profileForm.$submitted">
+            <div class="text-danger" ng-show="profileForm.email.$error.email">Email is invalid.</div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="paypalEmail">Paypal e-mail</label>
+        <input id="paypalEmail" name="paypalEmail" class="form-control" type="email" ng-model="vm.profile.paypalEmail" />
+        <div ng-if="profileForm.paypalEmail.$touched || profileForm.$submitted">
+            <div class="text-danger" ng-show="profileForm.paypalEmail.$error.email">Email is invalid.</div>
+        </div>
+        <p class="callout callout-warning">This email address is crucial for Your cheese - we will use it as Paypal email to transfer <i class="fa fa-dollar"></i><i class="fa fa-dollar"></i> to You.</p>
+    </div>
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Save</button>
+    </div>
+</form>

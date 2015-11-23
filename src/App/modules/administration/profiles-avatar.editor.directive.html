@@ -1,0 +1,19 @@
+<form class="col-md-4" name="avatarForm" novalidate ng-submit="avatarForm.$valid && vm.saveUrl()">
+    <label>Your Avatar</label>
+    <div class="thumbnail">
+        <gc-profile-avatar size="l" profile-id="{{context.profile.id}}"></gc-profile-avatar>
+        <div class="caption text-center">
+            <div class="input-group">
+                <input type="text" id="newUrl" name="newUrl" class="form-control" placeholder="New Avatar Url" ng-model="vm.newUrl" required>
+                <span class="input-group-btn">
+                    <button class="btn btn-default" type="submit">Save</button>
+                </span>
+            </div>
+            <div ng-if="avatarForm.newUrl.$touched || avatarForm.$submitted">
+                <div class="text-danger" ng-show="avatarForm.newUrl.$error.required">Url is required.</div>
+            </div>
+            Or
+            <button type="button" class="btn btn-block btn-default" ng-click="vm.generate()">Generate Standard Avatar</button>
+        </div>
+    </div>
+</form>

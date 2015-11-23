@@ -6,6 +6,7 @@ angular.module('gitcheese.app.administration')
 	        Restangular.one('profiles', data.membershipId).get()
                 .then(function (profile) {
                     contextService.profile = profile;
+                    $rootScope.$broadcast('administration.profile_updated');
                 });
 	    });
 

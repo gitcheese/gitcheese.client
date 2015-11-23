@@ -21,7 +21,7 @@
                             {{context.profile.nickname}} <gc-profile-avatar size="s" profile-id="{{context.profile.id}}"></gc-profile-avatar> <b class="caret"></b>
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a href="#/profile">Profile</a></li>
+                            <li><a href="#/profiles/{{context.profile.id}}/details">Profile</a></li>
                             <li><a href="#/" ng-click="vm.logout()">Logout</a></li>
                         </ul>
                     </li>

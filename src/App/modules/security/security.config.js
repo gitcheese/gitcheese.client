@@ -2,7 +2,10 @@
 
 angular.module('gitcheese.app.security')
     .config(function () { })
-    .run(function (hello, oauthClientIds, $window) {
+    .run(function (hello, oauthClientIds, $window, routeChangeStart) {
+
+        routeChangeStart.subscribe();
+
         hello.init({
             facebook: oauthClientIds.facebook[$window.location.hostname],
             github: oauthClientIds.github[$window.location.hostname],

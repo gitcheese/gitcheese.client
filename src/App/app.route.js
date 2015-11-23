@@ -2,6 +2,7 @@
     .config(function ($routeProvider) {
         $routeProvider
             .when('/', {
-                templateUrl: 'home.html'
+                templateUrl: 'home.html',
+                allowAnonymous: true
             });
     });

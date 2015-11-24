@@ -151,6 +151,7 @@
     <Content Include="App\modules\common\common.config.js" />
     <Content Include="App\modules\common\common.constant.js" />
     <Content Include="App\modules\common\common.route.js" />
+    <Content Include="App\modules\common\route-params.directive.js" />
     <Content Include="App\modules\layout\navigation-bar.directive.html" />
     <Content Include="App\modules\layout\navigation-bar.directive.js" />
     <Content Include="App\modules\layout\layout.config.js" />
@@ -163,6 +164,17 @@
     <Content Include="App\modules\pledge\pledge.config.js" />
     <Content Include="App\modules\pledge\pledge.constant.js" />
     <Content Include="App\modules\pledge\pledge.route.js" />
+    <Content Include="App\modules\pledge\project-github-link.directive.html" />
+    <Content Include="App\modules\pledge\project-github-link.directive.js" />
+    <Content Include="App\modules\pledge\project-badge-markups.directive.html" />
+    <Content Include="App\modules\pledge\project-badge-markups.directive.js" />
+    <Content Include="App\modules\pledge\project-badge.directive.html" />
+    <Content Include="App\modules\pledge\project-badge.directive.js" />
+    <Content Include="App\modules\pledge\projects-details.html" />
+    <Content Include="App\modules\pledge\project-pledges.list.directive.html" />
+    <Content Include="App\modules\pledge\project-pledges.list.directive.js" />
+    <Content Include="App\modules\pledge\project-summaries.editor.directive.html" />
+    <Content Include="App\modules\pledge\project-summaries.editor.directive.js" />
     <Content Include="App\modules\pledge\projects.list.directive.html" />
     <Content Include="App\modules\pledge\projects.list.directive.js" />
     <Content Include="App\modules\security\basic-registration.directive.html" />
@@ -184,7 +196,6 @@
     <Content Include="App\og.png" />
     <Content Include="App\modules\pledge\canceled.js" />
     <Content Include="App\modules\pledge\pledge.js" />
-    <Content Include="App\modules\pledge\projectdetails.js" />
     <Content Include="App\modules\pledge\thanks.js" />
     <Content Include="App\home.html" />
     <Content Include="App\modules\common\aboutus.html" />
@@ -192,7 +203,6 @@
     <Content Include="App\modules\common\dashboard.html" />
     <Content Include="App\modules\pledge\pledge.html" />
     <Content Include="App\modules\administration\profiles.editor.directive.html" />
-    <Content Include="App\modules\pledge\projectdetails.html" />
     <Content Include="App\modules\pledge\thanks.html" />
     <Content Include="FodyWeavers.xml" />
     <Content Include="karma.conf.js" />

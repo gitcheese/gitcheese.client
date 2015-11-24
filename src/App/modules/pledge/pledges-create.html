@@ -1,0 +1,21 @@
+<div gc-route-params class="text-center">
+    <div class="page-header">
+        <h1>Pledge <gc-project-github-link project-id="{{routeParams.id}}"></gc-project-github-link> project!</h1>
+    </div>
+    <p class="lead">
+        Predefined amounts
+    </p>
+    <div class="row">
+        <gc-predefined-amount-pledge-buttons project-id="{{routeParams.id}}"></gc-predefined-amount-pledge-buttons>
+    </div>
+    <p class="lead">
+        or...
+    </p>
+    <div class="row">
+        <gc-free-amount-pledge-buttons project-id="{{routeParams.id}}"></gc-free-amount-pledge-buttons>
+    </div>
+    <h2>
+        Top Pledgers:
+    </h2>
+    <gc-project-top-pledgers project-id="{{routeParams.id}}"></gc-project-top-pledgers>
+</div>

@@ -1,3 +1,6 @@
-<div ng-repeat="amount in vm.predefinedAmounts" class="col-lg-2">
-    <button type="button" ng-click="vm.pledge(amount)" class="btn btn-lg btn-block btn-success">${{amount}}</button>
+<div class="row">
+    <div class="col-lg-1"></div>
+    <div ng-repeat="amount in vm.predefinedAmounts" class="col-lg-2">
+        <button type="button" ng-click="vm.pledge(amount)" class="btn btn-lg btn-block btn-success">${{amount}}</button>
+    </div>
 </div>

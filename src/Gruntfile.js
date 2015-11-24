@@ -22,10 +22,6 @@ module.exports = function (grunt) {
                 files: ['<%= yeoman.app %>/scripts/{,*/}*.js'],
                 tasks: ['newer:jshint:all']
             },
-            jsTest: {
-                files: ['test/spec/{,*/}*.js'],
-                tasks: ['newer:jshint:test', 'karma']
-            },
             styles: {
                 files: ['<%= yeoman.app %>/styles/{,*/}*.less'],
                 tasks: ['less:dev', 'copy:styles', 'autoprefixer']
@@ -44,12 +40,6 @@ module.exports = function (grunt) {
                     'Gruntfile.js',
                     '<%= yeoman.app %>/scripts/{,*/}*.js'
                 ]
-            },
-            test: {
-                options: {
-                    jshintrc: 'test/.jshintrc'
-                },
-                src: ['test/spec/{,*/}*.js']
             }
         },
         //#endregion
@@ -73,7 +63,7 @@ module.exports = function (grunt) {
         //#region autoprefixer - Add vendor prefixed styles
         autoprefixer: {
             options: {
-                browsers: ['last 1 version']
+                browsers: ['last 2 version']
             },
             dist: {
                 files: [{
@@ -81,6 +71,14 @@ module.exports = function (grunt) {
                     cwd: '.tmp/styles/',
                     src: '{,*/}*.css',
                     dest: '.tmp/styles/'
+                }]
+            },
+            dev: {
+                files: [{
+                    expand: true,
+                    cwd: '.tmp/styles/',
+                    src: '{,*/}*.css',
+                    dest: 'app/styles/'
                 }]
             }
         },
@@ -171,7 +169,7 @@ module.exports = function (grunt) {
                 files: [{
                     expand: true,
                     cwd: '<%= yeoman.dist %>',
-                    src: ['*.html', 'views/{,*/}*.html'],
+                    src: ['*.html', 'modules/{,*/}*.html'],
                     dest: '<%= yeoman.dist %>'
                 }]
             }
@@ -230,7 +228,7 @@ module.exports = function (grunt) {
                         '*.{ico,png,txt}',
                         '.htaccess',
                         '*.html',
-                        'views/{,*/}*.html',
+                        'modules/{,*/}*.html',
                         'images/{,*/}*.{webp}',
                         'fonts/{,*/}*.*',
                         '*.config'
@@ -242,19 +240,22 @@ module.exports = function (grunt) {
                     src: ['generated/*']
                 }, {
                     expand: true,
+                    cwd: 'app/',
+                    src: 'fakeData/*',
+                    dest: '<%= yeoman.dist %>'
+                }]
+            },
+            fonts: {
+                files: [{
+                    expand: true,
                     cwd: 'bower_components/bootstrap/dist',
                     src: 'fonts/*',
-                    dest: '<%= yeoman.dist %>'
+                    dest: '<%= yeoman.app %>'
                 }, {
                     expand: true,
                     cwd: 'bower_components/fontawesome',
                     src: 'fonts/*',
-                    dest: '<%= yeoman.dist %>'
-                }, {
-                    expand: true,
-                    cwd: 'app/',
-                    src: 'fakeData/*',
-                    dest: '<%= yeoman.dist %>'
+                    dest: '<%= yeoman.app %>'
                 }]
             },
             styles: {
@@ -269,48 +270,25 @@ module.exports = function (grunt) {
         //#region concurrent - Run some tasks in parallel to speed up the build process
         concurrent: {
             dev: [
-                'copy:styles'
-            ],
-            test: [
-                'copy:styles'
+                'copy:styles',
+                'copy:fonts'
             ],
             dist: [
                 'copy:styles',
+                'copy:fonts',
                 'imagemin',
                 'svgmin'
             ]
         },
         //#endregion
-
-        //#region karma - watch Your karma :D
-        karma: {
-            single: {
-                configFile: 'karma.conf.js',
-                singleRun: true
-            },
-            continous: {
-                configFile: 'karma.conf.js',
-                singleRun: false
-            },
-            teamcity:{
-                configFile: 'karma.conf.js',
-                reporters: ['teamcity', 'coverage'],
-                singleRun: true
-            }
-        }
-        //#endregion
     });
-
-    grunt.registerTask('test', ['karma:single']);
-
-    grunt.registerTask('tdd', ['karma:continous']);
 
     grunt.registerTask('dev', [
             'clean:dev',
             'wiredep',
             'less:dev',
             'concurrent:dev',
-            'autoprefixer',
+            'autoprefixer:dev',
             'watch'
     ]);
 
@@ -320,7 +298,7 @@ module.exports = function (grunt) {
         'wiredep',
         'useminPrepare',
         'concurrent:dist',
-        'autoprefixer',
+        'autoprefixer:dist',
         'concat',
         'ngAnnotate',
         'copy:dist',

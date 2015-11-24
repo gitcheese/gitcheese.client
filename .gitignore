@@ -48,3 +48,4 @@ src/App/styles/main.css
 src/App/styles/*.css
 src/App/styles/*.map
 src/coverage/
+/src/App/fonts

@@ -1,0 +1,35 @@
+﻿html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    padding-top: @navbar-height + 10px;
+    margin-bottom: @footer-height;
+    overflow-x: hidden;
+}
+
+footer.page-footer {
+    width: 100%;
+    height: @footer-height;
+    position: absolute;
+    bottom: 0;
+    background-color: @navbar-default-bg;
+    color: @btn-default-color;
+}
+
+/************ LOADING BAR **************/
+#loading-bar .bar {
+    top: @navbar-height;
+    background: @brand-success;
+    height: 4px;
+}
+
+#loading-bar-spinner {
+    top: @navbar-height + 10px;
+}
+
+#loading-bar-spinner .spinner-icon {
+    border-top-color: @brand-success;
+    border-left-color: @brand-success;
+}

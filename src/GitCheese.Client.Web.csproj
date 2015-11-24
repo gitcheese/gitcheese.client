@@ -103,7 +103,16 @@
     <None Include=".bowerrc" />
     <None Include=".jshintrc" />
     <None Include="App.config" />
-    <None Include="App\styles\bootswatch.less" />
+    <None Include="App\styles\angular.less" />
+    <None Include="App\styles\avatars.less" />
+    <None Include="App\styles\bootswatch\bootswatch.less" />
+    <None Include="App\styles\bootswatch\variables.less" />
+    <None Include="App\styles\buttons.less" />
+    <None Include="App\styles\callouts.less" />
+    <None Include="App\styles\cards.less" />
+    <None Include="App\styles\jumbotrones.less" />
+    <None Include="App\styles\layout.less" />
+    <None Include="App\styles\lists.less" />
     <None Include="App\styles\main.less" />
     <None Include="App\styles\variables.less" />
     <None Include="bower.json" />
@@ -208,7 +217,6 @@
     <Content Include="App\modules\administration\profiles.editor.directive.html" />
     <Content Include="App\modules\pledge\pledges-confirmed.html" />
     <Content Include="FodyWeavers.xml" />
-    <Content Include="karma.conf.js" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

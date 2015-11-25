@@ -1,13 +1,13 @@
 ﻿'use strict';
 
 angular.module('gitcheese.app.pledge')
-	.directive('gcProjectSummariesEditor', function (gcProjectSummariesEditorLinkFn) {
+	.directive('gcProjectSummary', function (gcProjectSummariesEditorLinkFn) {
 	    return {
 	        replace: true,
-	        templateUrl: 'modules/pledge/project-summaries.editor.directive.html',
+	        templateUrl: 'modules/pledge/project-summary.directive.html',
 	        controllerAs: 'vm',
 	        bindToController: true,
-	        controller: 'gcProjectSummariesEditorController',
+	        controller: 'gcProjectSummaryController',
 	        link: gcProjectSummariesEditorLinkFn,
 	        scope: {
 	            projectId: '@'
@@ -16,7 +16,7 @@ angular.module('gitcheese.app.pledge')
 	});
 
 angular.module('gitcheese.app.pledge')
-    .controller('gcProjectSummariesEditorController', function (Restangular) {
+    .controller('gcProjectSummaryController', function (Restangular) {
         var vm = this;
         vm.init = function () {
             Restangular.one('projects', vm.projectId).one('summary').get()

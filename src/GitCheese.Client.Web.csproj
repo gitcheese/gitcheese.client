@@ -188,8 +188,8 @@
     <Content Include="App\modules\pledge\projects-details.html" />
     <Content Include="App\modules\pledge\project-pledges.list.directive.html" />
     <Content Include="App\modules\pledge\project-pledges.list.directive.js" />
-    <Content Include="App\modules\pledge\project-summaries.editor.directive.html" />
-    <Content Include="App\modules\pledge\project-summaries.editor.directive.js" />
+    <Content Include="App\modules\pledge\project-summary.directive.html" />
+    <Content Include="App\modules\pledge\project-summary.directive.js" />
     <Content Include="App\modules\pledge\projects.list.directive.html" />
     <Content Include="App\modules\pledge\projects.list.directive.js" />
     <Content Include="App\modules\security\basic-registration.directive.html" />

@@ -1,5 +1,6 @@
 ﻿angular.module('gitcheese.app.common')
     .config(function ($routeProvider) {
         $routeProvider
-            .when('/dashboard', { templateUrl: 'modules/common/dashboard.html' });
+            .when('/dashboard', { templateUrl: 'modules/common/dashboard.html' })
+            .when('/aboutus', { templateUrl: 'modules/common/aboutus.html' });
     });

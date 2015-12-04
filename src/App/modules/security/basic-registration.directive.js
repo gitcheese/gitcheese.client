@@ -81,7 +81,7 @@ angular.module('gitcheese.app.security')
 	            .then(function (result) {
 	                if (result === true) {
 	                    notify({
-	                        message: 'E-mail jest już zajęty.',
+	                        message: 'E-mail is already in use.',
 	                        classes: 'alert alert-danger'
 	                    });
 	                } else {

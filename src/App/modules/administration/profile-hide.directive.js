@@ -9,8 +9,8 @@ angular.module('gitcheese.app.administration')
 	});
 
 angular.module('gitcheese.app.administration')
-	.controller('gcProfileHideController', function ($scope, $element) {
-	    $scope.$watch('context.profile', function (newProfile) {
+	.controller('gcProfileHideController', function ($rootScope, $element) {
+	    $rootScope.$watch('context.profile', function (newProfile) {
 	        if (newProfile) {
 	            $element.hide();
 	        } else {

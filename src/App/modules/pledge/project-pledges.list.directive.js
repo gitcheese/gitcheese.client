@@ -21,7 +21,7 @@ angular.module('gitcheese.app.pledge')
         var vm = this;
         vm.init = function () {
             Restangular.one('projects', vm.projectId).all('pledges').getList({
-                $orderby: 'ConfirmationDate desc'
+                $orderby: 'CompletedDate desc'
             }).then(function (pledges) {
                 vm.pledges = pledges;
             });

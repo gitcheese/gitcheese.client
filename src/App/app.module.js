@@ -15,7 +15,7 @@ angular.module('gitcheese.app', [
         'angularPromiseButtons',
         'gitcheese.app.layout',
         'gitcheese.app.common',
-        'gitcheese.app.security',
         'gitcheese.app.administration',
+        'gitcheese.app.security',
         'gitcheese.app.pledge'
 ]);

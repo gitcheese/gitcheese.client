@@ -2,7 +2,7 @@
     <div class="form-group">
         <label>Already Pledged</label>
         <p class="form-control-static">
-            {{(vm.summary.totalAmount | currency) || (0 | currency)}}
+            {{(vm.summary.totalPledgedAmount | currency) || (0 | currency)}}
         </p>
     </div>
 </div>

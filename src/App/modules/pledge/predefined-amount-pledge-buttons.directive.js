@@ -15,18 +15,25 @@ angular.module('gitcheese.app.pledge')
 	});
 
 angular.module('gitcheese.app.pledge')
-    .controller('gcPredefinedAmountPledgeButtonsController', function (Restangular, $window) {
+    .controller('gcPredefinedAmountPledgeButtonsController', function (Restangular, stripe, notify) {
         var vm = this;
-        vm.predefinedAmounts = [1, 2, 5, 10, 20];
+        vm.amount = 10;
 
-        vm.pledge = function (amount) {
-            var request = {
-                amount: amount
-            };
-
-            Restangular.one('projects', vm.projectId).post('pledges', request)
-                .then(function (success) {
-                    $window.location.href = 'https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_ap-payment&paykey=' + success;
-                });
+        vm.pledge = function () {
+            return stripe.card.createToken(angular.copy(vm.card))
+              .then(function (response) {
+                  return Restangular.one('projects', vm.projectId).post('stripepledges', { token: response.id, amount: vm.amount });
+              })
+              .then(function () {
+                  notify({ message: "Your Pledge is successfully processed!", classes: 'alert alert-success' });
+              })
+              .catch(function (err) {
+                  if (err.type && /^Stripe/.test(err.type)) {
+                      notify({ message: err.message, classes: 'alert alert-danger' });
+                  }
+                  else {
+                      notify({ message: 'Unknown error :(', classes: 'alert alert-danger' });
+                  }
+              });
         };
     });

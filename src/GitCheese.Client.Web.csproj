@@ -194,7 +194,6 @@
     <Content Include="App\modules\pledge\projects.list.directive.js" />
     <Content Include="App\modules\security\basic-registration.directive.html" />
     <Content Include="App\modules\security\basic-registration.directive.js" />
-    <Content Include="App\modules\security\security.config.js" />
     <Content Include="App\modules\security\basic-account-created.html" />
     <Content Include="App\modules\security\basic-login.directive.html" />
     <Content Include="App\modules\security\basic-login.directive.js" />
@@ -204,6 +203,7 @@
     <Content Include="App\modules\security\oauth-login-button.directive.js" />
     <Content Include="App\modules\security\route-change-start.handler.js" />
     <Content Include="App\modules\security\security.constant.js" />
+    <Content Include="App\modules\security\security.module.run.js" />
     <Content Include="App\modules\security\security.module.js" />
     <Content Include="App\modules\security\security.route.js" />
     <Content Include="App\modules\security\security.service.js" />

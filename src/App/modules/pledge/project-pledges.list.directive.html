@@ -9,9 +9,9 @@
     </thead>
     <tbody>
         <tr ng-repeat="pledge in vm.pledges">
-            <td>{{pledge.confirmationDate | date : 'short'}}</td>
-            <td><user-avatar ng-if="pledge.userId" size="xs" user-id="pledge.userId"></user-avatar> {{pledge.userNickname || "Anonymous"}}</td>
-            <td>{{pledge.amount | currency}}</td>
+            <td>{{pledge.completedDate | date : 'short'}}</td>
+            <td><user-avatar ng-if="pledge.profileId" size="xs" user-id="pledge.profileId"></user-avatar> {{pledge.profileNickname || "Anonymous"}}</td>
+            <td>{{pledge.pledgedAmount | currency}}</td>
         </tr>
     </tbody>
 </table>

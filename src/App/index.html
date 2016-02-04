@@ -21,6 +21,7 @@
     <!-- build:css(.tmp) styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
+    <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
 </head>
 <body ng-app="gitcheese.app" ng-cloak>
     <!--[if lt IE 7]>
@@ -66,6 +67,8 @@
     <script src="bower_components/restangular/dist/restangular.js"></script>
     <script src="bower_components/ng-hello/dist/ng-hello.min.js"></script>
     <script src="bower_components/angular-promise-buttons/dist/angular-promise-buttons.js"></script>
+    <script src="bower_components/angular-stripe/release/angular-stripe.js"></script>
+    <script src="bower_components/angular-credit-cards/release/angular-credit-cards.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:js({.tmp,app}) scripts/scripts.js -->
@@ -82,15 +85,15 @@
     <script src="modules/layout/layout.config.js"></script>
     <script src="modules/layout/layout.route.js"></script>
     <script src="modules/layout/layout.constant.js"></script>
-    <script src="modules/security/security.module.js"></script>
-    <script src="modules/security/security.config.js"></script>
-    <script src="modules/security/security.route.js"></script>
-    <script src="modules/security/security.constant.js"></script>
     <script src="modules/administration/administration.module.js"></script>
     <script src="modules/administration/administration.config.js"></script>
     <script src="modules/administration/administration.route.js"></script>
     <script src="modules/administration/administration.constant.js"></script>
     <script src="modules/administration/administration.context.js"></script>
+    <script src="modules/security/security.module.js"></script>
+    <script src="modules/security/security.route.js"></script>
+    <script src="modules/security/security.module.run.js"></script>
+    <script src="modules/security/security.constant.js"></script>
     <script src="modules/pledge/pledge.module.js"></script>
     <script src="modules/pledge/pledge.config.js"></script>
     <script src="modules/pledge/pledge.route.js"></script>

@@ -11,7 +11,7 @@
         <tr ng-repeat="pledge in vm.pledges">
             <td>{{pledge.completedDate | date : 'short'}}</td>
             <td><user-avatar ng-if="pledge.profileId" size="xs" user-id="pledge.profileId"></user-avatar> {{pledge.profileNickname || "Anonymous"}}</td>
-            <td>{{pledge.pledgedAmount | currency}}</td>
+            <td>{{pledge.pledgedAmount / 100 | currency}}</td>
         </tr>
     </tbody>
 </table>

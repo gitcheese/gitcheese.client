@@ -2,7 +2,7 @@
     <div class="row">
         <div class="row">
             <div class="col-md-3">
-                <button type="button" ng-click="vm.amount = 1" class="btn btn-lg btn-block btn-success">$1</button>
+                <button type="button" ng-click="vm.amount = 100" class="btn btn-lg btn-block btn-success">$1</button>
             </div>
             <div class="col-md-6">
                 <div class="form-group">
@@ -59,7 +59,7 @@
             <div class="col-md-6">
                 <div class="input-group">
                     <span class="input-group-addon">$</span>
-                    <input type="number" id="amount" name="amount" ng-model="vm.amount" class="form-control input-lg">
+                    <input type="number" id="amount" name="amount" cents-to-dollars ng-model="vm.amount" class="form-control input-lg">
                     <span class="input-group-btn">
                         <button class="btn btn-lg btn-default" type="submit">Pledge</button>
                     </span>

@@ -17,7 +17,7 @@ angular.module('gitcheese.app.pledge')
 angular.module('gitcheese.app.pledge')
     .controller('gcPredefinedAmountPledgeButtonsController', function (Restangular, stripe, notify) {
         var vm = this;
-        vm.amount = 10;
+        vm.amount = 100;
 
         vm.pledge = function () {
             return stripe.card.createToken(angular.copy(vm.card))

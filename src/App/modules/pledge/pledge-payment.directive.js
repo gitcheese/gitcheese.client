@@ -27,7 +27,7 @@ angular.module('gitcheese.app.pledge')
             "JCB": "fa-cc-jvb"
         }
         vm.initiate = function () {
-            return stripe.card.createToken(angular.copy(vm.card))
+            vm.initiatePromise = stripe.card.createToken(angular.copy(vm.card))
               .then(function (response) {
                   vm.token = response.id;
               })
@@ -37,7 +37,7 @@ angular.module('gitcheese.app.pledge')
         };
 
         vm.pledge = function () {
-            return Restangular.one('projects', vm.projectId).post('stripepledges', { token: vm.token, amount: vm.amount })
+            vm.pledgePromise = Restangular.one('projects', vm.projectId).post('stripepledges', { token: vm.token, amount: vm.amount })
                 .then(function (pledgeId) {
                     $location.path('/projects/' + vm.projectId + '/pledges/' + pledgeId + '/confirmed');
                 })

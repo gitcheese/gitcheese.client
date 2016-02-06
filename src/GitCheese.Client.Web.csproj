@@ -176,8 +176,8 @@
     <Content Include="App\modules\pledge\pledge.route.js" />
     <Content Include="App\modules\pledge\free-amount-pledge-buttons.directive.html" />
     <Content Include="App\modules\pledge\free-amount-pledge-buttons.directive.js" />
-    <Content Include="App\modules\pledge\predefined-amount-pledge-buttons.directive.html" />
-    <Content Include="App\modules\pledge\predefined-amount-pledge-buttons.directive.js" />
+    <Content Include="App\modules\pledge\pledge-payment.directive.html" />
+    <Content Include="App\modules\pledge\pledge-payment.directive.js" />
     <Content Include="App\modules\pledge\project-github-link.directive.html" />
     <Content Include="App\modules\pledge\project-github-link.directive.js" />
     <Content Include="App\modules\pledge\project-badge-markups.directive.html" />

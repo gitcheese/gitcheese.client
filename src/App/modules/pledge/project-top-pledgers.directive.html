@@ -1,9 +1,9 @@
 <div>
     <div class="col-md-2" ng-repeat="pledger in vm.pledgers" ng-show="vm.pledgers.length > 0">
         <div class="thumbnail">
-            <gc-profiles-avatar size="l" profile-id="{{pledger.pledgerId}}"></gc-profiles-avatar>
+            <gc-profile-avatar size="l" profile-id="{{pledger.pledgerId}}"></gc-profile-avatar>
             <div class="caption text-center">
-                <p class="lead">{{pledger.userNickname}}</p>
+                <p class="lead">{{pledger.profileNickname}}</p>
             </div>
         </div>
     </div>

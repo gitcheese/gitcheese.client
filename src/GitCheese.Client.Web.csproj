@@ -175,8 +175,6 @@
     <Content Include="App\modules\pledge\pledge.config.js" />
     <Content Include="App\modules\pledge\pledge.constant.js" />
     <Content Include="App\modules\pledge\pledge.route.js" />
-    <Content Include="App\modules\pledge\free-amount-pledge-buttons.directive.html" />
-    <Content Include="App\modules\pledge\free-amount-pledge-buttons.directive.js" />
     <Content Include="App\modules\pledge\pledge-payment.directive.html" />
     <Content Include="App\modules\pledge\pledge-payment.directive.js" />
     <Content Include="App\modules\pledge\project-github-link.directive.html" />
@@ -194,12 +192,6 @@
     <Content Include="App\modules\pledge\project-summary.directive.js" />
     <Content Include="App\modules\pledge\projects.list.directive.html" />
     <Content Include="App\modules\pledge\projects.list.directive.js" />
-    <Content Include="App\modules\security\basic-registration.directive.html" />
-    <Content Include="App\modules\security\basic-registration.directive.js" />
-    <Content Include="App\modules\security\basic-account-created.html" />
-    <Content Include="App\modules\security\basic-login.directive.html" />
-    <Content Include="App\modules\security\basic-login.directive.js" />
-    <Content Include="App\modules\security\login.html" />
     <Content Include="App\modules\security\oauth-account-created.html" />
     <Content Include="App\modules\security\oauth-login-button.directive.html" />
     <Content Include="App\modules\security\oauth-login-button.directive.js" />
@@ -212,8 +204,7 @@
     <Content Include="App\oauth.html" />
     <Content Include="App\og.png" />
     <Content Include="App\home.html" />
-    <Content Include="App\modules\common\aboutus.html" />
-    <Content Include="App\modules\pledge\pledges-canceled.html" />
+    <Content Include="App\modules\common\about-us.html" />
     <Content Include="App\modules\common\dashboard.html" />
     <Content Include="App\modules\pledge\pledges-create.html" />
     <Content Include="App\modules\administration\profiles.editor.directive.html" />

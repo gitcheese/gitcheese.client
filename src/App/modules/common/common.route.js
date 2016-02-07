@@ -2,5 +2,5 @@
     .config(function ($routeProvider) {
         $routeProvider
             .when('/dashboard', { templateUrl: 'modules/common/dashboard.html' })
-            .when('/aboutus', { templateUrl: 'modules/common/aboutus.html' });
+            .when('/about-us', { templateUrl: 'modules/common/about-us.html' });
     });

@@ -3,11 +3,12 @@
 angular.module('gitcheese.app.security')
 	.directive('gcOauthLoginButton', function () {
 	    var directive = {
+	        replace: true,
 	        templateUrl: 'modules/security/oauth-login-button.directive.html',
 	        controller: 'gcOauthLoginButtonController',
 	        bindToController: true,
 	        controllerAs: 'vm',
-	        scope: { provider: '@', size: '@' }
+	        scope: { provider: '@', size: '@', btnClass: '@', text: '@' }
 	    };
 
 	    return directive;
@@ -22,6 +23,7 @@ angular.module('gitcheese.app.security')
 	        'sm': 2,
 	        'xs': 1
 	    }
+	    vm.btnClass = vm.btnClass || "btn-primary";
 
 	    var waitForAvatar = function () {
 	        var deffered = $q.defer();

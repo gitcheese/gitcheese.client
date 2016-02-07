@@ -140,6 +140,7 @@
     <Content Include="App\images\logo32.png" />
     <Content Include="App\images\logo48.png" />
     <Content Include="App\images\logo64.png" />
+    <Content Include="App\images\outline.png" />
     <Content Include="App\images\rebus.png" />
     <Content Include="App\images\yeoman.png" />
     <Content Include="App\index.html" />

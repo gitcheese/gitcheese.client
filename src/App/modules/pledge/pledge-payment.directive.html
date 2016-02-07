@@ -3,7 +3,7 @@
         <div class="row">
             <div class="form-group row">
                 <div class="col-md-3">
-                    <button type="button" ng-click="vm.amount = 100" class="btn btn-lg btn-block btn-success">$1</button>
+                    <button type="button" ng-click="vm.amount = 100" class="btn btn-lg btn-block btn-default">$1</button>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
@@ -19,12 +19,12 @@
                     </div>
                 </div>
                 <div class="col-md-3">
-                    <button type="button" ng-click="vm.amount = 1000" class="btn btn-lg btn-block btn-success">$10</button>
+                    <button type="button" ng-click="vm.amount = 1000" class="btn btn-lg btn-block btn-default">$10</button>
                 </div>
             </div>
             <div class="form-group row">
                 <div class="col-md-3">
-                    <button type="button" ng-click="vm.amount = 200" class="btn btn-lg btn-block btn-success">$2</button>
+                    <button type="button" ng-click="vm.amount = 200" class="btn btn-lg btn-block btn-default">$2</button>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group row">
@@ -57,12 +57,12 @@
                     </div>
                 </div>
                 <div class="col-md-3">
-                    <button type="button" ng-click="vm.amount = 2000" class="btn btn-lg btn-block btn-success">$20</button>
+                    <button type="button" ng-click="vm.amount = 2000" class="btn btn-lg btn-block btn-default">$20</button>
                 </div>
             </div>
             <div class="form-group row">
                 <div class="col-md-3">
-                    <button type="button" ng-click="vm.amount = 500" class="btn btn-lg btn-block btn-success">$5</button>
+                    <button type="button" ng-click="vm.amount = 500" class="btn btn-lg btn-block btn-default">$5</button>
                 </div>
                 <div class="col-md-6">
                     <label class="sr-only">Cardholder Name</label>
@@ -72,7 +72,7 @@
                     </div>
                 </div>
                 <div class="col-md-3">
-                    <button type="button" ng-click="vm.amount = 5000" class="btn btn-lg btn-block btn-success">$50</button>
+                    <button type="button" ng-click="vm.amount = 5000" class="btn btn-lg btn-block btn-default">$50</button>
                 </div>
             </div>
             <div class="form-group row">
@@ -81,7 +81,7 @@
                         <span class="input-group-addon">$</span>
                         <input type="number" id="amount" max="5000" min="100" name="amount" cents-to-dollars ng-model="vm.amount" class="form-control input-lg">
                         <span class="input-group-btn">
-                            <button class="btn btn-lg btn-default" promise-btn="vm.initiatePromise"  type="submit">Pledge</button>
+                            <button class="btn btn-lg btn-success" promise-btn="vm.initiatePromise"  type="submit">Pledge</button>
                         </span>
                     </div>
                     <div ng-if="pledgeForm.amount.$touched || pledgeForm.$submitted">

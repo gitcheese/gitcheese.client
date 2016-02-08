@@ -15,4 +15,9 @@ angular.module('gitcheese.app.pledge')
 	});
 
 angular.module('gitcheese.app.pledge')
-    .controller('gcProjectBadgeController', function () { });
+    .controller('gcProjectBadgeController', function (apiConstants, $window) {
+        var vm = this;
+
+        vm.pledgeUrl = $window.location.origin + '/app/#/projects/' + vm.projectId + '/pledges/create';
+        vm.badgeUrl = apiConstants.address[$window.location.hostname] + '/projects/' + vm.projectId + '/badges';
+    });

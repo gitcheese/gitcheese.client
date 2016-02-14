@@ -27,7 +27,8 @@
   },
   "devDependencies": {
     "angular-mocks": "~1.4.7",
-    "angular-scenario": "~1.4.7"
+    "angular-scenario": "~1.4.7",
+    "livereload-js": "~2.2.1"
   },
   "appPath": "app",
   "resolutions": {

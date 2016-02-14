@@ -227,7 +227,7 @@ module.exports = function(grunt) {
                 port: 9001,
                 hostname: 'localhost'
             },
-            livereload: {
+            dev: {
                 options: {
                     open: true,
                     middleware: function(connect) {
@@ -248,6 +248,9 @@ module.exports = function(grunt) {
             }
         },
         watch: {
+            options: {
+                livereload: true,
+            },
             bower: {
                 files: ['bower.json'],
                 tasks: ['wiredep']
@@ -257,7 +260,7 @@ module.exports = function(grunt) {
                 tasks: ['newer:jshint:all']
             },
             html: {
-                files: ['<%= appConfig.dist %>/{,*/}*.html', '<%= appConfig.dist %>/modules/{,*/}*.html'],
+                files: ['<%= appConfig.app %>/{,*/}*.html', '<%= appConfig.app %>/modules/{,*/}*.html']
             },
             styles: {
                 files: ['<%= appConfig.app %>/styles/{,*/}*.less'],
@@ -277,7 +280,7 @@ module.exports = function(grunt) {
             'less:dev',
             'concurrent:dev',
             'autoprefixer:dev',
-            'connect:livereload',
+            'connect:dev',
             'watch'
         ]);
     });

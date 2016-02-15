@@ -1,6 +1,6 @@
 {
-  "name": "elisoft.webfaktury.client.web",
-  "version": "0.0.0",
+  "name": "gitcheese.client.web",
+  "version": "0.9.0",
   "dependencies": {
     "angular": "^1.4.7",
     "angular-animate": "^1.4.7",

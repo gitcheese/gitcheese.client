@@ -1,0 +1,8 @@
+﻿<div>
+    <gc-navigation-bar ng-if="!vm.landingPage"></gc-navigation-bar>
+
+    
+<section class="content" ng-class="vm.landingPage ? 'container-fluid' : 'container'">
+    <ng-view></ng-view>
+</section>
+</div>

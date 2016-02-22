@@ -4,5 +4,7 @@
             .when('/', {
                 templateUrl: 'home.html',
                 allowAnonymous: true
-            });
+            }).otherwise({
+		        redirectTo: '/'
+		    });
     });

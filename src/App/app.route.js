@@ -1,10 +1,13 @@
-﻿angular.module('gitcheese.app')
-    .config(function ($routeProvider) {
+'use strict';
+
+angular.module('gitcheese.app')
+    .config(function($routeProvider) {
         $routeProvider
             .when('/', {
                 templateUrl: 'home.html',
                 allowAnonymous: true
-            }).otherwise({
-		        redirectTo: '/'
-		    });
+            })
+            .otherwise({
+                redirectTo: '/'
+            });
     });

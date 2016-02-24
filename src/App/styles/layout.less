@@ -1,35 +1,54 @@
-﻿html {
-    position: relative;
-    min-height: 100%;
+html {
+  position: relative;
+  min-height: 100%;
 }
-
 body {
-    padding-top: @navbar-height + 10px;
-    margin-bottom: @footer-height;
-    overflow-x: hidden;
+  margin-bottom: @footer-height;
+  overflow-x: hidden;
 }
-
-footer.page-footer {
-    width: 100%;
-    height: @footer-height;
-    position: absolute;
-    bottom: 0;
-    background-color: @navbar-default-bg;
-    color: @btn-default-color;
+footer {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  background-color: @navbar-default-bg;
+  color: @btn-default-color;
+  padding: 35px 0 25px;
 }
-
+.full-width-container {
+  &:extend(.container-fluid);
+  padding-left: 0;
+  padding-right: 0;
+}
+.affix {
+  &:extend(.navbar-fixed-top);
+}
+/************ SECTIONS **************/
+.wow-section {
+  padding: 90px 0;
+  h1{
+    margin-bottom: floor(@line-height-base);
+  }
+  img {
+    display: inline-block;
+  }
+  &-default {
+    background-color: #fff;
+  }
+  &-primary {
+    background-color: @brand-primary;
+    color: @panel-primary-text;
+  }
+}
 /************ LOADING BAR **************/
 #loading-bar .bar {
-    top: @navbar-height;
-    background: @brand-success;
-    height: 4px;
+  top: @navbar-height;
+  background: @brand-success;
+  height: 4px;
 }
-
 #loading-bar-spinner {
-    top: @navbar-height + 10px;
+  top: @navbar-height + 10px;
 }
-
 #loading-bar-spinner .spinner-icon {
-    border-top-color: @brand-success;
-    border-left-color: @brand-success;
+  border-top-color: @brand-success;
+  border-left-color: @brand-success;
 }

@@ -21,9 +21,6 @@
 	margin-bottom:50px;
 }
 
-.team .thumbnail{
-		border-style: none;
-}
 .team .caption {
 	&:extend(.text-center);
 	opacity:0;
@@ -39,7 +36,7 @@
 	transform: translateY(78px);
 }
 
-.team:hover .caption {
+.team:hover .caption, .team:focus .caption {
 	opacity:1;
 	-moz-transform: translateY(0px);
 	-webkit-transform: translateY(0px);
@@ -59,8 +56,3 @@
 .team:hover img {
 	opacity:0.4;
 }
-
-// .team .caption h2 {
-// 	margin-bottom:0px;
-// 	margin-top:15px;
-// }

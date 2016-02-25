@@ -25,11 +25,14 @@ footer {
 /************ SECTIONS **************/
 .wow-section {
   padding: 90px 0;
-  h1{
+  h1 {
     margin-bottom: floor(@line-height-base);
   }
-  img {
-    display: inline-block;
+  .wow-section-title {
+    &:extend(.text-center);
+    img {
+      display: inline-block;
+    }
   }
   &-default {
     background-color: #fff;

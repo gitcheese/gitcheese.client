@@ -1,7 +1,14 @@
-﻿"use strict";
+'use strict';
 
 angular.module('gitcheese.app.security')
-    .config(function ($routeProvider) {
+    .config(function($routeProvider) {
         $routeProvider
-            .when('/oauthaccountcreated', { templateUrl: 'modules/security/oauth-account-created.html', allowAnonymous: true });
+            .when('/login', {
+                templateUrl: 'modules/security/login.html',
+                allowAnonymous: true
+            })
+            .when('/oauthaccountcreated', {
+                templateUrl: 'modules/security/oauth-account-created.html',
+                allowAnonymous: true
+            });
     });

@@ -11,7 +11,7 @@ angular.module('gitcheese.app.security')
                 if (securityService.hasAccessToken()) {
                     return;
                 } else {
-                    $location.path('/');
+                    $location.path('/login');
                 }
             });
         };

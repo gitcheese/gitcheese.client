@@ -5,7 +5,6 @@ angular.module('gitcheese.app')
         $routeProvider
             .when('/', {
                 templateUrl: 'home.html',
-                allowAnonymous: true
             })
             .otherwise({
                 redirectTo: '/'

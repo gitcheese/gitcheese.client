@@ -14,10 +14,11 @@ angular.module('gitcheese.app.layout')
 	});
 
 angular.module('gitcheese.app.layout')
-	.controller('gcNavigationBarController', function (securityService) {
+	.controller('gcNavigationBarController', function (securityService, $location, $window) {
 	    var vm = this;
 
 	    vm.logout = function () {
 	        securityService.removeToken();
+					$window.location.href = $window.location.origin;
 	    };
 	});

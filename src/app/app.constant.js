@@ -4,7 +4,7 @@ angular.module('gitcheese.app')
     .constant('appConstants', {
     	addressPostfix: {
     	    'localhost': '',
-    	    'www.gitcheese.com': ''
+    	    'www.gitcheese.com': '/app'
     	}
     })
 	.constant('apiConstants', {

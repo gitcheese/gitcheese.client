@@ -1,28 +1,30 @@
 <nav class="navbar navbar-default text-uppercase">
-    <div class="container">
-        <div class="navbar-header page-scroll">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-menu">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="#/">GitCheese</a>
-        </div>
-        <div id="navbar-menu" class="collapse navbar-collapse">
-            <div>
-                <ul class="nav navbar-nav navbar-right">
-                    <li gc-profile-show class="dropdown">
-                        <a ng-click="" class="dropdown-toggle profile-avatar" data-toggle="dropdown">
+  <div class="container">
+    <div class="navbar-header page-scroll">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-menu">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">
+        <img class="main-logo img-responsive" src="images/git-cheese-logo-navbar.svg" alt="">
+      </a>
+    </div>
+    <div id="navbar-menu" class="collapse navbar-collapse">
+      <div>
+        <ul class="nav navbar-nav navbar-right">
+          <li gc-profile-show class="dropdown">
+            <a ng-click="" class="dropdown-toggle profile-avatar" data-toggle="dropdown">
                             {{context.profile.nickname}} <gc-profile-avatar size="s" profile-id="{{context.profile.id}}"></gc-profile-avatar> <b class="caret"></b>
                         </a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#/profiles/{{context.profile.id}}/details">Profile</a></li>
-                            <li><a href="#/" ng-click="vm.logout()">Logout</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-        </div>
+            <ul class="dropdown-menu">
+              <li><a href="#/profiles/{{context.profile.id}}/details">Profile</a></li>
+              <li><a href="#/" ng-click="vm.logout()">Logout</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
     </div>
+  </div>
 </nav>

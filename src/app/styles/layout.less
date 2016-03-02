@@ -7,24 +7,20 @@ body {
   overflow-x: hidden;
 }
 footer {
-  width: 100%;
-  position: absolute;
+  position: fixed;
   bottom: 0;
-  background-color: @navbar-default-bg;
-  color: @btn-default-color;
-  padding: 35px 0 25px;
+  width: 100%;
 }
-
 /************ LOADING BAR **************/
 #loading-bar .bar {
   top: @navbar-height;
-  background: @brand-success;
+  background: @brand-info;
   height: 4px;
 }
 #loading-bar-spinner {
   top: @navbar-height + 10px;
 }
 #loading-bar-spinner .spinner-icon {
-  border-top-color: @brand-success;
-  border-left-color: @brand-success;
+  border-top-color: @brand-info;
+  border-left-color: @brand-info;
 }

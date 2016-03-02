@@ -24,7 +24,7 @@ Thumbs.db
 ~$*
 *.orig
 
-#ignore folders build by Visual Studio 
+#ignore folders build by Visual Studio
 obj
 bin
 packages
@@ -49,3 +49,5 @@ src/App/styles/*.css
 src/App/styles/*.map
 src/coverage/
 /src/App/fonts
+/src/.ftppass
+/src/.grunt/

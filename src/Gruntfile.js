@@ -266,6 +266,18 @@ module.exports = function(grunt) {
                 files: ['<%= appConfig.app %>/styles/{,*/}*.less'],
                 tasks: ['less:dev', 'copy:styles', 'autoprefixer']
             }
+        },
+        ftpush: {
+            build: {
+                auth: {
+                    host: 'waws-prod-bay-045.ftp.azurewebsites.windows.net',
+                    port: 21,
+                    authKey: 'gitcheese'
+                },
+                src: '<%= appConfig.dist %>',
+                dest: '/site/wwwroot/app',
+                simple: false
+            }
         }
     });
 
@@ -285,15 +297,6 @@ module.exports = function(grunt) {
         ]);
     });
 
-    grunt.registerTask('dev', [
-        'clean:dev',
-        'wiredep',
-        'less:dev',
-        'concurrent:dev',
-        'autoprefixer:dev',
-        'watch'
-    ]);
-
     grunt.registerTask('build', [
         'less:dist',
         'clean:dist',
@@ -310,5 +313,9 @@ module.exports = function(grunt) {
         'filerev',
         'usemin',
         'htmlmin'
+    ]);
+
+    grunt.registerTask('deploy', [
+        'ftpush'
     ]);
 };

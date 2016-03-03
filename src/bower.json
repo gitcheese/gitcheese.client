@@ -19,7 +19,7 @@
     "fontawesome": "4.4.0",
     "hello": "1.9.8",
     "json3": "^3.3.2",
-    "restangular": "1.5.1",
+    "restangular": "1.5.2",
     "ng-hello": "*",
     "angular-promise-buttons": "~0.1.10",
     "angular-stripe": "~4.2.8",

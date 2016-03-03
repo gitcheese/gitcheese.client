@@ -318,4 +318,9 @@ module.exports = function(grunt) {
     grunt.registerTask('deploy', [
         'ftpush'
     ]);
+
+    grunt.registerTask('build-and-deploy', [
+        'build',
+        'ftpush'
+    ]);
 };

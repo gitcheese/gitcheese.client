@@ -1,24 +1,24 @@
 <div class="table-responsive">
   <table class="table table-hover">
-  <caption>{{vm.caption}}</caption>
-  <thead>
+    <caption>{{vm.caption}}</caption>
+    <thead>
       <tr>
         <th>Name</th>
         <th></th>
       </tr>
-  </thead>
-  <tbody>
-    <tr ng-repeat="project in vm.projects">
-      <td>{{project.name}}</td>
-      <td><a class="btn btn-primary pull-right" ng-href="#/projects/{{project.id}}/details">Details</a></td>
-    </tr>
-  </tbody>
-  <tfoot>
-    <tr>
-      <td class="text-right" colspan="2">
-        <button class="btn btn-info" role="button" promise-btn="vm.refetchPromise" ng-click="vm.refetch()">Refresh</button>
-      </td>
-    </tr>
-  </tfoot>
+    </thead>
+    <tbody>
+      <tr ng-repeat="project in vm.projects">
+        <td>{{project.name}}</td>
+        <td><a class="btn btn-primary pull-right" ng-href="#/projects/{{project.id}}/details">Details</a></td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td class="text-right" colspan="2">
+          <button class="btn btn-info" role="button" promise-btn="vm.refetchPromise" ng-click="vm.refetch()">Refresh</button>
+        </td>
+      </tr>
+    </tfoot>
   </table>
 </div>

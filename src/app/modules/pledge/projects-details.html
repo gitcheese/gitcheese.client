@@ -1,22 +1,29 @@
 <div gc-route-params>
-    <div class="page-header">
-        <h1>
+  <div class="page-header">
+    <h1>
             <gc-project-github-link project-id="{{routeParams.id}}"></gc-project-github-link>
         </h1>
+  </div>
+  <div class="col-lg-6">
+    <gc-project-summary project-id="{{routeParams.id}}"></gc-project-summary>
+    <gc-project-pledges-list caption="Pledges" project-id="{{routeParams.id}}"></gc-project-pledges-list>
+  </div>
+  <div class="col-lg-6">
+    <div class="form-group">
+      <label>Badge Markups</label>
+      <gc-project-badge-markups project-id="{{routeParams.id}}"></gc-project-badge-markups>
+      <p class="callout callout-info">Put this markup at the top of Your project Readme.md file</code>
+      </p>
+      <p class="callout callout-info"> We recommend putting it next to the title: <code># BADGE_HERE Repository Title</code>
+      </p>
+      <p class="callout callout-info"> You can use different sizes: <code>xs</code>, <code>s</code>, <code>md</code> and <code>lg</code> by adding size query string:<code>...e-0ac7e9d0de2c/badges?<strong>size=xs</strong>)]...</code>
+      </p>
     </div>
-    <div class="col-lg-6">
-        <gc-project-summary project-id="{{routeParams.id}}"></gc-project-summary>
-        <gc-project-pledges-list caption="Pledges" project-id="{{routeParams.id}}"></gc-project-pledges-list>
+    <div class="form-group">
+      <label>Preview</label>
+      <p>
+        <gc-project-badge project-id="{{routeParams.id}}"></gc-project-badge>
+      </p>
     </div>
-    <div class="col-lg-6">
-        <div class="form-group">
-            <label>Badge Markups</label>
-            <gc-project-badge-markups project-id="{{routeParams.id}}"></gc-project-badge-markups>
-            <p class="callout callout-info">Put this markup at the top of Your project Readme.md file.</p>
-        </div>
-        <div class="form-group">
-            <label>Preview</label>
-            <p><gc-project-badge project-id="{{routeParams.id}}"></gc-project-badge></p>
-        </div>
-    </div>
+  </div>
 </div>

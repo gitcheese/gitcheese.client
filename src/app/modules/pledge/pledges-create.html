@@ -1,15 +1,14 @@
+<div class="pledge-bg"></div>
 <div gc-route-params class="text-center">
-    <div class="page-header">
-        <h1>Pledge <gc-project-github-link project-id="{{routeParams.id}}"></gc-project-github-link> project!</h1>
+    <div class="pledge-container well transparent">
+        <div class="pledge-badge">
+            <img alt="GitCheese" src="images/git-cheese-badge.18009802.svg">
+        </div>
+        <p>Pledge <gc-project-github-link project-id="{{routeParams.id}}"></gc-project-github-link> project!</p>
+        <div class="row">
+            <gc-pledge-payment project-id="{{routeParams.id}}"></gc-pledge-payment>
+        </div>
     </div>
-    <div class="row">
-        <gc-pledge-payment project-id="{{routeParams.id}}"></gc-pledge-payment>
-    </div>
-    <div class="row">
-        <a href="http://www.stripe.com" target="blank"><img src="images/outline.png" /></a>
-    </div>
-    <h2>
-        Top Pledgers:
-    </h2>
-    <gc-project-top-pledgers project-id="{{routeParams.id}}"></gc-project-top-pledgers>
+    <!--h2>Top Pledgers:</h2>
+    <gc-project-top-pledgers project-id="{{routeParams.id}}"></gc-project-top-pledgers-->
 </div>

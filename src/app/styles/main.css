@@ -8835,6 +8835,12 @@ footer {
   -webkit-filter: grayscale(100%) contrast(0);
   filter: grayscale(100%) contrast(0);
 }
+.transparent {
+  background-color: rgba(236, 240, 241, 0.25);
+}
+.no-margin {
+  margin: 0;
+}
 .login-bg {
   background: url('/images/home-bg.jpg');
   position: absolute;
@@ -8842,10 +8848,10 @@ footer {
   height: 100%;
   top: 0;
   left: 0;
+  z-index: -1;
 }
 .login-container {
   position: relative;
-  background-color: rgba(236, 240, 241, 0.64);
   top: 100px;
 }
 .login-container .login-badge {
@@ -8855,6 +8861,25 @@ footer {
 }
 .login-container .login-badge img {
   height: 180px;
+}
+.pledge-bg {
+  background: url('/images/home-bg.jpg');
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+.pledge-container {
+  margin: 0;
+  max-width: 450px;
+}
+.pledge-container .pledge-badge {
+  position: relative;
+}
+.pledge-container .pledge-badge img {
+  height: 150px;
 }
 /************ LOADING BAR **************/
 #loading-bar .bar {

@@ -1,16 +1,13 @@
 <div>
     <form ng-hide="vm.token" name="pledgeForm" novalidate ng-submit="pledgeForm.$valid && vm.initiate()">
-        <div class="row">
+        <div class="container-fluid">
             <div class="form-group row">
-                <div class="col-md-3">
-                    <button type="button" ng-click="vm.amount = 100" class="btn btn-lg btn-block btn-default">$1</button>
-                </div>
-                <div class="col-md-6">
+                <div class="col-md-12">
                     <div class="form-group">
                         <label class="sr-only">Card Number</label>
-                        <div class="input-group input-group-lg">
-                            <input placeholder="Card Number" class="form-control" type="text" ng-model="vm.card.number" name="card_number" cc-format cc-number cc-eager-type />
+                        <div class="input-group input-group-md">
                             <span class="input-group-addon"><i class="fa {{vm.ccTypeToClass[pledgeForm.card_number.$ccEagerType] || 'fa-credit-card'}}"></i></span>
+                            <input placeholder="Card Number" class="form-control" type="text" ng-model="vm.card.number" name="card_number" cc-format cc-number cc-eager-type />
                         </div>
                         <div ng-if="pledgeForm.card_number.$touched || pledgeForm.$submitted">
                             <div class="text-danger" ng-show="pledgeForm.card_number.$error.required">Number is required.</div>
@@ -18,19 +15,28 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-3">
-                    <button type="button" ng-click="vm.amount = 1000" class="btn btn-lg btn-block btn-default">$10</button>
+            </div>
+            <div class="form-group row">
+                <div class="col-md-12">
+                    <label class="sr-only">Cardholder Name</label>
+                    <div class="input-group input-group-md">
+                        <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                        <input placeholder="Cardholder Name" class="form-control input-md" type="text" ng-model="vm.card.name" name="card_name" required />
+                    </div>
+                    <div ng-if="pledgeForm.card_name.$touched || pledgeForm.$submitted">
+                        <div class="text-danger" ng-show="pledgeForm.card_name.$error.required">Cardholder Name is required.</div>
+                    </div>
                 </div>
             </div>
             <div class="form-group row">
-                <div class="col-md-3">
-                    <button type="button" ng-click="vm.amount = 200" class="btn btn-lg btn-block btn-default">$2</button>
-                </div>
-                <div class="col-md-6">
+                <div class="col-md-12">
                     <div class="form-group row">
                         <div class="col-md-4">
                             <label class="sr-only">CVC</label>
-                            <input class="form-control input-lg" placeholder="CVC" type="text" size="4" ng-model="vm.card.cvc" name="card_cvc" cc-cvc />
+                            <div class="input-group input-group-md">
+                                <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+                                <input class="form-control input-md" placeholder="CVC" type="text" size="4" ng-model="vm.card.cvc" name="card_cvc" cc-cvc />
+                            </div>
                             <div ng-if="pledgeForm.card_cvc.$touched || pledgeForm.$submitted">
                                 <div class="text-danger" ng-show="pledgeForm.card_cvc.$error.required">CVC is required.</div>
                                 <div class="text-danger" ng-show="pledgeForm.card_cvc.$error.ccCvc">Cvc is invalid.</div>
@@ -39,7 +45,7 @@
                         <div>
                             <div class="col-md-4">
                                 <label class="sr-only">Expiration Month</label>
-                                <input class="form-control input-lg" placeholder="MM" ng-model="vm.card.expMonth" name="card_expMonth" cc-exp-month />
+                                <input class="form-control input-md" placeholder="MM" ng-model="vm.card.expMonth" name="card_expMonth" cc-exp-month />
                                 <div ng-if="pledgeForm.card_expMonth.$touched || pledgeForm.$submitted">
                                     <div class="text-danger" ng-show="pledgeForm.card_expMonth.$error.required">Expiration Month is required.</div>
                                     <div class="text-danger" ng-show="pledgeForm.card_expMonth.$error.ccExpMonth">Expiration Month is invalid.</div>
@@ -47,7 +53,7 @@
                             </div>
                             <div class="col-md-4">
                                 <label class="sr-only">Expiration Year</label>
-                                <input class="form-control input-lg" placeholder="YY" ng-model="vm.card.expYear" name="card_expYear" cc-exp-year />
+                                <input class="form-control input-md" placeholder="YY" ng-model="vm.card.expYear" name="card_expYear" cc-exp-year />
                                 <div ng-if="pledgeForm.card_expYear.$touched || pledgeForm.$submitted">
                                     <div class="text-danger" ng-show="pledgeForm.card_expYear.$error.required">Expiration Year is required.</div>
                                     <div class="text-danger" ng-show="pledgeForm.card_expYear.$error.ccExpYear">Expiration Year is invalid.</div>
@@ -56,32 +62,14 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-3">
-                    <button type="button" ng-click="vm.amount = 2000" class="btn btn-lg btn-block btn-default">$20</button>
-                </div>
             </div>
             <div class="form-group row">
-                <div class="col-md-3">
-                    <button type="button" ng-click="vm.amount = 500" class="btn btn-lg btn-block btn-default">$5</button>
-                </div>
-                <div class="col-md-6">
-                    <label class="sr-only">Cardholder Name</label>
-                    <input placeholder="Cardholder Name" class="form-control input-lg" type="text" ng-model="vm.card.name" name="card_name" required />
-                    <div ng-if="pledgeForm.card_name.$touched || pledgeForm.$submitted">
-                        <div class="text-danger" ng-show="pledgeForm.card_name.$error.required">Cardholder Name is required.</div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <button type="button" ng-click="vm.amount = 5000" class="btn btn-lg btn-block btn-default">$50</button>
-                </div>
-            </div>
-            <div class="form-group row">
-                <div class="col-md-6 col-md-offset-3">
+                <div class="col-md-12">
                     <div class="input-group">
                         <span class="input-group-addon">$</span>
-                        <input type="number" id="amount" max="5000" min="100" name="amount" cents-to-dollars ng-model="vm.amount" class="form-control input-lg">
+                        <input type="number" id="amount" max="5000" min="100" name="amount" cents-to-dollars ng-model="vm.amount" class="form-control input-md">
                         <span class="input-group-btn">
-                            <button class="btn btn-lg btn-success" promise-btn="vm.initiatePromise"  type="submit">Pledge</button>
+                            <button class="btn btn-md btn-success" promise-btn="vm.initiatePromise"  type="submit">Pledge</button>
                         </span>
                     </div>
                     <div ng-if="pledgeForm.amount.$touched || pledgeForm.$submitted">
@@ -90,6 +78,9 @@
                         <div class="text-danger" ng-show="pledgeForm.amount.$error.max">$50 is a maximum amount.</div>
                     </div>
                 </div>
+            </div>
+            <div class="row">
+                <a href="http://www.stripe.com" target="blank"><img src="images/outline.png" /></a>
             </div>
         </div>
     </form>

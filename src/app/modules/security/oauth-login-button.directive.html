@@ -1,6 +1,6 @@
 <div>
-    <button ng-click="vm.login()" promise-btn="vm.submitPromise" class="btn {{vm.btnClass}} btn-{{vm.size}}">
-        <i class="fa fa-{{vm.iconSizes[vm.size]}}x fa-{{vm.provider}}"></i><br />
-        <div ng-if="vm.text" class="col-xs-12">{{vm.text}}</div>
-    </button>
+<button ng-click="vm.login()" promise-btn="vm.submitPromise" class="btn btn-block {{vm.btnClass}}">
+    <!--i class="fa fa-{{vm.iconSizes[vm.size]}}x fa-{{vm.provider}}"></i-->
+    <span ng-if="vm.text">{{vm.text}}</span>
+</button>
 </div>

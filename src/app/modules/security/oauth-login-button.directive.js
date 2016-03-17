@@ -22,7 +22,7 @@ angular.module('gitcheese.app.security')
 	        'm': 3,
 	        'sm': 2,
 	        'xs': 1
-	    }
+	    };
 	    vm.btnClass = vm.btnClass || "btn-primary";
 
 	    var waitForAvatar = function () {
@@ -37,11 +37,11 @@ angular.module('gitcheese.app.security')
 	                        $timeout(tryToGetAvatar, 400);
 	                    }
 	                });
-	        }
+	        };
 
 	        tryToGetAvatar();
 	        return deffered.promise;
-	    }
+	    };
 	    var updateAvatar = function () {
 	        return Restangular.one('profiles', securityService.getToken().membershipId).one('avatars').customPOST();
 	    };
@@ -75,14 +75,14 @@ angular.module('gitcheese.app.security')
 	            }, function () {
 	                $timeout(tryToLogin, 400);
 	            });
-	        }
+	        };
 	        tryToLogin();
 
 	        return deffered.promise;
 	    };
 	    var register = function () {
 	        return Restangular.several('memberships', vm.provider).post({ token: vm.token });
-	    }
+	    };
 	    var checkIfMembershipExists = function (helloResponse) {
 	        vm.token = helloResponse.authResponse.access_token;
 	        var loginData = $.param({
@@ -92,7 +92,7 @@ angular.module('gitcheese.app.security')
 	        });
 
 	        return Restangular.service('auth/tokens').post(loginData);
-	    }
+	    };
 
 	    vm.login = function () {
 	        hello(vm.provider)

@@ -1,20 +1,23 @@
-<div class="login-bg"></div>
+<!--div class="login-bg"></div>
 <div class="well center-block login-container transparent" style="max-width:400px">
     <div class="login-badge">
-        <img alt="GitCheese" src="images/git-cheese-badge.18009802.svg">
+        <span class="back-drop img-circle transparent"></span>
+        <img alt="GitCheese" src="images/outline-badge.svg">
     </div>
     <gc-oauth-login-button btn-class="btn-info" provider="github" size="xs" text="LOGIN WITH GITHUB" />
-</div>
-
-
-
-<!--div class="vertical-center">
-  <div class=container>
-    <div class="col-lg-6 col-lg-offset-3 text-center">
-      <div class="login-container">
-        <div class="ui-badge"><img alt="GitCheese" src="images/logo-navbar.svg"></div>
-        <gc-oauth-login-button btn-class="btn-info" provider="github" size="xs" text="login with github" />
-      </div>
-    </div>
-  </div>
 </div-->
+
+<div gc-route-params class="text-center relative t100">
+    <div class="pledge-bg hidden-xs"></div>
+    <div class="pledge-container well transparent">
+        <div class="pledge-badge">
+            <img alt="GitCheese" src="images/outline-badge.svg">
+        </div>
+        <p>Pledge <gc-project-github-link project-id="{{routeParams.id}}"></gc-project-github-link> project!</p>
+        <div class="row">
+            <gc-pledge-payment project-id="{{routeParams.id}}"></gc-pledge-payment>
+        </div>
+    </div>
+    <!--h2>Top Pledgers:</h2>
+    <gc-project-top-pledgers project-id="{{routeParams.id}}"></gc-project-top-pledgers-->
+</div>

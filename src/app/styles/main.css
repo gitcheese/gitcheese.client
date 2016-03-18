@@ -8838,11 +8838,22 @@ footer {
 .transparent {
   background-color: rgba(236, 240, 241, 0.25);
 }
+.relative {
+  position: relative;
+}
+.t100 {
+  top: 100px;
+}
 .no-margin {
   margin: 0;
 }
+@media (max-width: 768px) {
+  .t100 {
+    top: 10px;
+  }
+}
 .login-bg {
-  background: url('/images/home-bg.jpg');
+  background: url('/images/login-bg.jpg');
   position: absolute;
   width: 100%;
   height: 100%;
@@ -8859,16 +8870,18 @@ footer {
   text-align: center;
   top: -60px;
 }
-.login-container .login-badge img {
-  height: 180px;
+.login-container .login-badge .back-drop {
+  width: 146px;
+  height: 150px;
+  position: absolute;
+  z-index: -1;
 }
 .pledge-bg {
-  background: url('/images/home-bg.jpg');
-  position: absolute;
+  background: url('/images/comp-slot.png') no-repeat;
+  background-position: top right;
   width: 100%;
   height: 100%;
-  top: 0;
-  left: 0;
+  position: absolute;
   z-index: -1;
 }
 .pledge-container {
@@ -8877,9 +8890,6 @@ footer {
 }
 .pledge-container .pledge-badge {
   position: relative;
-}
-.pledge-container .pledge-badge img {
-  height: 150px;
 }
 /************ LOADING BAR **************/
 #loading-bar .bar {

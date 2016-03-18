@@ -47,7 +47,11 @@ src/bower_components
 src/App/styles/main.css
 src/App/styles/*.css
 src/App/styles/*.map
+src/app/styles/main.css
+src/app/styles/*.css
+src/app/styles/*.map
 src/coverage/
 /src/App/fonts
+/src/app/fonts
 /src/.ftppass
 /src/.grunt/

@@ -32,6 +32,10 @@ footer {
     border-color: @btn-success-bg;
     color: @btn-success-bg;
   }
+  &.btn-info {
+    border-color: @btn-info-bg;
+    color: @btn-info-bg;
+  }
 }
 .btn-primary.btn-ghost:hover,
 .btn-primary.btn-ghost:focus {
@@ -42,6 +46,12 @@ footer {
 .btn-success.btn-ghost:hover,
 .btn-success.btn-ghost:focus {
   background-color: @btn-success-bg;
+  color: #fff;
+  outline: none;
+}
+.btn-info.btn-ghost:hover,
+.btn-info.btn-ghost:focus {
+  background-color: @btn-info-bg;
   color: #fff;
   outline: none;
 }
@@ -171,23 +181,11 @@ footer {
 .img-gray {
   filter:grayscale(100%) contrast(0);
 }
-
-.transparent {
-  background-color: rgba(236, 240, 241, 0.25);
+.well-transparent {
+  background-color: @transparent;
 }
-
-.relative{
-  position: relative;
+.well > .well-badge {
+  text-align: center;
+  margin-top: @line-height-computed;
+  margin-bottom: @line-height-computed;
 }
-
-.t100{
-  top: 100px;
-}
-
-.no-margin { margin: 0; }
-
-@media (max-width:768px){
-  .t100{ top: 10px; }
-}
-
-

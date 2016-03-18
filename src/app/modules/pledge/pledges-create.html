@@ -1,7 +1,7 @@
-<div gc-route-params class="text-center relative t100">
-    <div class="pledge-bg hidden-xs"></div>
-    <div class="pledge-container well transparent">
-        <div class="pledge-badge">
+<div gc-route-params>
+    <div id="pledge-hero" class="hero-bg hidden-xs hidden-s hidden-md"></div>
+    <div class="col-md-offset-3 col-md-6 well well-transparent text-center">
+        <div class="well-badge">
             <img alt="GitCheese" src="images/outline-badge.svg">
         </div>
         <p>Pledge <gc-project-github-link project-id="{{routeParams.id}}"></gc-project-github-link> project!</p>
@@ -9,6 +9,4 @@
             <gc-pledge-payment project-id="{{routeParams.id}}"></gc-pledge-payment>
         </div>
     </div>
-    <!--h2>Top Pledgers:</h2>
-    <gc-project-top-pledgers project-id="{{routeParams.id}}"></gc-project-top-pledgers-->
 </div>

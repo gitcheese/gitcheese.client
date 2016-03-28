@@ -1,0 +1,83 @@
+<div class="col-md-12">
+    <form name="verificationForm" novalidate ng-submit="verificationForm.$valid && vm.verify()">
+        <div class="container-fluid">
+            <div class="form-group row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label class="sr-only">First Name</label>
+                        <div class="input-group input-group-md">
+                            <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                            <input placeholder="First Name" class="form-control" type="text" ng-model="vm.managedAcct.firstName" name="first_name" required />
+                        </div>
+                        <div ng-if="verificationForm.first_name.$touched || verificationForm.$submitted">
+                            <div class="text-danger" ng-show="verificationForm.first_name.$error.required">First Name is required.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label class="sr-only">Last Name</label>
+                        <div class="input-group input-group-md">
+                            <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                            <input placeholder="Last Name" class="form-control" type="text" ng-model="vm.managedAcct.lastName" name="last_name" required />
+                        </div>
+                        <div ng-if="verificationForm.last_name.$touched || verificationForm.$submitted">
+                            <div class="text-danger" ng-show="verificationForm.last_name.$error.required">Last Name is required.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-md-8">
+                    <div class="form-group">
+                        <label class="sr-only">Date of Birth</label>
+                        <div class="input-group input-group-md">
+                            <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                            <input class="form-control" type="date" ng-model="vm.managedAcct.dateOfBirth" name="birth_date" required />
+                        </div>
+                        <div ng-if="verificationForm.birth_date.$touched || verificationForm.$submitted">
+                            <div class="text-danger" ng-show="verificationForm.birth_date.$error.required">Birth date is required.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label class="sr-only">Account Number</label>
+                        <div class="input-group input-group-md">
+                            <span class="input-group-addon"><i class="fa fa-university"></i></span>
+                            <input placeholder="Account Number" class="form-control" type="text" ng-model="vm.managedAcct.bankAccountNumber" name="account_number" required />
+                        </div>
+                        <div ng-if="verificationForm.account_number.$touched || verificationForm.$submitted">
+                            <div class="text-danger" ng-show="verificationForm.account_number.$error.required">Account number is required.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label class="sr-only">Routing Number</label>
+                        <div class="input-group input-group-md">
+                            <span class="input-group-addon"><i class="fa fa-university"></i></span>
+                            <input placeholder="Routing Number" class="form-control" type="text" ng-model="vm.managedAcct.bankAccountRoutingNumber" name="routing_number" required />
+                        </div>
+                        <div ng-if="verificationForm.routing_number.$touched || verificationForm.$submitted">
+                            <div class="text-danger" ng-show="verificationForm.routing_number.$error.required">Routing number is required.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-md-12">
+                    <span class="input-group-btn">
+                        <button id="verificationBtn" class="btn btn-md btn-success" type="submit">Verify</button>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

@@ -25,7 +25,8 @@ angular.module('gitcheese.app.pledge')
             "Diners Club": "fa-cc-diners-club",
             "Discover": "fa-cc-discover",
             "JCB": "fa-cc-jvb"
-        }
+        };
+
         vm.initiate = function () {
             vm.initiatePromise = stripe.card.createToken(angular.copy(vm.card))
               .then(function (response) {
@@ -37,16 +38,18 @@ angular.module('gitcheese.app.pledge')
         };
 
         vm.pledge = function () {
-            vm.pledgePromise = Restangular.one('projects', vm.projectId).post('stripepledges', { token: vm.token, amount: vm.amount })
+            vm.pledgePromise = Restangular
+                .one('projects', vm.projectId)
+                .post('stripepledges', { token: vm.token, amount: vm.amount })
                 .then(function (pledgeId) {
                     $location.path('/projects/' + vm.projectId + '/pledges/' + pledgeId + '/confirmed');
                 })
                 .catch(function () {
                     notify({ message: 'Unknown error :(', classes: 'alert alert-danger' });
                 });
-        }
+        };
 
         vm.change = function () {
             vm.token = null;
-        }
+        };
     });

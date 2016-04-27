@@ -18,13 +18,14 @@ angular.module('gitcheese.app.pledge')
 angular.module('gitcheese.app.pledge')
     .controller('gcVerificationRequiredController', function(Restangular, notify, contextService) {
         var vm = this;
+        vm.hide = true;
         //GET /v1/managedaccounts/{id}/verifications/pending
         Restangular.one('managedaccounts', contextService.profile.id).one('verifications').one('pending').get()
             .then(function(pendingVerification) {
                 if(pendingVerification !== undefined) 
-                {
-                    var url = '/#/profiles/' + contextService.profile.id + '/verifyaccount'
-                    notify({'messageTemplate' : '<a href="' + url + '" target="_blank">Please click here to verify your account.</a>'});
+                { 
+                    vm.hide = false;
+                    vm.url = '/#/profiles/' + contextService.profile.id + '/verifyaccount'; 
                 }
             });
     });

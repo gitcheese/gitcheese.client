@@ -10,22 +10,26 @@ angular.module('gitcheese.app.pledge')
             bindToController: true,
             controller: 'gcVerificationRequiredController',
             scope: {
-                caption: '@'
+                caption: '@',
+                profileId: '@'
             }
         };
     });
 
 angular.module('gitcheese.app.pledge')
-    .controller('gcVerificationRequiredController', function(Restangular, notify, contextService) {
+    .controller('gcVerificationRequiredController', function(Restangular, notify, $scope) {
         var vm = this;
-        vm.hide = true;
+        vm.show = false;
         //GET /v1/managedaccounts/{id}/verifications/pending
-        Restangular.one('managedaccounts', contextService.profile.id).one('verifications').one('pending').get()
-            .then(function(pendingVerification) {
-                if(pendingVerification !== undefined) 
-                { 
-                    vm.hide = false;
-                    vm.url = '/#/profiles/' + contextService.profile.id + '/verifyaccount'; 
-                }
+        $scope.$watch('vm.profileId', function (profileId) {
+            if(profileId == undefined) { return ;}
+            Restangular.one('managedaccounts', profileId).one('verifications').one('pending').get()
+                .then(function(pendingVerification) {
+                    if(pendingVerification !== undefined) 
+                    { 
+                        vm.show = true;
+                        vm.url = '/#/profiles/' + profileId + '/verifyaccount'; 
+                    }
+                });
             });
     });

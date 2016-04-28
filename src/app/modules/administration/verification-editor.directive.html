@@ -1,83 +1,85 @@
-<div class="col-md-12">
-    <form name="verificationForm" novalidate ng-submit="verificationForm.$valid && vm.verify()">
-        <div class="container-fluid">
-            <div class="form-group row">
-                <div class="col-md-12">
-                    <div class="form-group">
-                        <label class="sr-only">First Name</label>
-                        <div class="input-group input-group-md">
-                            <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                            <input placeholder="First Name" class="form-control" type="text" ng-model="vm.managedAcct.firstName" name="first_name" required />
-                        </div>
-                        <div ng-if="verificationForm.first_name.$touched || verificationForm.$submitted">
-                            <div class="text-danger" ng-show="verificationForm.first_name.$error.required">First Name is required.</div>
-                        </div>
-                    </div>
+<form name="verificationForm" novalidate ng-submit="!vm.verified && verificationForm.$valid && vm.verify()">
+    <div class="col-md-12">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="sr-only">First Name</label>
+                <div class="input-group input-group-md">
+                    <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                    <input placeholder="First Name" class="form-control" type="text" ng-model="vm.managedAcct.firstName" name="first_name" required />
+                </div>
+                <div ng-if="verificationForm.first_name.$touched || verificationForm.$submitted">
+                    <div class="text-danger" ng-show="verificationForm.first_name.$error.required">First Name is required.</div>
                 </div>
             </div>
-            <div class="form-group row">
-                <div class="col-md-12">
-                    <div class="form-group">
-                        <label class="sr-only">Last Name</label>
-                        <div class="input-group input-group-md">
-                            <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                            <input placeholder="Last Name" class="form-control" type="text" ng-model="vm.managedAcct.lastName" name="last_name" required />
-                        </div>
-                        <div ng-if="verificationForm.last_name.$touched || verificationForm.$submitted">
-                            <div class="text-danger" ng-show="verificationForm.last_name.$error.required">Last Name is required.</div>
-                        </div>
-                    </div>
+            <div class="form-group">
+                <label class="sr-only">Last Name</label>
+                <div class="input-group input-group-md">
+                    <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                    <input placeholder="Last Name" class="form-control" type="text" ng-model="vm.managedAcct.lastName" name="last_name" required />
+                </div>
+                <div ng-if="verificationForm.last_name.$touched || verificationForm.$submitted">
+                    <div class="text-danger" ng-show="verificationForm.last_name.$error.required">Last Name is required.</div>
                 </div>
             </div>
-            <div class="form-group row">
-                <div class="col-md-8">
-                    <div class="form-group">
-                        <label class="sr-only">Date of Birth</label>
-                        <div class="input-group input-group-md">
-                            <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                            <input class="form-control" type="date" ng-model="vm.managedAcct.dateOfBirth" name="birth_date" required />
-                        </div>
-                        <div ng-if="verificationForm.birth_date.$touched || verificationForm.$submitted">
-                            <div class="text-danger" ng-show="verificationForm.birth_date.$error.required">Birth date is required.</div>
-                        </div>
-                    </div>
+            <div class="form-group">
+                <label class="sr-only">Date of Birth</label>
+                <div class="input-group input-group-md">
+                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                    <input class="form-control" type="date" ng-model="vm.managedAcct.dateOfBirth" name="birth_date" required />
                 </div>
-            </div>
-            <div class="form-group row">
-                <div class="col-md-12">
-                    <div class="form-group">
-                        <label class="sr-only">Account Number</label>
-                        <div class="input-group input-group-md">
-                            <span class="input-group-addon"><i class="fa fa-university"></i></span>
-                            <input placeholder="Account Number" class="form-control" type="text" ng-model="vm.managedAcct.bankAccountNumber" name="account_number" required />
-                        </div>
-                        <div ng-if="verificationForm.account_number.$touched || verificationForm.$submitted">
-                            <div class="text-danger" ng-show="verificationForm.account_number.$error.required">Account number is required.</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="form-group row">
-                <div class="col-md-12">
-                    <div class="form-group">
-                        <label class="sr-only">Routing Number</label>
-                        <div class="input-group input-group-md">
-                            <span class="input-group-addon"><i class="fa fa-university"></i></span>
-                            <input placeholder="Routing Number" class="form-control" type="text" ng-model="vm.managedAcct.bankAccountRoutingNumber" name="routing_number" required />
-                        </div>
-                        <div ng-if="verificationForm.routing_number.$touched || verificationForm.$submitted">
-                            <div class="text-danger" ng-show="verificationForm.routing_number.$error.required">Routing number is required.</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="form-group row">
-                <div class="col-md-12">
-                    <span class="input-group-btn">
-                        <button id="verificationBtn" class="btn btn-md btn-success" type="submit">Verify</button>
-                    </span>
+                <div ng-if="verificationForm.birth_date.$touched || verificationForm.$submitted">
+                    <div class="text-danger" ng-show="verificationForm.birth_date.$error.required">Birth date is required.</div>
                 </div>
             </div>
         </div>
-    </form>
-</div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="sr-only">Account Type</label>
+                <select class="form-control" name="type" ng-model="vm.managedAcct.type" required>
+                    <option value="" selected disabled>Account Type</option>
+                    <option value="individual">Individual</option>
+                    <option value="corporation">Corporation</option>
+                </select>
+                <div ng-if="verificationForm.type.$touched || verificationForm.$submitted">
+                    <div class="text-danger" ng-show="verificationForm.type.$error.required">Account Type is required.</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="sr-only">Account Number</label>
+                <div class="input-group input-group-md">
+                    <span class="input-group-addon"><i class="fa fa-university"></i></span>
+                    <input placeholder="Account Number" class="form-control" type="text" ng-model="vm.managedAcct.bankAccountNumber" name="account_number" ng-pattern="/[0-9]{12}/" required />
+                </div>
+                <div ng-if="verificationForm.account_number.$touched || verificationForm.$submitted">
+                    <div class="text-danger" ng-show="verificationForm.account_number.$error.required">Account number is required.</div>
+                    <div class="text-danger" ng-show="verificationForm.account_number.$error.pattern">Account number has to have 12 digits.</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="sr-only">Routing Number</label>
+                <div class="input-group input-group-md">
+                    <span class="input-group-addon"><i class="fa fa-university"></i></span>
+                    <input placeholder="Routing Number" class="form-control" type="text" ng-model="vm.managedAcct.bankAccountRoutingNumber" ng-pattern="/[0-9]{9}/" name="routing_number" required />
+                </div>
+                <div ng-if="verificationForm.routing_number.$touched || verificationForm.$submitted">
+                    <div class="text-danger" ng-show="verificationForm.routing_number.$error.required">Routing number is required.</div>
+                    <div class="text-danger" ng-show="verificationForm.routing_number.$error.pattern">Routing number has to have 9 digits.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-12">
+        <div class="callout callout-info">
+            <strong>We care about your personal information, thats why Gitcheese will NEVER COLLECT sumbited data required by Stripe. All above information are handed directly to Stripe.</strong>
+        </div>
+        <div class="callout callout-info">
+            <p>
+                Payment processing services on Gitcheese are provided by Stripe and are subject to the Stripe Connected Account Agreement, which includes the Stripe Terms of Service (collectively, the “Stripe Services Agreement”). By agreeing to these terms or continuing
+                to operate as a user on Gitcheese, you agree to be bound by the Stripe Services Agreement, as the same may be modified by Stripe from time to time. As a condition of Gitcheese enabling payment processing services through Stripe, you agree
+                to provide Gitcheese accurate and complete information about you and your business, and you authorize Gitcheese to share it and transaction information related to your use of the payment processing services provided by Stripe.
+            </p>
+        </div>
+    </div>
+    <a href="http://www.stripe.com" target="blank"><img src="images/outline.png" /></a>
+    <button class="btn btn-md btn-primary pull-right" type="submit">Accept And Submit</button>
+</form>

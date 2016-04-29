@@ -17,5 +17,6 @@ angular.module('gitcheese.app', [
         'gitcheese.app.common',
         'gitcheese.app.administration',
         'gitcheese.app.security',
-        'gitcheese.app.pledge'
+        'gitcheese.app.pledge',
+        'gitcheese.app.stripe'
 ]);

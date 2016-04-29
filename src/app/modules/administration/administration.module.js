@@ -1,3 +1,3 @@
-﻿"use strict";
+﻿'use strict';
 
 angular.module('gitcheese.app.administration', []);

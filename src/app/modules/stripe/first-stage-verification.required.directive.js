@@ -1,22 +1,21 @@
 'use strict';
 
-angular.module('gitcheese.app.pledge')
-    .directive('gcVerificationRequired', function() {
+angular.module('gitcheese.app.stripe')
+    .directive('gcFirstStageVerificationRequired', function() {
         return {
             replace: true,
-            templateUrl: 'modules/pledge/verification.required.directive.html',
+            templateUrl: 'modules/stripe/first-stage-verification.required.directive.html',
             controllerAs: 'vm',
             bindToController: true,
-            controller: 'gcVerificationRequiredController',
+            controller: 'gcFirstStageVerificationRequiredController',
             scope: {
-                caption: '@',
                 profileId: '@'
             }
         };
     });
 
-angular.module('gitcheese.app.pledge')
-    .controller('gcVerificationRequiredController', function(Restangular, notify, $scope) {
+angular.module('gitcheese.app.stripe')
+    .controller('gcFirstStageVerificationRequiredController', function(Restangular, notify, $scope) {
         var vm = this;
         vm.show = false;
         $scope.$watch('vm.profileId', function(profileId) {
@@ -25,10 +24,7 @@ angular.module('gitcheese.app.pledge')
             }
             Restangular.one('managedaccounts', profileId).one('verifications').one('pending').get()
                 .then(function(pendingVerification) {
-                    if (pendingVerification !== undefined) {
-                        vm.show = true;
-                        vm.url = '#/profiles/' + profileId + '/verifyaccount';
-                    }
+                    vm.show = pendingVerification !== undefined;
                 });
         });
     });

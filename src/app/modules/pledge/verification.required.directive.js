@@ -27,7 +27,7 @@ angular.module('gitcheese.app.pledge')
                 .then(function(pendingVerification) {
                     if (pendingVerification !== undefined) {
                         vm.show = true;
-                        vm.url = '/#/profiles/' + profileId + '/verifyaccount';
+                        vm.url = '#/profiles/' + profileId + '/verifyaccount';
                     }
                 });
         });

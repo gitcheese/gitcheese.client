@@ -32,32 +32,30 @@
                 <div class="col-md-12">
                     <div class="form-group row">
                         <div class="col-md-4">
+                            <label class="sr-only">Expiration Month</label>
+                            <input class="form-control input-md" placeholder="MM" ng-model="vm.card.expMonth" name="card_expMonth" cc-exp-month />
+                            <div ng-if="pledgeForm.card_expMonth.$touched || pledgeForm.$submitted">
+                                <div class="text-danger" ng-show="pledgeForm.card_expMonth.$error.required">Expiration Month is required.</div>
+                                <div class="text-danger" ng-show="pledgeForm.card_expMonth.$error.ccExpMonth">Expiration Month is invalid.</div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <label class="sr-only">Expiration Year</label>
+                            <input class="form-control input-md" placeholder="YY" ng-model="vm.card.expYear" name="card_expYear" cc-exp-year />
+                            <div ng-if="pledgeForm.card_expYear.$touched || pledgeForm.$submitted">
+                                <div class="text-danger" ng-show="pledgeForm.card_expYear.$error.required">Expiration Year is required.</div>
+                                <div class="text-danger" ng-show="pledgeForm.card_expYear.$error.ccExpYear">Expiration Year is invalid.</div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
                             <label class="sr-only">CVC</label>
                             <div class="input-group input-group-md">
                                 <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-                                <input class="form-control input-md" placeholder="CVC" type="text" size="4" ng-model="vm.card.cvc" name="card_cvc" cc-cvc />
+                                <input class="form-control input-md" placeholder="CVC" type="password" size="4" ng-model="vm.card.cvc" name="card_cvc" cc-cvc />
                             </div>
                             <div ng-if="pledgeForm.card_cvc.$touched || pledgeForm.$submitted">
                                 <div class="text-danger" ng-show="pledgeForm.card_cvc.$error.required">CVC is required.</div>
                                 <div class="text-danger" ng-show="pledgeForm.card_cvc.$error.ccCvc">Cvc is invalid.</div>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="col-md-4">
-                                <label class="sr-only">Expiration Month</label>
-                                <input class="form-control input-md" placeholder="MM" ng-model="vm.card.expMonth" name="card_expMonth" cc-exp-month />
-                                <div ng-if="pledgeForm.card_expMonth.$touched || pledgeForm.$submitted">
-                                    <div class="text-danger" ng-show="pledgeForm.card_expMonth.$error.required">Expiration Month is required.</div>
-                                    <div class="text-danger" ng-show="pledgeForm.card_expMonth.$error.ccExpMonth">Expiration Month is invalid.</div>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <label class="sr-only">Expiration Year</label>
-                                <input class="form-control input-md" placeholder="YY" ng-model="vm.card.expYear" name="card_expYear" cc-exp-year />
-                                <div ng-if="pledgeForm.card_expYear.$touched || pledgeForm.$submitted">
-                                    <div class="text-danger" ng-show="pledgeForm.card_expYear.$error.required">Expiration Year is required.</div>
-                                    <div class="text-danger" ng-show="pledgeForm.card_expYear.$error.ccExpYear">Expiration Year is invalid.</div>
-                                </div>
                             </div>
                         </div>
                     </div>

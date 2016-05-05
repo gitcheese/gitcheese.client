@@ -8,9 +8,10 @@
     </div>
     <div class="form-group">
         <label for="email">Contact e-mail</label>
-        <input id="email" name="email" class="form-control" type="email" ng-model="vm.profile.email" />
+        <input id="email" name="email" class="form-control" type="email" ng-model="vm.profile.email" required/>
         <div ng-if="profileForm.email.$touched || profileForm.$submitted">
             <div class="text-danger" ng-show="profileForm.email.$error.email">Email is invalid.</div>
+            <div class="text-danger" ng-show="profileForm.email.$error.required">Email address is required.</div>
         </div>
     </div>
     <div class="form-group">

@@ -71,6 +71,7 @@ module.exports = function(grunt) {
                     '<%= appConfig.dist %>/scripts/{,*/}*.js',
                     '<%= appConfig.dist %>/styles/{,*/}*.css',
                     '<%= appConfig.dist %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}',
+                    '!<%= appConfig.dist %>/images/{,*/}*.static.{png,jpg,jpeg,gif,webp,svg}',
                     '<%= appConfig.dist %>/styles/fonts/*'
                 ]
             }

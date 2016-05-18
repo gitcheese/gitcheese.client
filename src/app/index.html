@@ -2,142 +2,129 @@
 <html class="no-js">
 
 <head>
-  <meta charset="utf-8">
-  <title>GitCheese</title>
-  <meta name="description" content="">
-  <meta name="viewport" content="width=device-width">
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="Gitcheese">
-  <meta property="og:description" content="Make some CHEESE from Your GIT!">
-  <meta property="og:image" content="http://www.gitcheese.com/og.png">
-  <!-- build:css(.) styles/vendor.css -->
-  <!-- bower:css -->
-  <link rel="stylesheet" href="bower_components/angular-notify/dist/angular-notify.css" />
-  <link rel="stylesheet" href="bower_components/angular-loading-bar/build/loading-bar.css" />
-  <link rel="stylesheet" href="bower_components/animate.css/animate.css" />
-  <!-- endbower -->
-  <link rel="stylesheet" href="bower_components/angular-promise-buttons/example/style.css" />
-  <!-- endbuild -->
-  <!-- build:css(.tmp) styles/main.css -->
-  <link rel="stylesheet" href="styles/main.css">
-  <!-- endbuild -->
-  <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+    <meta charset="utf-8">
+    <title>GitCheese</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Gitcheese">
+    <meta property="og:description" content="Make some CHEESE from Your GIT!">
+    <meta property="og:image" content="http://www.gitcheese.com/og.png">
+    <!-- build:css(.) styles/vendor.css -->
+    <!-- bower:css -->
+    <link rel="stylesheet" href="bower_components/angular-notify/dist/angular-notify.css" />
+    <link rel="stylesheet" href="bower_components/angular-loading-bar/build/loading-bar.css" />
+    <link rel="stylesheet" href="bower_components/animate.css/animate.css" />
+    <!-- endbower -->
+    <link rel="stylesheet" href="bower_components/angular-promise-buttons/example/style.css" />
+    <!-- endbuild -->
+    <!-- build:css(.tmp) styles/main.css -->
+    <link rel="stylesheet" href="styles/main.css">
+    <!-- endbuild -->
+    <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
 </head>
 
 <body ng-app="gitcheese.app" ng-cloak>
-  <!--[if lt IE 7]>
+    <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
       <![endif]-->
-  <gc-navigation-bar></gc-navigation-bar>
-  <section class="content" ng-class="vm.landingPage ? 'full-width-container' : 'container'" ng-view>
-  </section>
-  <gc-footer></gc-footer>
+    <gc-navigation-bar></gc-navigation-bar>
+    <section class="content" ng-class="vm.landingPage ? 'full-width-container' : 'container'" ng-view>
+    </section>
+    <gc-footer></gc-footer>
 
-  <!-- build:js(.) scripts/oldieshim.js -->
-  <!--[if lt IE 9]>
+    <!-- build:js(.) scripts/oldieshim.js -->
+    <!--[if lt IE 9]>
     <script src="bower_components/es5-shim/es5-shim.js"></script>
     <script src="bower_components/json3/lib/json3.js"></script>
     <![endif]-->
-  <!-- endbuild -->
-  <!-- build:remove:dist -->
-  <script type="text/javascript" href="bower_components/livereload-js/dist/livereload.js"></script>
-  <!-- /build -->
-  <!-- build:js(.) scripts/vendor.js -->
-  <!-- bower:js -->
-  <script src="bower_components/jquery/dist/jquery.js"></script>
-  <script src="bower_components/angular/angular.js"></script>
-  <script src="bower_components/angular-animate/angular-animate.js"></script>
-  <script src="bower_components/angular-cookies/angular-cookies.js"></script>
-  <script src="bower_components/angular-resource/angular-resource.js"></script>
-  <script src="bower_components/angular-route/angular-route.js"></script>
-  <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
-  <script src="bower_components/angular-touch/angular-touch.js"></script>
-  <script src="bower_components/angular-notify/dist/angular-notify.js"></script>
-  <script src="bower_components/angular-validation-match/dist/angular-validation-match.min.js"></script>
-  <script src="bower_components/angular-local-storage/dist/angular-local-storage.js"></script>
-  <script src="bower_components/angular-loading-bar/build/loading-bar.js"></script>
-  <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
-  <script src="bower_components/hello/dist/hello.all.min.js"></script>
-  <script src="bower_components/lodash/lodash.js"></script>
-  <script src="bower_components/restangular/dist/restangular.js"></script>
-  <script src="bower_components/ng-hello/dist/ng-hello.min.js"></script>
-  <script src="bower_components/angular-promise-buttons/dist/angular-promise-buttons.js"></script>
-  <script src="bower_components/angular-stripe/release/angular-stripe.js"></script>
-  <script src="bower_components/angular-credit-cards/release/angular-credit-cards.js"></script>
-  <script src="bower_components/wow/dist/wow.js"></script>
-  <!-- endbower -->
-  <!-- endbuild -->
-  <!-- build:js({.tmp,app}) scripts/scripts.js -->
-  <script src="app.module.js"></script>
-  <script src="app.config.js"></script>
-  <script src="app.route.js"></script>
-  <script src="app.constant.js"></script>
-  <script src="app.context.js"></script>
-  <script src="app.run.js"></script>
-  <script src="modules/common/common.module.js"></script>
-  <script src="modules/common/common.config.js"></script>
-  <script src="modules/common/common.route.js"></script>
-  <script src="modules/common/common.constant.js"></script>
-  <script src="modules/layout/layout.module.js"></script>
-  <script src="modules/layout/layout.config.js"></script>
-  <script src="modules/layout/layout.route.js"></script>
-  <script src="modules/layout/layout.constant.js"></script>
-  <script src="modules/administration/administration.module.js"></script>
-  <script src="modules/administration/administration.config.js"></script>
-  <script src="modules/administration/administration.route.js"></script>
-  <script src="modules/administration/administration.constant.js"></script>
-  <script src="modules/administration/administration.context.js"></script>
-  <script src="modules/security/security.module.js"></script>
-  <script src="modules/security/security.route.js"></script>
-  <script src="modules/security/security.module.run.js"></script>
-  <script src="modules/security/security.constant.js"></script>
-  <script src="modules/pledge/pledge.module.js"></script>
-  <script src="modules/pledge/pledge.config.js"></script>
-  <script src="modules/pledge/pledge.route.js"></script>
-  <script src="modules/pledge/pledge.constant.js"></script>
-  <script src="modules/stripe/stripe.module.js"></script>
-  <script src="modules/stripe/stripe.config.js"></script>
-  <script src="modules/stripe/stripe.route.js"></script>
-  <script src="modules/stripe/stripe.constant.js"></script>
-  <script src="modules/security/security.service.js"></script>
-  <script src="modules/security/route-change-start.handler.js"></script>
-  <script src="modules/security/oauth-login-button.directive.js"></script>
-  <script src="modules/layout/footer.directive.js"></script>
-  <script src="modules/layout/navigation-bar.directive.js"></script>
-  <script src="modules/common/route-params.directive.js"></script>
-  <script src="modules/common/cents-to-dollars.directive.js"></script>
-  <script src="modules/administration/profile-hide.directive.js"></script>
-  <script src="modules/administration/profile-show.directive.js"></script>
-  <script src="modules/administration/profile-avatar.directive.js"></script>
-  <script src="modules/administration/profiles.editor.directive.js"></script>
-  <script src="modules/administration/profiles-avatar.editor.directive.js"></script>
-  <script src="modules/pledge/projects.list.directive.js"></script>
-  <script src="modules/pledge/project-pledges.list.directive.js"></script>
-  <script src="modules/pledge/project-summary.directive.js"></script>
-  <script src="modules/pledge/project-badge.directive.js"></script>
-  <script src="modules/pledge/project-badge-markups.directive.js"></script>
-  <script src="modules/pledge/project-github-link.directive.js"></script>
-  <script src="modules/pledge/pledge-payment.directive.js"></script>
-  <script src="modules/pledge/project-top-pledgers.directive.js"></script>
-  <script src="modules/stripe/first-stage-verification.required.directive.js"></script>
-  <script src="modules/stripe/first-stage-verification-editor.directive.js"></script>
-  <!-- endbuild -->
-  <script>
-    (function(i, s, o, g, r, a, m) {
-      i['GoogleAnalyticsObject'] = r;
-      i[r] = i[r] || function() {
-        (i[r].q = i[r].q || []).push(arguments)
-      }, i[r].l = 1 * new Date();
-      a = s.createElement(o),
-        m = s.getElementsByTagName(o)[0];
-      a.async = 1;
-      a.src = g;
-      m.parentNode.insertBefore(a, m)
-    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
-
-    ga('create', 'UA-75151659-3', 'auto');
-    ga('send', 'pageview');
-  </script>
+    <!-- endbuild -->
+    <!-- build:remove:dist -->
+    <script type="text/javascript" href="bower_components/livereload-js/dist/livereload.js"></script>
+    <!-- /build -->
+    <!-- build:js(.) scripts/vendor.js -->
+    <!-- bower:js -->
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-animate/angular-animate.js"></script>
+    <script src="bower_components/angular-cookies/angular-cookies.js"></script>
+    <script src="bower_components/angular-resource/angular-resource.js"></script>
+    <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+    <script src="bower_components/angular-touch/angular-touch.js"></script>
+    <script src="bower_components/angular-notify/dist/angular-notify.js"></script>
+    <script src="bower_components/angular-validation-match/dist/angular-validation-match.min.js"></script>
+    <script src="bower_components/angular-local-storage/dist/angular-local-storage.js"></script>
+    <script src="bower_components/angular-loading-bar/build/loading-bar.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="bower_components/hello/dist/hello.all.min.js"></script>
+    <script src="bower_components/lodash/lodash.js"></script>
+    <script src="bower_components/restangular/dist/restangular.js"></script>
+    <script src="bower_components/ng-hello/dist/ng-hello.min.js"></script>
+    <script src="bower_components/angular-promise-buttons/dist/angular-promise-buttons.js"></script>
+    <script src="bower_components/angular-stripe/release/angular-stripe.js"></script>
+    <script src="bower_components/angular-credit-cards/release/angular-credit-cards.js"></script>
+    <script src="bower_components/wow/dist/wow.js"></script>
+    <!-- endbower -->
+    <!-- endbuild -->
+    <!-- build:js({.tmp,app}) scripts/scripts.js -->
+    <script src="app.module.js"></script>
+    <script src="app.config.js"></script>
+    <script src="app.route.js"></script>
+    <script src="app.constant.js"></script>
+    <script src="app.context.js"></script>
+    <script src="app.run.js"></script>
+    <script src="modules/common/common.module.js"></script>
+    <script src="modules/common/common.module.run.js"></script>
+    <script src="modules/common/common.config.js"></script>
+    <script src="modules/common/common.route.js"></script>
+    <script src="modules/common/common.constant.js"></script>
+    <script src="modules/layout/layout.module.js"></script>
+    <script src="modules/layout/layout.config.js"></script>
+    <script src="modules/layout/layout.route.js"></script>
+    <script src="modules/layout/layout.constant.js"></script>
+    <script src="modules/administration/administration.module.js"></script>
+    <script src="modules/administration/administration.config.js"></script>
+    <script src="modules/administration/administration.route.js"></script>
+    <script src="modules/administration/administration.constant.js"></script>
+    <script src="modules/administration/administration.context.js"></script>
+    <script src="modules/security/security.module.js"></script>
+    <script src="modules/security/security.route.js"></script>
+    <script src="modules/security/security.module.run.js"></script>
+    <script src="modules/security/security.constant.js"></script>
+    <script src="modules/pledge/pledge.module.js"></script>
+    <script src="modules/pledge/pledge.config.js"></script>
+    <script src="modules/pledge/pledge.route.js"></script>
+    <script src="modules/pledge/pledge.constant.js"></script>
+    <script src="modules/stripe/stripe.module.js"></script>
+    <script src="modules/stripe/stripe.config.js"></script>
+    <script src="modules/stripe/stripe.route.js"></script>
+    <script src="modules/stripe/stripe.constant.js"></script>
+    <script src="modules/security/security.service.js"></script>
+    <script src="modules/security/route-change-start.handler.js"></script>
+    <script src="modules/security/oauth-login-button.directive.js"></script>
+    <script src="modules/layout/footer.directive.js"></script>
+    <script src="modules/layout/navigation-bar.directive.js"></script>
+    <script src="modules/common/route-params.directive.js"></script>
+    <script src="modules/common/cents-to-dollars.directive.js"></script>
+    <script src="modules/common/facebook-pixel.service.js"></script>
+    <script src="modules/administration/profile-hide.directive.js"></script>
+    <script src="modules/administration/profile-show.directive.js"></script>
+    <script src="modules/administration/profile-avatar.directive.js"></script>
+    <script src="modules/administration/profiles.editor.directive.js"></script>
+    <script src="modules/administration/profiles-avatar.editor.directive.js"></script>
+    <script src="modules/pledge/projects.list.directive.js"></script>
+    <script src="modules/pledge/projects-details.controller.js"></script>
+    <script src="modules/pledge/project-pledges.list.directive.js"></script>
+    <script src="modules/pledge/project-summary.directive.js"></script>
+    <script src="modules/pledge/project-badge.directive.js"></script>
+    <script src="modules/pledge/project-badge-markups.directive.js"></script>
+    <script src="modules/pledge/project-github-link.directive.js"></script>
+    <script src="modules/pledge/pledge-payment.directive.js"></script>
+    <script src="modules/pledge/project-top-pledgers.directive.js"></script>
+    <script src="modules/stripe/first-stage-verification.required.directive.js"></script>
+    <script src="modules/stripe/first-stage-verification-editor.directive.js"></script>
+    <!-- endbuild -->
 </body>
 
 </html>

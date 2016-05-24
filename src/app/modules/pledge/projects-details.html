@@ -9,20 +9,34 @@
         <gc-project-pledges-list caption="Pledges" project-id="{{routeParams.id}}"></gc-project-pledges-list>
     </div>
     <div class="col-lg-6">
+        <div class="form-group" ng-init="vm.badgeType=0">
+            <label>Badge Type: </label>
+            <div class="radio radio-primary radio-inline">
+                <input type="radio" id="badgeType0" ng-model="vm.badgeType" name="type" value="0">
+                <label for="badgeType0">
+                    Standard
+                </label>
+            </div>
+            <div class="radio radio-primary radio-inline">
+                <input type="radio" id="badgeType1" ng-model="vm.badgeType" name="type" value="1">
+                <label for="badgeType1">
+                    Feed The Cat
+                </label>
+            </div>
+
+        </div>
         <div class="form-group">
             <label>Badge Markups</label>
-            <gc-project-badge-markups project-id="{{routeParams.id}}"></gc-project-badge-markups>
-            <p class="callout callout-info">Put this markup at the top of Your project Readme.md file</code>
+            <gc-project-badge-markups project-id="{{routeParams.id}}" type="{{vm.badgeType}}"></gc-project-badge-markups>
+            <p class="callout callout-info">Put this markup at the top of Your project Readme.md file
             </p>
-            <p class="callout callout-info"> We recommend putting it next to the title: <code># BADGE_HERE Repository Title</code>
-            </p>
-            <p class="callout callout-info"> You can use different sizes: <code>xs</code>, <code>s</code>, <code>md</code> and <code>lg</code> by adding size query string:<code>...e-0ac7e9d0de2c/badges?<strong>size=xs</strong>)]...</code>
+            <p ng-hide="vm.badgeType==0" class="callout callout-info"> You can use different sizes: <code>xs</code>, <code>s</code>, <code>md</code> and <code>lg</code> by adding size query string:<code>...e-0ac7e9d0de2c/badges?<strong>size=xs</strong>)]...</code>
             </p>
         </div>
         <div class="form-group">
             <label>Preview</label>
             <p>
-                <gc-project-badge project-id="{{routeParams.id}}"></gc-project-badge>
+                <gc-project-badge project-id="{{routeParams.id}}" type="{{vm.badgeType}}"></gc-project-badge>
             </p>
         </div>
     </div>

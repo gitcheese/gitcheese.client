@@ -48,11 +48,10 @@
                 <label class="sr-only">Account Number</label>
                 <div class="input-group input-group-md">
                     <span class="input-group-addon"><i class="fa fa-university"></i></span>
-                    <input placeholder="Account Number" class="form-control" type="text" ng-model="vm.managedAcct.bankAccountNumber" name="account_number" ng-pattern="/[0-9]{12}/" required />
+                    <input placeholder="Account Number" class="form-control" type="text" ng-model="vm.managedAcct.bankAccountNumber" name="account_number" required />
                 </div>
                 <div ng-if="verificationForm.account_number.$touched || verificationForm.$submitted">
                     <div class="text-danger" ng-show="verificationForm.account_number.$error.required">Account number is required.</div>
-                    <div class="text-danger" ng-show="verificationForm.account_number.$error.pattern">Account number has to have 12 digits.</div>
                 </div>
             </div>
             <div class="form-group">

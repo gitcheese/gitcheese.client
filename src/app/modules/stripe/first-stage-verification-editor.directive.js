@@ -1,6 +1,4 @@
-﻿
-'use strict';
-
+﻿'use strict';
 angular.module('gitcheese.app.stripe')
     .directive('gcFirstStageVerificationEditor', function() {
         return {
@@ -14,11 +12,12 @@ angular.module('gitcheese.app.stripe')
             }
         };
     });
-
 angular.module('gitcheese.app.stripe')
     .controller('gcFirstStageVerificationEditorController', function(Restangular, $location, notify) {
         var vm = this;
-
+        vm.submitCountry = function() {
+            
+        };
         vm.verify = function() {
             Restangular
                 .one('managedaccounts', vm.profileId)

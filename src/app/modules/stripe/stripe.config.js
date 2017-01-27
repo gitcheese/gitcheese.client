@@ -2,5 +2,5 @@
 
 angular.module('gitcheese.app.stripe')
     .config(function(stripeProvider) {
-        stripeProvider.setPublishableKey('#{stripe_public_key}');
+        stripeProvider.setPublishableKey('pk_test_icwCSxTloCbsT3QvNHL4uumW');
     });

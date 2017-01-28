@@ -1,104 +1,195 @@
-<div>
-    <form name="countryForm" novalidate ng-submit="!vm.countrySubmited && countryForm.$valid && vm.submitCountry()">
-        <div class="col-md-12">
-            <div class="form-group">
-                <label>Country of residence</label>
-                <select class="form-control" name="type" ng-model="vm.country" required>
-                    <option value="USA" selected="true">United States</option>
-                    <option value="GB">United Kingdom</option>
-                </select>
-                <div ng-if="countryForm.type.$touched || countryForm.$submitted">
-                    <div class="text-danger" ng-show="countryForm.type.$error.required">Country is required.</div>
-                </div>
+<form name="verificationForm" novalidate ng-submit="!vm.verified && verificationForm.$valid && vm.verify()">
+    <div class="col-md-12">
+        <div class="form-group col-md-6">
+            <label class="sr-only">Account Type</label>
+            <select class="form-control" name="type" ng-model="vm.managedAcct.type" required>
+                <option value="" selected disabled>Account Type</option>
+                <option value="individual">Individual</option>
+                <option value="corporation">Corporation</option>
+            </select>
+            <div ng-if="verificationForm.type.$touched || verificationForm.$submitted">
+                <div class="text-danger" ng-show="verificationForm.type.$error.required">Account Type is required.</div>
             </div>
         </div>
-        <div class="col-md-12">
-            <div class="callout callout-warning">
-                <strong>It is required by Stripe to provide country of your legal residence that match your bank account information. Please be aware that you can not modify this information.</strong>
+        <div class="form-group col-md-6">
+            <select class="form-control" name="country" ng-model="vm.bankAccount.country" required>
+                <option value="" selected disabled>Country of residence</option>
+                <option ng-repeat="country in vm.countries" value="{{country.code}}">{{country.name}}</option>
+            </select>
+            <div ng-if="verificationForm.country.$touched || verificationForm.$submitted">
+                <div class="text-danger" ng-show="verificationForm.country.$error.required">Country is required.</div>
             </div>
         </div>
-        <button class="btn btn-md btn-primary pull-right" type="submit">Submit</button>
-    </form>
-    <form name="verificationForm" novalidate ng-submit="!vm.verified && verificationForm.$valid && vm.verify()">
-        <div class="col-md-12">
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label class="sr-only">First Name</label>
+        <div class="form-group col-md-4">
+            <label class="sr-only">First Name</label>
+            <div class="input-group input-group-md">
+                <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                <input placeholder="First Name" class="form-control" type="text" ng-model="vm.managedAcct.firstName" name="first_name" required />
+            </div>
+            <div ng-if="verificationForm.first_name.$touched || verificationForm.$submitted">
+                <div class="text-danger" ng-show="verificationForm.first_name.$error.required">First Name is required.</div>
+            </div>
+        </div>
+        <div class="form-group col-md-4">
+            <label class="sr-only">Last Name</label>
+            <div class="input-group input-group-md">
+                <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                <input placeholder="Last Name" class="form-control" type="text" ng-model="vm.managedAcct.lastName" name="last_name" required />
+            </div>
+            <div ng-if="verificationForm.last_name.$touched || verificationForm.$submitted">
+                <div class="text-danger" ng-show="verificationForm.last_name.$error.required">Last Name is required.</div>
+            </div>
+        </div>
+        <div class="form-group col-md-4">
+            <label class="sr-only">Date of Birth</label>
+            <div class="input-group input-group-md">
+                <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                <input class="form-control" type="date" ng-model="vm.managedAcct.dateOfBirth" name="birth_date" required />
+            </div>
+            <div ng-if="verificationForm.birth_date.$touched || verificationForm.$submitted">
+                <div class="text-danger" ng-show="verificationForm.birth_date.$error.required">Birth date is required.</div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-12">
+        <div ng-switch on="vm.bankAccount.country">
+            <div ng-switch-when="DK|FI|FR|IR|NO|SE|ES|AT|BE|DE|IT|LU|NL|PT|CH" ng-switch-when-separator="|">
+                <div class="form-group col-md-12">
+                    <label class="sr-only">IBAN</label>
                     <div class="input-group input-group-md">
-                        <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                        <input placeholder="First Name" class="form-control" type="text" ng-model="vm.managedAcct.firstName" name="first_name" required />
+                        <span class="input-group-addon"><i class="fa fa-university"></i></span>
+                        <input placeholder="IBAN" class="form-control" type="text" ng-model="vm.bankAccount.account_number" name="account_number" required />
                     </div>
-                    <div ng-if="verificationForm.first_name.$touched || verificationForm.$submitted">
-                        <div class="text-danger" ng-show="verificationForm.first_name.$error.required">First Name is required.</div>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="sr-only">Last Name</label>
-                    <div class="input-group input-group-md">
-                        <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                        <input placeholder="Last Name" class="form-control" type="text" ng-model="vm.managedAcct.lastName" name="last_name" required />
-                    </div>
-                    <div ng-if="verificationForm.last_name.$touched || verificationForm.$submitted">
-                        <div class="text-danger" ng-show="verificationForm.last_name.$error.required">Last Name is required.</div>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="sr-only">Date of Birth</label>
-                    <div class="input-group input-group-md">
-                        <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                        <input class="form-control" type="date" ng-model="vm.managedAcct.dateOfBirth" name="birth_date" required />
-                    </div>
-                    <div ng-if="verificationForm.birth_date.$touched || verificationForm.$submitted">
-                        <div class="text-danger" ng-show="verificationForm.birth_date.$error.required">Birth date is required.</div>
+                    <div ng-if="verificationForm.account_number.$touched || verificationForm.$submitted">
+                        <div class="text-danger" ng-show="verificationForm.account_number.$error.required">IBAN is required.</div>
                     </div>
                 </div>
             </div>
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label class="sr-only">Account Type</label>
-                    <select class="form-control" name="type" ng-model="vm.managedAcct.type" required>
-                        <option value="" selected disabled>Account Type</option>
-                        <option value="individual">Individual</option>
-                        <option value="corporation">Corporation</option>
-                    </select>
-                    <div ng-if="verificationForm.type.$touched || verificationForm.$submitted">
-                        <div class="text-danger" ng-show="verificationForm.type.$error.required">Account Type is required.</div>
-                    </div>
-                </div>
-                <div class="form-group">
+            <div ng-switch-when="GB" ng-switch-when-separator="|">
+                <div class="form-group col-md-6">
                     <label class="sr-only">Account Number</label>
                     <div class="input-group input-group-md">
                         <span class="input-group-addon"><i class="fa fa-university"></i></span>
-                        <input placeholder="Account Number" class="form-control" type="text" ng-model="vm.managedAcct.bankAccountNumber" name="account_number" required />
+                        <input placeholder="Account Number" class="form-control" type="text" ng-model="vm.bankAccount.account_number" name="account_number" required />
                     </div>
                     <div ng-if="verificationForm.account_number.$touched || verificationForm.$submitted">
                         <div class="text-danger" ng-show="verificationForm.account_number.$error.required">Account number is required.</div>
                     </div>
                 </div>
-                <div class="form-group">
+                <div class="form-group col-md-6">
+                    <label class="sr-only">Sort Code</label>
+                    <div class="input-group input-group-md">
+                        <span class="input-group-addon"><i class="fa fa-university"></i></span>
+                        <input placeholder="Sort Code" class="form-control" type="text" ng-model="vm.bankAccount.routing_number" name="routing_number" required />
+                    </div>
+                    <div ng-if="verificationForm.routing_number.$touched || verificationForm.$submitted">
+                        <div class="text-danger" ng-show="verificationForm.routing_number.$error.required">Sort code is required.</div>
+                    </div>
+                </div>
+            </div>
+            <div ng-switch-when="AU|NZ" ng-switch-when-separator="|">
+                <div class="form-group col-md-6">
+                    <label class="sr-only">Account Number</label>
+                    <div class="input-group input-group-md">
+                        <span class="input-group-addon"><i class="fa fa-university"></i></span>
+                        <input placeholder="Account Number" class="form-control" type="text" ng-model="vm.bankAccount.account_number" name="account_number" required />
+                    </div>
+                    <div ng-if="verificationForm.account_number.$touched || verificationForm.$submitted">
+                        <div class="text-danger" ng-show="verificationForm.account_number.$error.required">Account number is required.</div>
+                    </div>
+                </div>
+                <div class="form-group col-md-6">
+                    <label class="sr-only">BSB</label>
+                    <div class="input-group input-group-md">
+                        <span class="input-group-addon"><i class="fa fa-university"></i></span>
+                        <input placeholder="BSB" class="form-control" type="text" ng-model="vm.bankAccount.routing_number" name="routing_number" required />
+                    </div>
+                    <div ng-if="verificationForm.routing_number.$touched || verificationForm.$submitted">
+                        <div class="text-danger" ng-show="verificationForm.routing_number.$error.required">BSB is required.</div>
+                    </div>
+                </div>
+            </div>
+            <div ng-switch-when="CA">
+                <div class="form-group col-md-6">
+                    <label class="sr-only">Account Number</label>
+                    <div class="input-group input-group-md">
+                        <span class="input-group-addon"><i class="fa fa-university"></i></span>
+                        <input placeholder="Account Number" class="form-control" type="text" ng-model="vm.bankAccount.account_number" name="account_number" required />
+                    </div>
+                    <div ng-if="verificationForm.account_number.$touched || verificationForm.$submitted">
+                        <div class="text-danger" ng-show="verificationForm.account_number.$error.required">Account number is required.</div>
+                    </div>
+                </div>
+                <div class="form-group col-md-6">
+                    <label class="sr-only">Transit & Institution Number</label>
+                    <div class="input-group input-group-md">
+                        <span class="input-group-addon"><i class="fa fa-university"></i></span>
+                        <input placeholder="Transit & Institution Number" class="form-control" type="text" ng-model="vm.bankAccount.routing_number" name="routing_number" required />
+                    </div>
+                    <div ng-if="verificationForm.routing_number.$touched || verificationForm.$submitted">
+                        <div class="text-danger" ng-show="verificationForm.routing_number.$error.required">Transit & institution number are required.</div>
+                    </div>
+                </div>
+            </div>
+            <div ng-switch-when="JP|SG|HK">
+                <div class="form-group col-md-6">
+                    <label class="sr-only">Account Number</label>
+                    <div class="input-group input-group-md">
+                        <span class="input-group-addon"><i class="fa fa-university"></i></span>
+                        <input placeholder="Account Number" class="form-control" type="text" ng-model="vm.bankAccount.account_number" name="account_number" required />
+                    </div>
+                    <div ng-if="verificationForm.account_number.$touched || verificationForm.$submitted">
+                        <div class="text-danger" ng-show="verificationForm.account_number.$error.required">Account number is required.</div>
+                    </div>
+                </div>
+                <div class="form-group col-md-6">
+                    <label class="sr-only">Bank / Branch Code</label>
+                    <div class="input-group input-group-md">
+                        <span class="input-group-addon"><i class="fa fa-university"></i></span>
+                        <input placeholder="Bank / Branch Code" class="form-control" type="text" ng-model="vm.bankAccount.routing_number" name="routing_number" required />
+                    </div>
+                    <div ng-if="verificationForm.routing_number.$touched || verificationForm.$submitted">
+                        <div class="text-danger" ng-show="verificationForm.routing_number.$error.required">Bank / branch code is required.</div>
+                    </div>
+                </div>
+            </div>
+            <div ng-switch-default>
+                <div class="form-group col-md-6">
+                    <label class="sr-only">Account Number</label>
+                    <div class="input-group input-group-md">
+                        <span class="input-group-addon"><i class="fa fa-university"></i></span>
+                        <input placeholder="Account Number" class="form-control" type="text" ng-model="vm.bankAccount.account_number" name="account_number" required />
+                    </div>
+                    <div ng-if="verificationForm.account_number.$touched || verificationForm.$submitted">
+                        <div class="text-danger" ng-show="verificationForm.account_number.$error.required">Account number is required.</div>
+                    </div>
+                </div>
+                <div class="form-group col-md-6">
                     <label class="sr-only">Routing Number</label>
                     <div class="input-group input-group-md">
                         <span class="input-group-addon"><i class="fa fa-university"></i></span>
-                        <input placeholder="Routing Number" class="form-control" type="text" ng-model="vm.managedAcct.bankAccountRoutingNumber" ng-pattern="/[0-9]{9}/" name="routing_number" required />
+                        <input placeholder="Routing Number" class="form-control" type="text" ng-model="vm.bankAccount.routing_number" name="routing_number" required />
                     </div>
                     <div ng-if="verificationForm.routing_number.$touched || verificationForm.$submitted">
                         <div class="text-danger" ng-show="verificationForm.routing_number.$error.required">Routing number is required.</div>
-                        <div class="text-danger" ng-show="verificationForm.routing_number.$error.pattern">Routing number has to have 9 digits.</div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="col-md-12">
-            <div class="callout callout-info">
-                <strong>We care about your personal information, thats why Gitcheese will NEVER COLLECT sumbited data required by Stripe. All above information are handed directly to Stripe.</strong>
-            </div>
-            <div class="callout callout-info">
-                <p>
-                    Payment processing services on Gitcheese are provided by Stripe and are subject to the Stripe Connected Account Agreement, which includes the Stripe Terms of Service (collectively, the “Stripe Services Agreement”). By agreeing to these terms or continuing to operate as a user on Gitcheese, you agree to be bound by the Stripe Services Agreement, as the same may be modified by Stripe from time to time. As a condition of Gitcheese enabling payment processing services through Stripe, you agree to provide Gitcheese accurate and complete information about you and your business, and you authorize Gitcheese to share it and transaction information related to your use of the payment processing services provided by Stripe.
-                </p>
-            </div>
+    </div>
+    <div class="col-md-12">
+        <div class="callout callout-warning">
+            <strong>It is required by Stripe to provide country of your legal residence that match your bank account information. Please be aware that you can not modify this information.</strong>
         </div>
-        <a href="http://www.stripe.com" target="blank"><img src="images/outline.png" /></a>
-        <button class="btn btn-md btn-primary pull-right" type="submit">Accept And Submit</button>
-    </form>
-</div>
+        <div class="callout callout-info">
+            <strong>We care about your personal information, thats why Gitcheese will NEVER COLLECT sumbited data required by Stripe. All above information are handed directly to Stripe.</strong>
+        </div>
+        <div class="callout callout-info">
+            <p>
+                Payment processing services on Gitcheese are provided by Stripe and are subject to the Stripe Connected Account Agreement, which includes the Stripe Terms of Service (collectively, the “Stripe Services Agreement”). By agreeing to these terms or continuing to operate as a user on Gitcheese, you agree to be bound by the Stripe Services Agreement, as the same may be modified by Stripe from time to time. As a condition of Gitcheese enabling payment processing services through Stripe, you agree to provide Gitcheese accurate and complete information about you and your business, and you authorize Gitcheese to share it and transaction information related to your use of the payment processing services provided by Stripe.
+            </p>
+        </div>
+    </div>
+    <a href="http://www.stripe.com" target="blank"><img src="images/outline.png" /></a>
+    <button class="btn btn-md btn-primary pull-right" type="submit">Accept And Submit</button>
+</form>

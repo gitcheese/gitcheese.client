@@ -48,7 +48,7 @@ angular.module('gitcheese.app.stripe')
             stripe.bankAccount
                 .createToken(vm.bankAccount)
                 .then(function(accountTokenResponse) {
-                    vm.managedAcct.account_token = accountTokenResponse.id;
+                    vm.managedAcct.bankAccountToken = accountTokenResponse.id;
                     vm.managedAcct.country = vm.bankAccount.country;
                     return Restangular
                         .one('managedaccounts', vm.profileId)

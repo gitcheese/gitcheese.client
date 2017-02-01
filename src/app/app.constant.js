@@ -11,6 +11,6 @@ angular.module('gitcheese.app')
         address: {
             'localhost': 'https://gitcheese-api-staging.apphb.com/v1',
             'www.gitcheese.com': 'https://api.gitcheese.com/v1',
-            'gitcheese-staging.azurewebsites.net': 'https://gitcheese-api-staging.apphb.com'
+            'gitcheese-staging.azurewebsites.net': 'https://gitcheese-api-staging.apphb.com/v1'
         }
     });
